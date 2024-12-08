@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const HeroSection = () => {
   return (
@@ -7,9 +8,11 @@ const HeroSection = () => {
       <p className="mt-4 text-lg text-gray-300">
         Explore the best mobile accessories
       </p>
-      <button className="mt-8 px-6 py-3 bg-accent text-black font-semibold rounded hover:bg-blue-300">
-        Shop Now
-      </button>
+      <Link to="/shop">
+        <button className="mt-8 px-6 py-3 bg-accent text-black font-semibold rounded hover:bg-blue-300">
+          Shop Now
+        </button>
+      </Link>
     </section>
   );
 };
