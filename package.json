@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@react-three/cannon": "^6.6.0",
     "@react-three/drei": "^9.120.3",
     "@react-three/fiber": "^8.17.10",
     "@tailwindcss/aspect-ratio": "^0.4.2",
