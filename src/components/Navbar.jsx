@@ -7,13 +7,13 @@ const Navbar = () => {
   return (
     <nav className="bg-black text-white sticky top-0 z-50 shadow-lg">
       <div className="max-w-7xl mx-auto px-6 py-2 flex justify-between items-center">
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-3">
           <img
             src="/images/Logo.png"
             alt="Tech Spot Logo"
-            className="h-12 w-12 lg:h-16 lg:w-16"
+            className="h-14 w-14 lg:h-20 lg:w-20"
           />
-          <h1 className="text-3xl lg:text-4xl fascinate-inline-regular">
+          <h1 className="text-2xl lg:text-3xl fascinate-inline-regular">
             Tech Spot
           </h1>
         </div>
@@ -41,6 +41,14 @@ const Navbar = () => {
               className="hover:text-blue-500 transition duration-300 font-semibold"
             >
               Location
+            </Link>
+          </li>
+          <li>
+            <Link
+              to="/reviews"
+              className="hover:text-blue-500 transition duration-300 font-semibold"
+            >
+              Reviews
             </Link>
           </li>
           <li>
@@ -119,6 +127,15 @@ const Navbar = () => {
                 onClick={() => setIsMenuOpen(false)}
               >
                 Location
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/reviews"
+                className="text-lg font-medium hover:text-blue-500 transition duration-300"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Reviews
               </Link>
             </li>
             <li>

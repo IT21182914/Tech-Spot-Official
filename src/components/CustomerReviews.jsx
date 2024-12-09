@@ -22,10 +22,10 @@ const CustomerReviews = () => {
       <h2 className="text-4xl fascinate-inline-regular text-center mb-8">
         What Our Customers Say
       </h2>
-      <div className="max-w-6xl mx-auto">
+      <div className="max-w-4xl mx-auto">
         <Swiper
           modules={[Navigation, Pagination, Autoplay]}
-          spaceBetween={30}
+          spaceBetween={20}
           slidesPerView={1}
           navigation
           pagination={{ clickable: true }}
@@ -38,7 +38,7 @@ const CustomerReviews = () => {
                 <img
                   src={review.image}
                   alt={`Review ${index + 1}`}
-                  className="w-full h-full object-contain max-h-[500px] rounded-lg"
+                  className="w-full max-w-[500px] max-h-[200px] object-contain rounded-lg shadow-lg"
                 />
               </div>
             </SwiperSlide>
