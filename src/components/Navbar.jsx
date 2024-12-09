@@ -45,6 +45,14 @@ const Navbar = () => {
           </li>
           <li>
             <Link
+              to="/repair"
+              className="hover:text-blue-500 transition duration-300 font-semibold"
+            >
+              Repair Services
+            </Link>
+          </li>
+          <li>
+            <Link
               to="/reviews"
               className="hover:text-blue-500 transition duration-300 font-semibold"
             >
@@ -127,6 +135,15 @@ const Navbar = () => {
                 onClick={() => setIsMenuOpen(false)}
               >
                 Location
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/repair"
+                className="text-lg font-medium hover:text-blue-500 transition duration-300"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Repair Services
               </Link>
             </li>
             <li>

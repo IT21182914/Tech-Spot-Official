@@ -6,6 +6,7 @@ import Shop from "./pages/Shop";
 import Location from "./components/Location";
 import Footer from "./components/Footer";
 import Reviews from "./components/CustomerReviews";
+import RepairServices from "./components/RepairServices";
 
 const App = () => {
   return (
@@ -17,6 +18,7 @@ const App = () => {
           <Route path="/shop" element={<Shop />} />
           <Route path="/location" element={<Location />} />
           <Route path="/reviews" element={<Reviews />} />
+          <Route path="/repair" element={<RepairServices />} />
         </Routes>
         <Footer />
       </div>
