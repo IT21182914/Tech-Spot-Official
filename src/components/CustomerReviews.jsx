@@ -24,12 +24,15 @@ const CustomerReviews = () => {
       </h2>
       <div className="max-w-4xl mx-auto">
         <Swiper
-          modules={[Navigation, Pagination, Autoplay]}
+          modules={[Pagination, Autoplay, Navigation]}
           spaceBetween={20}
           slidesPerView={1}
-          navigation
           pagination={{ clickable: true }}
           autoplay={{ delay: 3000, disableOnInteraction: false }}
+          navigation={{
+            prevEl: ".swiper-button-prev",
+            nextEl: ".swiper-button-next",
+          }}
           className="rounded-lg overflow-hidden"
         >
           {reviews.map((review, index) => (
@@ -44,6 +47,16 @@ const CustomerReviews = () => {
             </SwiperSlide>
           ))}
         </Swiper>
+
+        {/* Navigation Arrows for Large Screens */}
+        <div className="hidden md:flex justify-between mt-4">
+          <button className="swiper-button-prev text-blue-500 hover:text-white">
+            ◀
+          </button>
+          <button className="swiper-button-next text-blue-500 hover:text-white">
+            ▶
+          </button>
+        </div>
       </div>
     </div>
   );
