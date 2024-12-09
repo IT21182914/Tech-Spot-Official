@@ -15,6 +15,7 @@
     "react-dom": "^18.3.1",
     "react-router-dom": "^7.0.2",
     "react-scripts": "5.0.1",
+    "source-map-loader": "^5.0.0",
     "swiper": "^11.1.15",
     "tailwindcss": "^3.4.16",
     "three": "^0.171.0",
@@ -23,6 +24,8 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "predeploy": "npm run build",
+  "deploy": "gh-pages -d build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -43,5 +46,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+    "gh-pages": "^6.2.0"
   }
 }
