@@ -1,5 +1,6 @@
 import React from "react";
 import { TypeAnimation } from "react-type-animation";
+import { motion } from "framer-motion";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
@@ -26,7 +27,7 @@ const RepairServices = () => {
     },
     {
       before: "/images/AllPhonesBefore.jpg",
-      after: "/images/SamsungAfter.png",
+      after: "/images/AllPhonesAfter.jpg",
     },
   ];
 
@@ -47,9 +48,14 @@ const RepairServices = () => {
           className="text-5xl font-bold mb-6"
           repeat={Infinity}
         />
-        <p className="text-xl text-gray-300">
+        <motion.p
+          className="text-xl text-gray-300"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1 }}
+        >
           Our repair services ensure your devices are back to perfect condition.
-        </p>
+        </motion.p>
       </div>
 
       {/* Before and After Swiper */}
@@ -58,53 +64,92 @@ const RepairServices = () => {
           modules={[Pagination, Autoplay]}
           spaceBetween={30}
           slidesPerView={1}
-          autoplay={{ delay: 3000 }}
+          autoplay={{ delay: 6000 }}
           pagination={{ clickable: true }}
           className="rounded-lg overflow-hidden"
         >
           {beforeAfterImages.map((imageSet, index) => (
             <SwiperSlide key={index}>
-              <div className="grid grid-cols-2 gap-4">
-                <div className="flex flex-col items-center">
+              <div className="grid grid-cols-3 items-center gap-4">
+                {/* Before Image */}
+                <motion.div
+                  className="flex flex-col items-center"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.5, duration: 1 }}
+                >
                   <img
                     src={imageSet.before}
                     alt="Before Repair"
-                    className="w-full rounded-lg shadow-lg"
+                    className="w-full h-auto max-w-sm object-contain"
                   />
-                  <p className="mt-2 text-lg font-semibold text-gray-400">
+                  <p className="mt-2 text-lg font-bold text-green-400">
                     Before
                   </p>
-                </div>
-                <div className="flex flex-col items-center">
+                </motion.div>
+
+                {/* Recycle Icon */}
+                <motion.div
+                  className="flex justify-center items-center text-green-500 text-6xl"
+                  initial={{ scale: 0 }}
+                  animate={{ scale: 1, rotate: 360 }}
+                  transition={{ delay: 2, duration: 1 }}
+                >
+                  ♻️
+                </motion.div>
+
+                {/* After Image */}
+                <motion.div
+                  className="flex flex-col items-center"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 3, duration: 1 }}
+                >
                   <img
                     src={imageSet.after}
                     alt="After Repair"
-                    className="w-full rounded-lg shadow-lg"
+                    className="w-full h-auto max-w-sm object-contain"
                   />
-                  <p className="mt-2 text-lg font-semibold text-gray-400">
-                    After
-                  </p>
-                </div>
+                  <p className="mt-2 text-lg font-bold text-blue-400">After</p>
+                </motion.div>
               </div>
             </SwiperSlide>
           ))}
         </Swiper>
       </div>
 
-      {/* Services Grid */}
+      {/* Services Grid with Slideshow-like Animation */}
       <div className="max-w-6xl mx-auto">
         <h2 className="text-4xl font-bold text-center mb-8">Our Services</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        <motion.div
+          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+          variants={{
+            hidden: { opacity: 0 },
+            visible: {
+              opacity: 1,
+              transition: {
+                staggerChildren: 0.2,
+              },
+            },
+          }}
+        >
           {services.map((service, index) => (
-            <div
+            <motion.div
               key={index}
-              className="bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-xl transition duration-300"
+              className="bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-xl transition duration-300 text-center"
+              variants={{
+                hidden: { opacity: 0, y: 50 },
+                visible: { opacity: 1, y: 0 },
+              }}
             >
-              <div className="text-4xl mb-4">{service.icon}</div>
+              <div className="text-6xl mb-4">{service.icon}</div>
               <h3 className="text-xl font-semibold">{service.name}</h3>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );
