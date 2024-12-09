@@ -1,59 +1,76 @@
-import React from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
+import React, { Suspense } from "react";
+import { Canvas } from "@react-three/fiber";
+import { OrbitControls, useGLTF } from "@react-three/drei";
 
-const accessories = [
-  {
-    name: "Stylish Phone Case",
-    price: "LKR 637.36",
-    image:
-      "https://cdn.pixabay.com/photo/2017/08/01/00/40/mobile-2562332_1280.jpg",
-  },
-  {
-    name: "Portable Charger",
-    price: "LKR 329.32",
-    image:
-      "https://cdn.pixabay.com/photo/2020/05/03/00/47/charger-5123473_640.jpg",
-  },
-  {
-    name: "Wireless Earbuds",
-    price: "LKR 1,200.00",
-    image:
-      "https://cdn.pixabay.com/photo/2019/11/27/19/31/headphones-4652216_640.jpg",
-  },
-  {
-    name: "Stylish Pop Sockets",
-    price: "LKR 250.00",
-    image:
-      "https://cdn.pixabay.com/photo/2020/02/18/10/14/mobile-4858621_640.jpg",
-  },
-];
+const categories = {
+  iPhones: [
+    {
+      modelPath: "/models/iphone_13_pro.glb",
+      name: "iPhone 13 Pro",
+      price: "LKR 200,000",
+      scale: [3, 3, 3],
+    },
+  ],
+  Chargers: [
+    {
+      modelPath: "/models/phone_charger.glb",
+      name: "Phone Charger",
+      price: "LKR 1,500",
+    },
+    {
+      modelPath: "/models/phone_charger_with_usb_cable.glb",
+      name: "Charger with USB",
+      price: "LKR 2,000",
+    },
+  ],
+  AndroidPhones: [
+    {
+      modelPath: "/models/samsung_galaxy_s22_ultra.glb",
+      name: "Galaxy S23 Ultra",
+      price: "LKR 250,000",
+      scale: [1, 1, 1],
+    },
+  ],
+};
+
+const Model = ({ modelPath, scale }) => {
+  const { scene } = useGLTF(modelPath);
+  return <primitive object={scene} scale={scale || [0.5, 0.5, 0.5]} />;
+};
 
 const Shop = () => {
   return (
     <div className="bg-black text-white min-h-screen">
       <h1 className="text-3xl text-center py-8">Shop Mobile Accessories</h1>
-      <Swiper
-        spaceBetween={20}
-        slidesPerView={3}
-        loop={true}
-        autoplay={{ delay: 3000 }}
-        className="my-8"
-      >
-        {accessories.map((item, index) => (
-          <SwiperSlide key={index}>
-            <div className="p-4 bg-gray-800 rounded-lg hover:scale-105 transition transform duration-300">
-              <img
-                src={item.image}
-                alt={item.name}
-                className="h-48 w-full object-cover rounded-md"
-              />
-              <h3 className="mt-2 text-lg">{item.name}</h3>
-              <p className="text-gray-400">{item.price}</p>
-            </div>
-          </SwiperSlide>
-        ))}
-      </Swiper>
+      {Object.keys(categories).map((category, index) => (
+        <div key={index} className="py-8">
+          <h2 className="text-2xl text-center mb-4">{category}</h2>
+          <div className="flex flex-wrap justify-center gap-8">
+            {categories[category].map((item, idx) => (
+              <div
+                key={idx}
+                className="w-64 bg-gray-100 bg-opacity-20 rounded-lg p-4"
+              >
+                <div className="h-64">
+                  <Canvas>
+                    <ambientLight intensity={0.5} />
+                    <Suspense fallback={null}>
+                      <Model modelPath={item.modelPath} scale={item.scale} />
+                    </Suspense>
+                    <OrbitControls
+                      autoRotate
+                      autoRotateSpeed={2}
+                      enableZoom={false}
+                    />
+                  </Canvas>
+                </div>
+                <h3 className="text-lg text-center mt-4">{item.name}</h3>
+                <p className="text-gray-400 text-center">{item.price}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      ))}
     </div>
   );
 };
