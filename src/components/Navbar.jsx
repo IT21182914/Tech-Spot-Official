@@ -6,10 +6,19 @@ const Navbar = () => {
 
   return (
     <nav className="bg-black text-white sticky top-0 z-50 shadow-lg">
-      <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-        <h1 className="text-4xl fascinate-inline-regular">Tech Spot</h1>
+      <div className="max-w-7xl mx-auto px-6 py-2 flex justify-between items-center">
+        <div className="flex items-center gap-2">
+          <img
+            src="/images/Logo.png"
+            alt="Tech Spot Logo"
+            className="h-12 w-12 lg:h-16 lg:w-16"
+          />
+          <h1 className="text-3xl lg:text-4xl fascinate-inline-regular">
+            Tech Spot
+          </h1>
+        </div>
 
-        <ul className="hidden md:flex space-x-8">
+        <ul className="hidden md:flex space-x-6">
           <li>
             <Link
               to="/"
