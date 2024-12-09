@@ -13,7 +13,7 @@ const HeroSection = () => {
           "Tech Spot: Your Mobile Repair & Accessories Destination!",
           2000,
         ]}
-        speed={50}
+        speed={20}
         deletionSpeed={40}
         wrapper="h1"
         className="text-5xl font-bold text-white"
@@ -26,7 +26,7 @@ const HeroSection = () => {
           "Discover your next favorite gadget!",
           2000,
         ]}
-        speed={50}
+        speed={20}
         deletionSpeed={40}
         wrapper="p"
         className="mt-4 text-lg text-gray-300"
