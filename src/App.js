@@ -5,16 +5,18 @@ import Home from "./pages/Home";
 import Shop from "./pages/Shop";
 import Location from "./components/Location";
 import Footer from "./components/Footer";
+import Reviews from "./components/CustomerReviews";
 
 const App = () => {
   return (
     <Router>
-      <div className="bg-black text-white">
+      <div className="bg-black text-white min-h-screen">
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/shop" element={<Shop />} />
-          <Route path="/location" element={<Location />} />{" "}
+          <Route path="/location" element={<Location />} />
+          <Route path="/reviews" element={<Reviews />} />
         </Routes>
         <Footer />
       </div>
