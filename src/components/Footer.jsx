@@ -65,13 +65,13 @@ const Footer = () => {
             About Us
           </a>
           <a
-            href="#services"
+            href="/repair"
             className="hover:text-white transition duration-300"
           >
             Services
           </a>
           <a
-            href="#contact"
+            href="/contact"
             className="hover:text-white transition duration-300"
           >
             Contact
