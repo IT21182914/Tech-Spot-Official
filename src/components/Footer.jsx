@@ -76,7 +76,7 @@ const Footer = () => {
           >
             Contact
           </a>
-          <a href="#faq" className="hover:text-white transition duration-300">
+          <a href="/faq" className="hover:text-white transition duration-300">
             FAQ
           </a>
         </div>
