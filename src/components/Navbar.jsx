@@ -67,6 +67,14 @@ const Navbar = () => {
               Contact
             </Link>
           </li>
+          <li>
+            <Link
+              to="/about"
+              className="hover:text-blue-500 transition duration-300 font-semibold"
+            >
+              About Us
+            </Link>
+          </li>
         </ul>
 
         <div
@@ -162,6 +170,15 @@ const Navbar = () => {
                 onClick={() => setIsMenuOpen(false)}
               >
                 Contact
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/about"
+                className="text-lg font-medium hover:text-blue-500 transition duration-300"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                About Us
               </Link>
             </li>
           </ul>
