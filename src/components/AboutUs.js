@@ -1,6 +1,8 @@
 import React from "react";
 import { TypeAnimation } from "react-type-animation";
 import { motion } from "framer-motion";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import "react-lazy-load-image-component/src/effects/blur.css";
 
 const AboutUs = () => {
   const features = [
@@ -41,10 +43,12 @@ const AboutUs = () => {
           transition={{ duration: 1 }}
           className="rounded-lg overflow-hidden shadow-lg"
         >
-          <img
+          <LazyLoadImage
             src="/images/TechSpot.jpg"
             alt="Tech Spot"
             className="w-full h-auto object-cover"
+            effect="blur"
+            placeholderSrc="/images/TechSpot-placeholder.jpg" // Low-resolution placeholder image
           />
         </motion.div>
 
