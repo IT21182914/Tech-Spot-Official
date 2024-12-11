@@ -48,7 +48,7 @@ const AboutUs = () => {
             alt="Tech Spot"
             className="w-full h-auto object-cover"
             effect="blur"
-            placeholderSrc="/images/TechSpot-placeholder.jpg" // Low-resolution placeholder image
+            placeholderSrc="/images/TechSpot-placeholder.jpg"
           />
         </motion.div>
 
