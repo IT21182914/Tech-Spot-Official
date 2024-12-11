@@ -1,14 +1,17 @@
 import React, { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
+import {
+  FaHome,
+  FaShoppingBag,
+  FaMapMarkerAlt,
+  FaTools,
+  FaStar,
+  FaPhone,
+  FaInfoCircle,
+} from "react-icons/fa";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const location = useLocation();
-
-  const getLinkClass = (path) =>
-    location.pathname === path
-      ? "text-blue-500 font-bold"
-      : "hover:text-blue-500 transition duration-300 font-semibold";
 
   return (
     <nav className="bg-black text-white sticky top-0 z-50 shadow-lg">
@@ -17,46 +20,65 @@ const Navbar = () => {
           <img
             src="/images/Logo.png"
             alt="Tech Spot Logo"
-            className="h-14 w-14 lg:h-20 lg:w-20"
+            className="h-10 w-10 lg:h-12 lg:w-12"
           />
-          <h1 className="text-2xl lg:text-3xl fascinate-inline-regular">
-            Tech Spot
-          </h1>
+          <h1 className="text-xl lg:text-2xl font-bold">Tech Spot</h1>
         </div>
 
         <ul className="hidden md:flex space-x-6">
           <li>
-            <Link to="/" className={getLinkClass("/")}>
+            <Link
+              to="/"
+              className="hover:text-blue-500 transition duration-300 font-semibold"
+            >
               Home
             </Link>
           </li>
           <li>
-            <Link to="/shop" className={getLinkClass("/shop")}>
+            <Link
+              to="/shop"
+              className="hover:text-blue-500 transition duration-300 font-semibold"
+            >
               Products
             </Link>
           </li>
           <li>
-            <Link to="/location" className={getLinkClass("/location")}>
+            <Link
+              to="/location"
+              className="hover:text-blue-500 transition duration-300 font-semibold"
+            >
               Location
             </Link>
           </li>
           <li>
-            <Link to="/repair" className={getLinkClass("/repair")}>
+            <Link
+              to="/repair"
+              className="hover:text-blue-500 transition duration-300 font-semibold"
+            >
               Repair Services
             </Link>
           </li>
           <li>
-            <Link to="/reviews" className={getLinkClass("/reviews")}>
+            <Link
+              to="/reviews"
+              className="hover:text-blue-500 transition duration-300 font-semibold"
+            >
               Reviews
             </Link>
           </li>
           <li>
-            <Link to="/contact" className={getLinkClass("/contact")}>
+            <Link
+              to="/contact"
+              className="hover:text-blue-500 transition duration-300 font-semibold"
+            >
               Contact
             </Link>
           </li>
           <li>
-            <Link to="/about" className={getLinkClass("/about")}>
+            <Link
+              to="/about"
+              className="hover:text-blue-500 transition duration-300 font-semibold"
+            >
               About Us
             </Link>
           </li>
@@ -101,68 +123,75 @@ const Navbar = () => {
       </div>
 
       {isMenuOpen && (
-        <div className="md:hidden bg-gray-900 border-t border-gray-700">
+        <div className="md:hidden bg-black bg-opacity-90 backdrop-blur-lg border-t border-gray-700">
           <ul className="flex flex-col items-center space-y-4 py-6">
             <li>
               <Link
                 to="/"
-                className={getLinkClass("/")}
+                className="text-lg font-medium hover:text-blue-500 transition duration-300 flex items-center gap-2"
                 onClick={() => setIsMenuOpen(false)}
               >
+                <FaHome />
                 Home
               </Link>
             </li>
             <li>
               <Link
                 to="/shop"
-                className={getLinkClass("/shop")}
+                className="text-lg font-medium hover:text-blue-500 transition duration-300 flex items-center gap-2"
                 onClick={() => setIsMenuOpen(false)}
               >
+                <FaShoppingBag />
                 Products
               </Link>
             </li>
             <li>
               <Link
                 to="/location"
-                className={getLinkClass("/location")}
+                className="text-lg font-medium hover:text-blue-500 transition duration-300 flex items-center gap-2"
                 onClick={() => setIsMenuOpen(false)}
               >
+                <FaMapMarkerAlt />
                 Location
               </Link>
             </li>
             <li>
               <Link
                 to="/repair"
-                className={getLinkClass("/repair")}
+                className="text-lg font-medium hover:text-blue-500 transition duration-300 flex items-center gap-2"
                 onClick={() => setIsMenuOpen(false)}
               >
+                <FaTools />
                 Repair Services
               </Link>
             </li>
             <li>
               <Link
                 to="/reviews"
-                className={getLinkClass("/reviews")}
+                className="text-lg font-medium hover:text-blue-500 transition duration-300 flex items-center gap-2"
                 onClick={() => setIsMenuOpen(false)}
               >
+                <FaStar />
                 Reviews
               </Link>
             </li>
             <li>
               <Link
                 to="/contact"
-                className={getLinkClass("/contact")}
+                className="text-lg font-medium hover:text-blue-500 transition duration-300 flex items-center gap-2"
                 onClick={() => setIsMenuOpen(false)}
               >
+                <FaPhone />
                 Contact
               </Link>
             </li>
             <li>
               <Link
                 to="/about"
-                className={getLinkClass("/about")}
+                className="text-lg font-medium hover:text-blue-500 transition duration-300 flex items-center gap-2"
                 onClick={() => setIsMenuOpen(false)}
               >
+                <FaInfoCircle />
                 About Us
               </Link>
             </li>
