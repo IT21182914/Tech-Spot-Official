@@ -23,17 +23,28 @@ const ContactPage = () => {
   return (
     <section className="min-h-screen bg-gradient-to-b from-black via-gray-900 to-black text-white py-16 px-4">
       <div className="max-w-4xl mx-auto text-center">
-        <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-blue-500 via-green-400 to-purple-500 bg-clip-text text-transparent">
+        <motion.h2
+          className="text-4xl md:text-5xl font-bold mb-6 text-white"
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+        >
           Contact Us
-        </h2>
-        <p className="text-base md:text-lg text-gray-300 mb-12">
+        </motion.h2>
+
+        <motion.p
+          className="text-base md:text-lg text-gray-300 mb-12"
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8 }}
+        >
           We're here to assist you! Get in touch with us via WhatsApp, Facebook,
           or call us directly.
-        </p>
+        </motion.p>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           <motion.div
-            className="flex flex-col items-center bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-2xl hover:scale-105 transform transition duration-300"
+            className="flex flex-col items-center bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-2xl transform transition duration-300"
             variants={cardVariants}
             initial="initial"
             animate="animate"
@@ -45,9 +56,9 @@ const ContactPage = () => {
               className="text-green-500 hover:text-green-400 transition duration-300"
             >
               <motion.div
-                className="relative text-5xl md:text-6xl mb-4"
+                className="text-5xl md:text-6xl mb-4"
                 whileHover={{
-                  scale: 1.2,
+                  scale: 1.1,
                   textShadow: "0px 0px 10px rgba(0, 255, 0, 0.8)",
                 }}
               >
@@ -63,7 +74,7 @@ const ContactPage = () => {
           </motion.div>
 
           <motion.div
-            className="flex flex-col items-center bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-2xl hover:scale-105 transform transition duration-300"
+            className="flex flex-col items-center bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-2xl transform transition duration-300"
             variants={cardVariants}
             initial="initial"
             animate="animate"
@@ -75,9 +86,9 @@ const ContactPage = () => {
               className="text-blue-500 hover:text-blue-400 transition duration-300"
             >
               <motion.div
-                className="relative text-5xl md:text-6xl mb-4"
+                className="text-5xl md:text-6xl mb-4"
                 whileHover={{
-                  scale: 1.2,
+                  scale: 1.1,
                   textShadow: "0px 0px 10px rgba(0, 0, 255, 0.8)",
                 }}
               >
@@ -91,15 +102,15 @@ const ContactPage = () => {
           </motion.div>
 
           <motion.div
-            className="flex flex-col items-center bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-2xl hover:scale-105 transform transition duration-300"
+            className="flex flex-col items-center bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-2xl transform transition duration-300"
             variants={cardVariants}
             initial="initial"
             animate="animate"
           >
             <motion.div
-              className="relative text-5xl md:text-6xl text-yellow-500 mb-4"
+              className="text-5xl md:text-6xl text-yellow-500 mb-4"
               whileHover={{
-                scale: 1.2,
+                scale: 1.1,
                 textShadow: "0px 0px 10px rgba(255, 255, 0, 0.8)",
               }}
             >
