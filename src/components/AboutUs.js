@@ -14,6 +14,7 @@ const AboutUs = () => {
 
   return (
     <section className="bg-gradient-to-b from-black to-gray-900 text-white min-h-screen py-16 px-6">
+      {/* Header Section */}
       <div className="max-w-6xl mx-auto text-center">
         <TypeAnimation
           sequence={[
@@ -28,13 +29,13 @@ const AboutUs = () => {
           className="text-4xl md:text-5xl font-bold mb-8"
           repeat={Infinity}
         />
-
         <p className="text-lg md:text-xl text-gray-400 mb-12">
           At Tech Spot, we are passionate about delivering exceptional service,
           top-notch products, and reliable repairs to keep you connected.
         </p>
       </div>
 
+      {/* Content Section */}
       <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
         <motion.div
           initial={{ opacity: 0, x: -100 }}
@@ -51,7 +52,6 @@ const AboutUs = () => {
             placeholderSrc="/images/TechSpot-placeholder.jpg"
           />
         </motion.div>
-
         <motion.div
           initial={{ opacity: 0, x: 100 }}
           whileInView={{ opacity: 1, x: 0 }}
@@ -71,15 +71,20 @@ const AboutUs = () => {
             personalized approach. With years of experience, our team ensures
             that every customer leaves happy and connected.
           </p>
-          <a
-            href="/contact"
-            className="inline-block px-6 py-3 bg-blue-500 text-white font-semibold rounded-full hover:bg-blue-600 transition duration-300"
-          >
-            Contact Us
-          </a>
+          <div className="flex justify-center">
+            <a
+              href="/contact"
+              className="relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-cyan-500 to-blue-500 group-hover:from-cyan-500 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-cyan-200 dark:focus:ring-cyan-800"
+            >
+              <span class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
+                Contact Us
+              </span>
+            </a>
+          </div>
         </motion.div>
       </div>
 
+      {/* Features Section */}
       <div className="max-w-6xl mx-auto mt-16 text-center">
         <h2 className="text-3xl md:text-4xl font-bold mb-8">What We Offer</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
@@ -98,6 +103,7 @@ const AboutUs = () => {
         </div>
       </div>
 
+      {/* Vision and Mission Section */}
       <div className="max-w-6xl mx-auto mt-16">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
           <motion.div
