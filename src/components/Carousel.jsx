@@ -1,9 +1,9 @@
 import React from "react";
-import { Swiper, SwiperSlide } from "swiper/react"; // Import Swiper components
-import "swiper/css"; // Import basic Swiper styles
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import { Navigation, Pagination, Autoplay } from "swiper/modules"; // Import modules from "swiper/modules"
+import { Navigation, Pagination, Autoplay } from "swiper/modules";
 
 const Carousel = ({ products = [] }) => {
   if (!products || products.length === 0) {
@@ -13,18 +13,17 @@ const Carousel = ({ products = [] }) => {
   return (
     <div className="px-4 md:px-8 lg:px-16 mx-auto w-full">
       {" "}
-      {/* Add controlled padding */}
       <Swiper
-        spaceBetween={20} // Add a little gap between slides
-        slidesPerView={1} // Default to 1 slide per view
+        spaceBetween={20}
+        slidesPerView={1}
         navigation
         pagination={{ clickable: true }}
         autoplay={{ delay: 3000 }}
         modules={[Navigation, Pagination, Autoplay]}
         breakpoints={{
-          640: { slidesPerView: 1 }, // 1 slide for small screens
-          768: { slidesPerView: 2 }, // 2 slides for tablets
-          1024: { slidesPerView: 3 }, // 3 slides for desktops
+          640: { slidesPerView: 1 },
+          768: { slidesPerView: 2 },
+          1024: { slidesPerView: 3 },
         }}
         className="my-8"
       >
