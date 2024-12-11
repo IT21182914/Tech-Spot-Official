@@ -33,7 +33,6 @@ const RepairServices = () => {
 
   return (
     <section className="min-h-screen bg-gradient-to-b from-black to-gray-900 text-white py-16">
-      {/* Animated Heading */}
       <div className="text-center mb-12">
         <TypeAnimation
           sequence={[
@@ -58,7 +57,6 @@ const RepairServices = () => {
         </motion.p>
       </div>
 
-      {/* Before and After Swiper */}
       <div className="max-w-4xl mx-auto mb-16">
         <Swiper
           modules={[Pagination, Autoplay]}
@@ -71,7 +69,6 @@ const RepairServices = () => {
           {beforeAfterImages.map((imageSet, index) => (
             <SwiperSlide key={index}>
               <div className="grid grid-cols-3 items-center gap-4">
-                {/* Before Image */}
                 <motion.div
                   className="flex flex-col items-center"
                   initial={{ opacity: 0 }}
@@ -88,7 +85,6 @@ const RepairServices = () => {
                   </p>
                 </motion.div>
 
-                {/* Recycle Icon */}
                 <motion.div
                   className="flex justify-center items-center text-green-500 text-6xl"
                   initial={{ scale: 0 }}
@@ -98,7 +94,6 @@ const RepairServices = () => {
                   ♻️
                 </motion.div>
 
-                {/* After Image */}
                 <motion.div
                   className="flex flex-col items-center"
                   initial={{ opacity: 0 }}
@@ -118,7 +113,6 @@ const RepairServices = () => {
         </Swiper>
       </div>
 
-      {/* Services Grid with Slideshow-like Animation */}
       <div className="max-w-6xl mx-auto">
         <h2 className="text-4xl font-bold text-center mb-8">Our Services</h2>
         <motion.div
