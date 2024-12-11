@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "@react-three/cannon": "^6.6.0",
-    "@react-three/drei": "^9.120.3",
+    "@react-three/drei": "^9.120.4",
     "@react-three/fiber": "^8.17.10",
     "@tailwindcss/aspect-ratio": "^0.4.2",
     "animate.css": "^4.1.1",
