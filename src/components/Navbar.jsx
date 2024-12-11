@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import {
   FaHome,
   FaShoppingBag,
@@ -12,6 +12,9 @@ import {
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const location = useLocation();
+
+  const isActive = (path) => location.pathname === path;
 
   return (
     <nav className="bg-black text-white sticky top-0 z-50 shadow-lg">
@@ -29,7 +32,9 @@ const Navbar = () => {
           <li>
             <Link
               to="/"
-              className="hover:text-blue-500 transition duration-300 font-semibold"
+              className={`transition duration-300 font-semibold ${
+                isActive("/") ? "text-blue-500" : "hover:text-blue-500"
+              }`}
             >
               Home
             </Link>
@@ -37,7 +42,9 @@ const Navbar = () => {
           <li>
             <Link
               to="/shop"
-              className="hover:text-blue-500 transition duration-300 font-semibold"
+              className={`transition duration-300 font-semibold ${
+                isActive("/shop") ? "text-blue-500" : "hover:text-blue-500"
+              }`}
             >
               Products
             </Link>
@@ -45,7 +52,9 @@ const Navbar = () => {
           <li>
             <Link
               to="/location"
-              className="hover:text-blue-500 transition duration-300 font-semibold"
+              className={`transition duration-300 font-semibold ${
+                isActive("/location") ? "text-blue-500" : "hover:text-blue-500"
+              }`}
             >
               Location
             </Link>
@@ -53,7 +62,9 @@ const Navbar = () => {
           <li>
             <Link
               to="/repair"
-              className="hover:text-blue-500 transition duration-300 font-semibold"
+              className={`transition duration-300 font-semibold ${
+                isActive("/repair") ? "text-blue-500" : "hover:text-blue-500"
+              }`}
             >
               Repair Services
             </Link>
@@ -61,7 +72,9 @@ const Navbar = () => {
           <li>
             <Link
               to="/reviews"
-              className="hover:text-blue-500 transition duration-300 font-semibold"
+              className={`transition duration-300 font-semibold ${
+                isActive("/reviews") ? "text-blue-500" : "hover:text-blue-500"
+              }`}
             >
               Reviews
             </Link>
@@ -69,7 +82,9 @@ const Navbar = () => {
           <li>
             <Link
               to="/contact"
-              className="hover:text-blue-500 transition duration-300 font-semibold"
+              className={`transition duration-300 font-semibold ${
+                isActive("/contact") ? "text-blue-500" : "hover:text-blue-500"
+              }`}
             >
               Contact
             </Link>
@@ -77,7 +92,9 @@ const Navbar = () => {
           <li>
             <Link
               to="/about"
-              className="hover:text-blue-500 transition duration-300 font-semibold"
+              className={`transition duration-300 font-semibold ${
+                isActive("/about") ? "text-blue-500" : "hover:text-blue-500"
+              }`}
             >
               About Us
             </Link>
@@ -128,7 +145,9 @@ const Navbar = () => {
             <li>
               <Link
                 to="/"
-                className="text-lg font-medium hover:text-blue-500 transition duration-300 flex items-center gap-2"
+                className={`text-lg font-medium transition duration-300 flex items-center gap-2 ${
+                  isActive("/") ? "text-blue-500" : "hover:text-blue-500"
+                }`}
                 onClick={() => setIsMenuOpen(false)}
               >
                 <FaHome />
@@ -138,7 +157,9 @@ const Navbar = () => {
             <li>
               <Link
                 to="/shop"
-                className="text-lg font-medium hover:text-blue-500 transition duration-300 flex items-center gap-2"
+                className={`text-lg font-medium transition duration-300 flex items-center gap-2 ${
+                  isActive("/shop") ? "text-blue-500" : "hover:text-blue-500"
+                }`}
                 onClick={() => setIsMenuOpen(false)}
               >
                 <FaShoppingBag />
@@ -148,7 +169,11 @@ const Navbar = () => {
             <li>
               <Link
                 to="/location"
-                className="text-lg font-medium hover:text-blue-500 transition duration-300 flex items-center gap-2"
+                className={`text-lg font-medium transition duration-300 flex items-center gap-2 ${
+                  isActive("/location")
+                    ? "text-blue-500"
+                    : "hover:text-blue-500"
+                }`}
                 onClick={() => setIsMenuOpen(false)}
               >
                 <FaMapMarkerAlt />
@@ -158,7 +183,9 @@ const Navbar = () => {
             <li>
               <Link
                 to="/repair"
-                className="text-lg font-medium hover:text-blue-500 transition duration-300 flex items-center gap-2"
+                className={`text-lg font-medium transition duration-300 flex items-center gap-2 ${
+                  isActive("/repair") ? "text-blue-500" : "hover:text-blue-500"
+                }`}
                 onClick={() => setIsMenuOpen(false)}
               >
                 <FaTools />
@@ -168,7 +195,9 @@ const Navbar = () => {
             <li>
               <Link
                 to="/reviews"
-                className="text-lg font-medium hover:text-blue-500 transition duration-300 flex items-center gap-2"
+                className={`text-lg font-medium transition duration-300 flex items-center gap-2 ${
+                  isActive("/reviews") ? "text-blue-500" : "hover:text-blue-500"
+                }`}
                 onClick={() => setIsMenuOpen(false)}
               >
                 <FaStar />
@@ -178,7 +207,9 @@ const Navbar = () => {
             <li>
               <Link
                 to="/contact"
-                className="text-lg font-medium hover:text-blue-500 transition duration-300 flex items-center gap-2"
+                className={`text-lg font-medium transition duration-300 flex items-center gap-2 ${
+                  isActive("/contact") ? "text-blue-500" : "hover:text-blue-500"
+                }`}
                 onClick={() => setIsMenuOpen(false)}
               >
                 <FaPhone />
@@ -188,7 +219,9 @@ const Navbar = () => {
             <li>
               <Link
                 to="/about"
-                className="text-lg font-medium hover:text-blue-500 transition duration-300 flex items-center gap-2"
+                className={`text-lg font-medium transition duration-300 flex items-center gap-2 ${
+                  isActive("/about") ? "text-blue-500" : "hover:text-blue-500"
+                }`}
                 onClick={() => setIsMenuOpen(false)}
               >
                 <FaInfoCircle />
