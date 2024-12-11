@@ -2,7 +2,6 @@ import React, { Suspense } from "react";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
 
-// Lazy loading the iframe for the map
 const Map = React.lazy(() => import("./Map"));
 
 const Location = () => {
@@ -17,7 +16,6 @@ const Location = () => {
         Palliyawaththa Road, Tissamaharama, Sri Lanka.
       </p>
 
-      {/* Lazy-loaded Map */}
       <div className="w-full max-w-6xl rounded-lg overflow-hidden shadow-xl mb-10">
         <Suspense
           fallback={
@@ -48,7 +46,6 @@ const Location = () => {
         </Suspense>
       </div>
 
-      {/* Lazy Loading for Button */}
       <Suspense
         fallback={
           <div className="flex items-center justify-center">
