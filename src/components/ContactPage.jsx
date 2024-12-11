@@ -1,11 +1,24 @@
 import React from "react";
 import { FaFacebookF, FaWhatsapp } from "react-icons/fa";
 import { FiPhoneCall } from "react-icons/fi";
+import { motion } from "framer-motion";
 
 const ContactPage = () => {
   const contactNumbers = ["0726048468", "0729212698"];
   const whatsappNumber = "+94726048468";
   const facebookURL = "https://web.facebook.com/profile.php?id=61558973124367";
+
+  const cardVariants = {
+    initial: { y: 0 },
+    animate: {
+      y: [0, -10, 0],
+      transition: {
+        duration: 1,
+        repeat: Infinity,
+        repeatType: "loop",
+      },
+    },
+  };
 
   return (
     <section className="min-h-screen bg-gradient-to-b from-black to-gray-900 text-white py-16 px-4">
@@ -16,10 +29,13 @@ const ContactPage = () => {
           or call us directly.
         </p>
 
-        {/* Contact Options */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {/* WhatsApp */}
-          <div className="flex flex-col items-center bg-gray-800 p-4 md:p-6 rounded-lg shadow-lg hover:shadow-xl transition">
+          <motion.div
+            className="flex flex-col items-center bg-gray-800 p-4 md:p-6 rounded-lg shadow-lg hover:shadow-xl transition"
+            variants={cardVariants}
+            initial="initial"
+            animate="animate"
+          >
             <a
               href={`https://wa.me/${whatsappNumber.replace("+", "")}`}
               target="_blank"
@@ -32,10 +48,14 @@ const ContactPage = () => {
             <p className="text-sm md:text-base text-gray-400">
               {whatsappNumber}
             </p>
-          </div>
+          </motion.div>
 
-          {/* Facebook */}
-          <div className="flex flex-col items-center bg-gray-800 p-4 md:p-6 rounded-lg shadow-lg hover:shadow-xl transition">
+          <motion.div
+            className="flex flex-col items-center bg-gray-800 p-4 md:p-6 rounded-lg shadow-lg hover:shadow-xl transition"
+            variants={cardVariants}
+            initial="initial"
+            animate="animate"
+          >
             <a
               href={facebookURL}
               target="_blank"
@@ -46,10 +66,14 @@ const ContactPage = () => {
             </a>
             <h3 className="text-lg md:text-xl font-semibold mb-1">Facebook</h3>
             <p className="text-sm md:text-base text-gray-400">Visit our page</p>
-          </div>
+          </motion.div>
 
-          {/* Phone Numbers */}
-          <div className="flex flex-col items-center bg-gray-800 p-4 md:p-6 rounded-lg shadow-lg hover:shadow-xl transition">
+          <motion.div
+            className="flex flex-col items-center bg-gray-800 p-4 md:p-6 rounded-lg shadow-lg hover:shadow-xl transition"
+            variants={cardVariants}
+            initial="initial"
+            animate="animate"
+          >
             <FiPhoneCall className="text-5xl md:text-6xl text-yellow-500 mb-4" />
             <h3 className="text-lg md:text-xl font-semibold mb-1">Call Us</h3>
             <div className="space-y-1 text-sm md:text-base text-gray-400">
@@ -57,7 +81,7 @@ const ContactPage = () => {
                 <p key={index}>{number}</p>
               ))}
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>
