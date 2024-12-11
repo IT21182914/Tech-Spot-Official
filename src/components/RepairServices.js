@@ -32,7 +32,7 @@ const RepairServices = () => {
   ];
 
   return (
-    <section className="min-h-screen bg-gradient-to-b from-black to-gray-900 text-white py-16 px-4">
+    <section className="min-h-screen bg-gradient-to-b from-black to-gray-900 text-white py-16">
       {/* Animated Heading */}
       <div className="text-center mb-12">
         <TypeAnimation
@@ -45,11 +45,11 @@ const RepairServices = () => {
             2000,
           ]}
           wrapper="h1"
-          className="text-4xl md:text-5xl font-bold mb-6"
+          className="text-5xl font-bold mb-6"
           repeat={Infinity}
         />
         <motion.p
-          className="text-lg md:text-xl text-gray-300"
+          className="text-xl text-gray-300"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
@@ -70,7 +70,7 @@ const RepairServices = () => {
         >
           {beforeAfterImages.map((imageSet, index) => (
             <SwiperSlide key={index}>
-              <div className="grid grid-cols-1 md:grid-cols-3 items-center gap-4">
+              <div className="grid grid-cols-3 items-center gap-4">
                 {/* Before Image */}
                 <motion.div
                   className="flex flex-col items-center"
@@ -81,7 +81,7 @@ const RepairServices = () => {
                   <img
                     src={imageSet.before}
                     alt="Before Repair"
-                    className="w-full max-w-xs md:max-w-sm h-auto object-contain"
+                    className="w-full h-auto max-w-sm object-contain"
                   />
                   <p className="mt-2 text-lg font-bold text-green-400">
                     Before
@@ -108,7 +108,7 @@ const RepairServices = () => {
                   <img
                     src={imageSet.after}
                     alt="After Repair"
-                    className="w-full max-w-xs md:max-w-sm h-auto object-contain"
+                    className="w-full h-auto max-w-sm object-contain"
                   />
                   <p className="mt-2 text-lg font-bold text-blue-400">After</p>
                 </motion.div>
@@ -120,9 +120,7 @@ const RepairServices = () => {
 
       {/* Services Grid with Slideshow-like Animation */}
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-8">
-          Our Services
-        </h2>
+        <h2 className="text-4xl font-bold text-center mb-8">Our Services</h2>
         <motion.div
           className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"
           initial="hidden"
@@ -147,10 +145,8 @@ const RepairServices = () => {
                 visible: { opacity: 1, y: 0 },
               }}
             >
-              <div className="text-5xl md:text-6xl mb-4">{service.icon}</div>
-              <h3 className="text-lg md:text-xl font-semibold">
-                {service.name}
-              </h3>
+              <div className="text-6xl mb-4">{service.icon}</div>
+              <h3 className="text-xl font-semibold">{service.name}</h3>
             </motion.div>
           ))}
         </motion.div>
