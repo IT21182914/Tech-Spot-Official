@@ -1,8 +1,14 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const location = useLocation();
+
+  const getLinkClass = (path) =>
+    location.pathname === path
+      ? "text-blue-500 font-bold"
+      : "hover:text-blue-500 transition duration-300 font-semibold";
 
   return (
     <nav className="bg-black text-white sticky top-0 z-50 shadow-lg">
@@ -20,58 +26,37 @@ const Navbar = () => {
 
         <ul className="hidden md:flex space-x-6">
           <li>
-            <Link
-              to="/"
-              className="hover:text-blue-500 transition duration-300 font-semibold"
-            >
+            <Link to="/" className={getLinkClass("/")}>
               Home
             </Link>
           </li>
           <li>
-            <Link
-              to="/shop"
-              className="hover:text-blue-500 transition duration-300 font-semibold"
-            >
+            <Link to="/shop" className={getLinkClass("/shop")}>
               Products
             </Link>
           </li>
           <li>
-            <Link
-              to="/location"
-              className="hover:text-blue-500 transition duration-300 font-semibold"
-            >
+            <Link to="/location" className={getLinkClass("/location")}>
               Location
             </Link>
           </li>
           <li>
-            <Link
-              to="/repair"
-              className="hover:text-blue-500 transition duration-300 font-semibold"
-            >
+            <Link to="/repair" className={getLinkClass("/repair")}>
               Repair Services
             </Link>
           </li>
           <li>
-            <Link
-              to="/reviews"
-              className="hover:text-blue-500 transition duration-300 font-semibold"
-            >
+            <Link to="/reviews" className={getLinkClass("/reviews")}>
               Reviews
             </Link>
           </li>
           <li>
-            <Link
-              to="/contact"
-              className="hover:text-blue-500 transition duration-300 font-semibold"
-            >
+            <Link to="/contact" className={getLinkClass("/contact")}>
               Contact
             </Link>
           </li>
           <li>
-            <Link
-              to="/about"
-              className="hover:text-blue-500 transition duration-300 font-semibold"
-            >
+            <Link to="/about" className={getLinkClass("/about")}>
               About Us
             </Link>
           </li>
@@ -121,7 +106,7 @@ const Navbar = () => {
             <li>
               <Link
                 to="/"
-                className="text-lg font-medium hover:text-blue-500 transition duration-300"
+                className={getLinkClass("/")}
                 onClick={() => setIsMenuOpen(false)}
               >
                 Home
@@ -130,7 +115,7 @@ const Navbar = () => {
             <li>
               <Link
                 to="/shop"
-                className="text-lg font-medium hover:text-blue-500 transition duration-300"
+                className={getLinkClass("/shop")}
                 onClick={() => setIsMenuOpen(false)}
               >
                 Products
@@ -139,7 +124,7 @@ const Navbar = () => {
             <li>
               <Link
                 to="/location"
-                className="text-lg font-medium hover:text-blue-500 transition duration-300"
+                className={getLinkClass("/location")}
                 onClick={() => setIsMenuOpen(false)}
               >
                 Location
@@ -148,7 +133,7 @@ const Navbar = () => {
             <li>
               <Link
                 to="/repair"
-                className="text-lg font-medium hover:text-blue-500 transition duration-300"
+                className={getLinkClass("/repair")}
                 onClick={() => setIsMenuOpen(false)}
               >
                 Repair Services
@@ -157,7 +142,7 @@ const Navbar = () => {
             <li>
               <Link
                 to="/reviews"
-                className="text-lg font-medium hover:text-blue-500 transition duration-300"
+                className={getLinkClass("/reviews")}
                 onClick={() => setIsMenuOpen(false)}
               >
                 Reviews
@@ -166,7 +151,7 @@ const Navbar = () => {
             <li>
               <Link
                 to="/contact"
-                className="text-lg font-medium hover:text-blue-500 transition duration-300"
+                className={getLinkClass("/contact")}
                 onClick={() => setIsMenuOpen(false)}
               >
                 Contact
@@ -175,7 +160,7 @@ const Navbar = () => {
             <li>
               <Link
                 to="/about"
-                className="text-lg font-medium hover:text-blue-500 transition duration-300"
+                className={getLinkClass("/about")}
                 onClick={() => setIsMenuOpen(false)}
               >
                 About Us

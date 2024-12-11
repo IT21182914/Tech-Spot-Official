@@ -61,7 +61,7 @@ const Footer = () => {
         </div>
 
         <div className="flex justify-center space-x-6 text-sm md:text-base">
-          <a href="#about" className="hover:text-white transition duration-300">
+          <a href="/about" className="hover:text-white transition duration-300">
             About Us
           </a>
           <a
