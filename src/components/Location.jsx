@@ -46,7 +46,6 @@ const Location = () => {
         </Suspense>
       </div>
 
-      {/* Lazy Loading for Button */}
       <Suspense
         fallback={
           <div className="flex items-center justify-center">
