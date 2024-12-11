@@ -43,6 +43,7 @@ const ContactPage = () => {
         </motion.p>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {/* WhatsApp Section */}
           <motion.div
             className="flex flex-col items-center bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-2xl transform transition duration-300"
             variants={cardVariants}
@@ -73,6 +74,7 @@ const ContactPage = () => {
             </p>
           </motion.div>
 
+          {/* Facebook Section */}
           <motion.div
             className="flex flex-col items-center bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-2xl transform transition duration-300"
             variants={cardVariants}
@@ -101,21 +103,27 @@ const ContactPage = () => {
             <p className="text-sm md:text-base text-gray-400">Visit our page</p>
           </motion.div>
 
+          {/* Call Us Section */}
           <motion.div
             className="flex flex-col items-center bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-2xl transform transition duration-300"
             variants={cardVariants}
             initial="initial"
             animate="animate"
           >
-            <motion.div
-              className="text-5xl md:text-6xl text-yellow-500 mb-4"
-              whileHover={{
-                scale: 1.1,
-                textShadow: "0px 0px 10px rgba(255, 255, 0, 0.8)",
-              }}
+            <a
+              href={`tel:${contactNumbers[0]}`}
+              className="text-yellow-500 hover:text-yellow-400 transition duration-300"
             >
-              <FiPhoneCall />
-            </motion.div>
+              <motion.div
+                className="text-5xl md:text-6xl mb-4"
+                whileHover={{
+                  scale: 1.1,
+                  textShadow: "0px 0px 10px rgba(255, 255, 0, 0.8)",
+                }}
+              >
+                <FiPhoneCall />
+              </motion.div>
+            </a>
             <h3 className="text-lg md:text-xl font-semibold mb-1 bg-gradient-to-r from-yellow-400 to-yellow-600 bg-clip-text text-transparent">
               Call Us
             </h3>
