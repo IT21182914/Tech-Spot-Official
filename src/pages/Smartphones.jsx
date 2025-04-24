@@ -1,5 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
+import { MdPhoneIphone } from "react-icons/md";
+import { AiOutlineInfoCircle } from "react-icons/ai";
+import { BiCopy } from "react-icons/bi";
 
 const allPhones = {
   Apple: [
@@ -29,7 +32,6 @@ const allPhones = {
       image: "/images/iPhones/Iphone 16 Pro Max 256 GB.jpg",
     },
   ],
-
   Samsung: [
     {
       name: "Galaxy S23 Ultra",
@@ -56,9 +58,87 @@ const allPhones = {
   Infinix: [],
 };
 
+const applestockList = [
+  "iPhone 13 128GB Midnight – Rs. 163,000",
+  "iPhone 13 128GB Blue – Rs. 164,000",
+  "iPhone 13 128GB Starlight – Rs. 164,000",
+  "iPhone 14 128GB Starlight – Rs. 194,000",
+  "iPhone 14 128GB Blue – Rs. 194,000",
+  "iPhone 14 128GB Midnight – Rs. 195,000",
+  "iPhone 15 128GB Green – Rs. 217,000",
+  "iPhone 15 128GB Blue – Rs. 218,000",
+  "iPhone 15 128GB Black – Rs. 220,000",
+  "iPhone 15 128GB Pink – Rs. 220,000",
+  "iPhone 15 128GB Green (ZPA) – Rs. 222,000",
+  "iPhone 15 128GB Blue (ZPA) – Rs. 222,000",
+  "iPhone 15 128GB Green (TRC) – Rs. 228,000",
+  "iPhone 15 128GB Pink (TRC) – Rs. 228,000",
+  "iPhone 15 256GB Blue – Rs. 256,000",
+  "iPhone 15 256GB Black – Rs. 257,000",
+  "iPhone 16 128GB Pink – Rs. 240,000",
+  "iPhone 16 128GB White – Rs. 240,000",
+  "iPhone 16 128GB Ultramarine – Rs. 240,000",
+  "iPhone 16 128GB Teal – Rs. 241,000",
+  "iPhone 16 128GB Black – Rs. 242,000",
+  "iPhone 16 128GB Teal (XA) – Rs. 243,500",
+  "iPhone 16 128GB White (XA) – Rs. 243,500",
+  "iPhone 16 128GB Ultramarine (XA) – Rs. 243,500",
+  "iPhone 16 256GB Black – Rs. 276,000",
+  "iPhone 16 256GB Teal – Rs. 276,000",
+  "iPhone 16 256GB Ultramarine – Rs. 277,000",
+  "iPhone 16 256GB White – Rs. 278,000",
+  "iPhone 16 Pro 128GB Black – Rs. 329,000",
+  "iPhone 16 Pro 128GB Desert – Rs. 331,000",
+  "iPhone 16 Pro 128GB Natural – Rs. 332,000",
+  "iPhone 16 Pro 128GB White – Rs. 333,000",
+  "iPhone 16 Pro 256GB Desert – Rs. 358,000",
+  "iPhone 16 Pro 256GB Black – Rs. 359,000",
+  "iPhone 16 Pro 256GB White – Rs. 363,000",
+  "iPhone 16 Pro Max 256GB Desert – Rs. 379,000",
+  "iPhone 16 Pro Max 256GB Natural – Rs. 385,000",
+  "iPhone 16 Pro Max 256GB White – Rs. 388,000",
+  "iPhone 16 Pro Max 512GB Natural – Rs. 449,000",
+  "iPhone 16 Pro Max 512GB Desert – Rs. 449,000",
+  "iPhone 16 Pro Max 512GB White – Rs. 454,000",
+  "iPhone 16 Pro Max 1TB Desert – Rs. 497,000",
+];
+
 const Smartphones = () => {
   const [activeCategory, setActiveCategory] = useState("Apple");
   const [searchTerm, setSearchTerm] = useState("");
+  const scrollRef = useRef(null);
+  const intervalRef = useRef(null);
+  const timeoutRef = useRef(null);
+
+  useEffect(() => {
+    startAutoScroll();
+    return () => {
+      clearInterval(intervalRef.current);
+      clearTimeout(timeoutRef.current);
+    };
+  }, []);
+
+  const startAutoScroll = () => {
+    intervalRef.current = setInterval(() => {
+      if (scrollRef.current) {
+        scrollRef.current.scrollTop += 1;
+        if (
+          scrollRef.current.scrollTop + scrollRef.current.clientHeight >=
+          scrollRef.current.scrollHeight
+        ) {
+          scrollRef.current.scrollTop = 0;
+        }
+      }
+    }, 80);
+  };
+
+  const pauseAutoScroll = () => {
+    clearInterval(intervalRef.current);
+    clearTimeout(timeoutRef.current);
+    timeoutRef.current = setTimeout(() => {
+      startAutoScroll();
+    }, 60000);
+  };
 
   const phones = allPhones[activeCategory].filter((phone) =>
     phone.name.toLowerCase().includes(searchTerm.toLowerCase())
@@ -117,7 +197,7 @@ const Smartphones = () => {
               <img
                 src={phone.image}
                 alt={phone.name}
-                className="w-full h-72 object-contain p-1"
+                className="w-full h-72 object-contain p-1 transition-transform duration-300 hover:scale-105"
               />
               <div className="p-4">
                 <h3 className="text-xl font-semibold text-white">
@@ -129,6 +209,43 @@ const Smartphones = () => {
           ))
         )}
       </motion.div>
+
+      {/* 📋 Available Stock List with Scroll */}
+      <div className="max-w-3xl mx-auto mt-16 bg-white text-gray-800 rounded-xl p-6 shadow-lg border border-gray-200">
+        <div className="flex items-center justify-center gap-2 mb-4">
+          <MdPhoneIphone className="text-xl text-blue-600" />
+          <h2 className="text-2xl font-bold text-center">Available Models</h2>
+        </div>
+
+        <p className="text-center text-sm mb-4 text-blue-500">
+          👉 Click and copy the model name, then message on WhatsApp for quick
+          response
+        </p>
+
+        <div
+          ref={scrollRef}
+          onScroll={pauseAutoScroll}
+          className="h-64 overflow-y-auto scroll-smooth pr-2"
+        >
+          <ul className="space-y-2 text-sm md:text-base">
+            {applestockList.map((item, idx) => (
+              <li
+                key={idx}
+                className="bg-gray-100 px-4 py-2 rounded text-gray-800 shadow-sm hover:bg-gray-200 transition cursor-pointer flex justify-between items-center"
+                onClick={() => navigator.clipboard.writeText(item)}
+              >
+                <span className="truncate w-full pr-2">{item}</span>
+                <BiCopy className="text-blue-500 text-lg min-w-5" />
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div className="flex items-center justify-center mt-6 text-yellow-600 text-sm font-medium">
+          <AiOutlineInfoCircle className="mr-2 text-lg" />
+          <p>Prices may change. Contact seller for the latest information.</p>
+        </div>
+      </div>
     </div>
   );
 };
