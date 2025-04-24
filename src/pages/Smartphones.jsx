@@ -117,7 +117,7 @@ const Smartphones = () => {
               <img
                 src={phone.image}
                 alt={phone.name}
-                className="w-full h-52 object-cover"
+                className="w-full h-72 object-contain p-1"
               />
               <div className="p-4">
                 <h3 className="text-xl font-semibold text-white">
