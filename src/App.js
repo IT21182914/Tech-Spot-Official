@@ -5,6 +5,7 @@ import Home from "./pages/Home";
 import Shop from "./pages/Shop";
 import Location from "./components/Location";
 import Footer from "./components/Footer";
+import FloatingContactButtons from "./components/FloatingContactButtons";
 import Reviews from "./components/CustomerReviews";
 import RepairServices from "./components/RepairServices";
 import ContactPage from "./components/ContactPage";
@@ -26,6 +27,7 @@ const App = () => {
           <Route path="/about" element={<AboutUs />} />
           <Route path="/faq" element={<FAQ />} />
         </Routes>
+        <FloatingContactButtons />
         <Footer />
       </div>
     </Router>
