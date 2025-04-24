@@ -9,6 +9,7 @@ import {
   FaPhone,
   FaInfoCircle,
 } from "react-icons/fa";
+import { MdSmartphone } from "react-icons/md";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -173,11 +174,11 @@ const Navbar = () => {
                 className={`text-lg font-medium transition duration-300 flex items-center gap-2 ${
                   isActive("/smartphones")
                     ? "text-blue-500"
-                    : "text-[#FFD700] hover:text-yellow-500"
+                    : "text-yellow-500 hover:text-blue-500"
                 }`}
                 onClick={() => setIsMenuOpen(false)}
               >
-                <FaShoppingBag />
+                <MdSmartphone />
                 Smartphones
               </Link>
             </li>
