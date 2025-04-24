@@ -13,6 +13,7 @@ const reviews = [
   { image: "/images/Thilina.png", name: "Thilina" },
   { image: "/images/Dinuka.png", name: "Dinuka" },
   { image: "/images/Bathiya.png", name: "Bathiya" },
+  { image: "/images/Chameera.png", name: "Chameera" },
 ];
 
 const CustomerReviews = () => {
