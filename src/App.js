@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import Shop from "./pages/Shop";
+import Smartphones from "./pages/Smartphones";
 import Location from "./components/Location";
 import Footer from "./components/Footer";
 import FloatingContactButtons from "./components/FloatingContactButtons";
@@ -26,6 +27,7 @@ const App = () => {
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/about" element={<AboutUs />} />
           <Route path="/faq" element={<FAQ />} />
+          <Route path="/smartphones" element={<Smartphones />} />
         </Routes>
         <FloatingContactButtons />
         <Footer />
