@@ -210,7 +210,6 @@ const Smartphones = () => {
         )}
       </motion.div>
 
-      {/* 📋 Available Stock List with Scroll */}
       <div className="max-w-3xl mx-auto mt-16 bg-white text-gray-800 rounded-xl p-6 shadow-lg border border-gray-200">
         <div className="flex items-center justify-center gap-2 mb-4">
           <MdPhoneIphone className="text-xl text-blue-600" />
