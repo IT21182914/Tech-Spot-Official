@@ -21,13 +21,6 @@ const videoProofs = [
   { src: "/videos/customer2.mp4", title: "Customer 2", meta: {} },
 ];
 
-const imageReviews = [
-  "/images/Asanka.png",
-  "/images/Aadham.png",
-  "/images/Achintha.png",
-  "/images/Naveen.png",
-];
-
 const happyCustomers = [
   {
     src: "/images/HappyCustomers/Happy Customer iPhone 11.jpg",
