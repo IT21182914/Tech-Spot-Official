@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import ReactGA from "react-ga4";
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import Shop from "./pages/Shop";
@@ -14,6 +15,11 @@ import AboutUs from "./components/AboutUs";
 import FAQ from "./components/FAQ";
 
 const App = () => {
+  useEffect(() => {
+    ReactGA.initialize("G-ZW20PMEHYY");
+    ReactGA.send("pageview");
+  }, []);
+
   return (
     <Router>
       <div className="bg-black text-white min-h-screen">
