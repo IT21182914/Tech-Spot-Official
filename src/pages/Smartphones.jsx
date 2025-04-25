@@ -106,6 +106,7 @@ const applestockList = [
 const Smartphones = () => {
   const [activeCategory, setActiveCategory] = useState("Apple");
   const [searchTerm, setSearchTerm] = useState("");
+  const [copiedText, setCopiedText] = useState("");
   const scrollRef = useRef(null);
   const intervalRef = useRef(null);
   const timeoutRef = useRef(null);
@@ -210,7 +211,8 @@ const Smartphones = () => {
         )}
       </motion.div>
 
-      <div className="max-w-3xl mx-auto mt-16 bg-white text-gray-800 rounded-xl p-6 shadow-lg border border-gray-200">
+      {/* 📋 Available Models with Copy & Toast */}
+      <div className="max-w-3xl mx-auto mt-16 bg-white text-gray-800 rounded-xl p-6 shadow-lg border border-gray-200 relative">
         <div className="flex items-center justify-center gap-2 mb-4">
           <MdPhoneIphone className="text-xl text-blue-600" />
           <h2 className="text-2xl font-bold text-center">Available Models</h2>
@@ -227,18 +229,38 @@ const Smartphones = () => {
           className="h-64 overflow-y-auto scroll-smooth pr-2"
         >
           <ul className="space-y-2 text-sm md:text-base">
-            {applestockList.map((item, idx) => (
-              <li
-                key={idx}
-                className="bg-gray-100 px-4 py-2 rounded text-gray-800 shadow-sm hover:bg-gray-200 transition cursor-pointer flex justify-between items-start sm:items-center gap-2"
-                onClick={() => navigator.clipboard.writeText(item)}
-              >
-                <span className="break-words text-sm sm:text-base">{item}</span>
-                <BiCopy className="text-blue-500 text-lg min-w-5" />
-              </li>
-            ))}
+            {applestockList.map((item, idx) => {
+              const [modelName] = item.split("–");
+              return (
+                <li
+                  key={idx}
+                  className="bg-gray-100 px-4 py-2 rounded text-gray-800 shadow-sm hover:bg-gray-200 transition cursor-pointer flex justify-between items-start sm:items-center gap-2"
+                  onClick={() => {
+                    navigator.clipboard.writeText(modelName.trim());
+                    setCopiedText(`Copied: ${modelName.trim()}`);
+                    setTimeout(() => setCopiedText(""), 2500);
+                  }}
+                >
+                  <span className="break-words text-sm sm:text-base">
+                    {item}
+                  </span>
+                  <BiCopy className="text-blue-500 text-lg min-w-5" />
+                </li>
+              );
+            })}
           </ul>
         </div>
+
+        {copiedText && (
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-blue-100 text-blue-800 px-5 py-3 rounded-lg shadow-lg z-50 text-center text-sm sm:text-base"
+          >
+            {copiedText}
+          </motion.div>
+        )}
 
         <div className="flex items-center justify-center mt-6 text-yellow-600 text-sm font-medium">
           <AiOutlineInfoCircle className="mr-2 text-lg" />
