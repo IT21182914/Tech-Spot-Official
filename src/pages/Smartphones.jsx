@@ -230,10 +230,10 @@ const Smartphones = () => {
             {applestockList.map((item, idx) => (
               <li
                 key={idx}
-                className="bg-gray-100 px-4 py-2 rounded text-gray-800 shadow-sm hover:bg-gray-200 transition cursor-pointer flex justify-between items-center"
+                className="bg-gray-100 px-4 py-2 rounded text-gray-800 shadow-sm hover:bg-gray-200 transition cursor-pointer flex justify-between items-start sm:items-center gap-2"
                 onClick={() => navigator.clipboard.writeText(item)}
               >
-                <span className="truncate w-full pr-2">{item}</span>
+                <span className="break-words text-sm sm:text-base">{item}</span>
                 <BiCopy className="text-blue-500 text-lg min-w-5" />
               </li>
             ))}
