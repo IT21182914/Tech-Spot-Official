@@ -5,7 +5,7 @@ export const posts = [
     date: "2025-04-25",
     excerpt:
       "Welcome to our brand new Tech Spot blog where we share repair tips, accessory reviews, and behind-the-scenes at our Tissamaharama shop.",
-    image: "/images/blog/intro.jpg",
+    image: "/images/blog/screen-replacement-toolkit-2025.jpg",
     content: `
 # Welcome to Tech Spot Blog
 
@@ -23,7 +23,7 @@ Stay tuned for weekly posts—and let us know what topics you’d like us to cov
     date: "2025-04-20",
     excerpt:
       "Need a new case? We’ve tested the best shock-proof, wallet, and stylish cases of 2025.",
-    image: "/images/blog/cases2025.jpg",
+    image: "/images/blog/backcover1.jpg",
     content: `
 # Our Picks for 2025
 
