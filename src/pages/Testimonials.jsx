@@ -41,6 +41,12 @@ const happyCustomers = [
     note: "Colour: Blue",
   },
   {
+    src: "/images/HappyCustomers/Happy Customer Samsung Galaxy S24 Ultra 12GB 256GB.jpg",
+    name: "Happy Customer",
+    phone: "Galaxy S24 Ultra 12/256",
+    note: "Flagship 🔥",
+  },
+  {
     src: "/images/HappyCustomers/Happy Customer Redmi 13 Pro Plus 8GB 256GB.jpg",
     name: "Happy Customer",
     phone: "Redmi 13 Pro Plus 8/256",
@@ -69,12 +75,6 @@ const happyCustomers = [
     src: "/images/HappyCustomers/Happy Customer Samsung Galaxy A35 5G 8GB 256GB.jpg",
     name: "Happy Customer",
     phone: "Galaxy A35 5G 8/256",
-  },
-  {
-    src: "/images/HappyCustomers/Happy Customer Samsung Galaxy S24 Ultra 12GB 256GB.jpg",
-    name: "Happy Customer",
-    phone: "Galaxy S24 Ultra 12/256",
-    note: "Flagship 🔥",
   },
 ];
 
@@ -181,7 +181,7 @@ const Testimonials = () => (
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
       >
-        🎊 Happy Customers Visited Us
+        🎊 Some of Happy Customers Visited Us
       </motion.h2>
 
       <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 max-w-6xl mx-auto">
@@ -198,7 +198,7 @@ const Testimonials = () => (
               src={c.src}
               alt={c.phone}
               effect="blur"
-              className="w-full aspect-[3/4] object-contain object-center bg-black transition-transform duration-300 group-hover:scale-105"
+              className="w-full aspect-[4/4] object-contain object-center bg-black transition-transform duration-300 group-hover:scale-105"
             />
 
             <div className="absolute inset-x-0 bottom-0 bg-black/70 backdrop-blur-sm p-3 text-xs sm:text-sm">
