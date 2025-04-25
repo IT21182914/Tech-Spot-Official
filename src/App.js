@@ -6,6 +6,7 @@ import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import Shop from "./pages/Shop";
 import Smartphones from "./pages/Smartphones";
+import Testimonials from "./pages/Testimonials";
 import Location from "./components/Location";
 import Footer from "./components/Footer";
 import FloatingContactButtons from "./components/FloatingContactButtons";
@@ -37,6 +38,7 @@ const App = () => {
             <Route path="/blog/:slug" element={<BlogPost />} />
             <Route path="/repair" element={<RepairServices />} />
             <Route path="/contact" element={<ContactPage />} />
+            <Route path="/testimonials" element={<Testimonials />} />
             <Route path="/about" element={<AboutUs />} />
             <Route path="/faq" element={<FAQ />} />
             <Route path="/smartphones" element={<Smartphones />} />
