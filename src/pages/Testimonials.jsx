@@ -91,14 +91,6 @@ const Testimonials = () => (
     </motion.h1>
 
     <section className="mb-24">
-      <motion.h2
-        className="text-3xl font-semibold text-center mb-10"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
-      ></motion.h2>
-
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 max-w-6xl mx-auto">
         {videoProofs.map(({ src, title, meta }, i) => (
           <motion.div
@@ -206,7 +198,7 @@ const Testimonials = () => (
               src={c.src}
               alt={c.phone}
               effect="blur"
-              className="w-full h-64 object-cover object-center transition-transform duration-300 group-hover:scale-105"
+              className="w-full aspect-[3/4] object-contain object-center bg-black transition-transform duration-300 group-hover:scale-105"
             />
 
             <div className="absolute inset-x-0 bottom-0 bg-black/70 backdrop-blur-sm p-3 text-xs sm:text-sm">
