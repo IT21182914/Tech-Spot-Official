@@ -9,6 +9,7 @@ import {
   FaPhone,
   FaInfoCircle,
 } from "react-icons/fa";
+import { MdSmartphone } from "react-icons/md";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -39,6 +40,19 @@ const Navbar = () => {
               Home
             </Link>
           </li>
+          <li>
+            <Link
+              to="/smartphones"
+              className={`transition duration-300 font-semibold ${
+                isActive("/smartphones")
+                  ? "text-blue-500"
+                  : "text-yellow-400 hover:text-yellow-300"
+              }`}
+            >
+              Smartphones
+            </Link>
+          </li>
+
           <li>
             <Link
               to="/shop"
@@ -154,6 +168,21 @@ const Navbar = () => {
                 Home
               </Link>
             </li>
+            <li>
+              <Link
+                to="/smartphones"
+                className={`text-lg font-medium transition duration-300 flex items-center gap-2 ${
+                  isActive("/smartphones")
+                    ? "text-blue-500"
+                    : "text-yellow-500 hover:text-blue-500"
+                }`}
+                onClick={() => setIsMenuOpen(false)}
+              >
+                <MdSmartphone />
+                Smartphones
+              </Link>
+            </li>
+
             <li>
               <Link
                 to="/shop"

@@ -70,6 +70,9 @@ const Footer = () => {
           >
             Services
           </a>
+          <a href="/blog" className="hover:text-white transition duration-300">
+            Blog
+          </a>
           <a
             href="/contact"
             className="hover:text-white transition duration-300"
