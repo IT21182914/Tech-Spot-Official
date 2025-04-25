@@ -84,8 +84,7 @@ const Testimonials = () => (
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
-      className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-amber-300 to-yellow-200
-                 text-4xl md:text-5xl font-extrabold text-center mb-14 drop-shadow"
+      className="text-yellow-300 text-4xl md:text-5xl font-extrabold text-center mb-14 drop-shadow"
     >
       පාරිභෝගිකයන් අපි ගැන කියන දේ
     </motion.h1>
