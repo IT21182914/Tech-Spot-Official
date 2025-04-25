@@ -262,9 +262,21 @@ const Smartphones = () => {
           </motion.div>
         )}
 
-        <div className="flex items-center justify-center mt-6 text-yellow-600 text-sm font-medium">
-          <AiOutlineInfoCircle className="mr-2 text-lg" />
-          <p>Prices may change. Contact seller for the latest information.</p>
+        <div className="mt-6 flex flex-col items-center text-yellow-600 text-sm font-medium space-y-2">
+          <div className="flex items-start w-full max-w-md">
+            <AiOutlineInfoCircle className="flex-shrink-0 mt-1 text-lg" />
+            <p className="ml-2 leading-relaxed">
+              Prices may change. Contact seller for the latest information.
+            </p>
+          </div>
+
+          <div className="flex items-start w-full max-w-md">
+            <AiOutlineInfoCircle className="flex-shrink-0 mt-1 text-lg" />
+            <p className="ml-2 leading-relaxed">
+              මිල ගණන් වෙනස් වී තිබිය හැකි බැවින් අපගේ සේවා නිළධාරියෙකු හා
+              සම්බන්ධ වී ඔබට නවතම මිල ගණන් විමසා දැනගත හැක.
+            </p>
+          </div>
         </div>
       </div>
     </div>
