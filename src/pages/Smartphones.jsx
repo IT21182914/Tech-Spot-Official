@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { MdPhoneIphone } from "react-icons/md";
 import { AiOutlineInfoCircle } from "react-icons/ai";
-// import { BiCopy } from "react-icons/bi";
 import { FaWhatsapp } from "react-icons/fa";
 import { allPhones } from "../data";
 import { applestockList } from "../data/appleStockList";
@@ -53,7 +52,7 @@ const Smartphones = () => {
           }
         }
       }, 30);
-    }, 60_000);
+    }, 60000);
   };
 
   const phones = allPhones[activeCategory].filter((p) =>
@@ -70,6 +69,19 @@ const Smartphones = () => {
     >
       <span className="absolute inset-0 bg-gradient-to-r from-yellow-400 via-amber-300 to-yellow-200 rounded-full filter blur-sm opacity-75 group-hover:opacity-90 animate-pulse" />
       <span className="absolute inset-0 rounded-full ring ring-transparent group-hover:ring-yellow-300 transition duration-300" />
+      <span className="relative z-10 drop-shadow-sm whitespace-nowrap">
+        {text}
+      </span>
+    </a>
+  );
+
+  const TermsButton = ({ text }) => (
+    <a
+      href="/terms"
+      className="relative inline-flex items-center justify-center px-4 py-2 rounded-full text-sm font-semibold text-black overflow-hidden group"
+    >
+      <span className="absolute inset-0 bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 rounded-full filter blur-sm opacity-75 group-hover:opacity-90 animate-pulse" />
+      <span className="absolute inset-0 rounded-full ring ring-transparent group-hover:ring-blue-300 transition duration-300" />
       <span className="relative z-10 drop-shadow-sm whitespace-nowrap">
         {text}
       </span>
@@ -160,6 +172,7 @@ const Smartphones = () => {
         )}
       </motion.div>
 
+      {/* Available Models Section */}
       <div className="max-w-3xl mx-auto mt-16 bg-white text-gray-800 rounded-xl p-6 shadow-lg border border-gray-200 relative">
         <div className="flex items-center justify-center gap-2 mb-4">
           <MdPhoneIphone className="text-xl text-blue-600" />
@@ -239,6 +252,11 @@ const Smartphones = () => {
             </p>
           </div>
         </div>
+      </div>
+
+      {/* 🆕 Perfect Terms and Conditions Button at the very bottom */}
+      <div className="flex justify-center mt-16 mb-10">
+        <TermsButton text="Terms & Conditions" />
       </div>
     </div>
   );
