@@ -1,4 +1,15 @@
 export const pixelStockList = [
-  "Google Pixel 7a 128GB – Rs. 142,000",
-  "Google Pixel 8 Pro 256GB – Rs. 295,000",
+  "Pixel 7 128GB (G) Black – Rs. 107,000",
+  "Pixel 7 128GB (G) Lime – Rs. 107,000",
+  "Pixel 7 128GB (G) White – Rs. 108,000",
+  "Pixel 7 Pro 128GB (G) Black – Rs. 123,000",
+  "Pixel 8 128GB (G) Black – Rs. 152,000",
+  "Pixel 8 128GB (G) Gold – Rs. 152,000",
+  "Pixel 8 128GB (G) Hazel – Rs. 162,000",
+  "Pixel 9 128GB (G) Black – Rs. 195,000",
+  "Pixel 9 Pro 256GB (G) Black – Rs. 266,000",
+  "Pixel 9 Pro 256GB (G) Hazel – Rs. 266,000",
+  "Pixel 9 Pro XL 128GB – Rs. 279,000",
+  "Pixel 9 Pro XL 256GB – Rs. 299,900",
+  "Pixel 9 Pro XL 512GB – Rs. 319,000",
 ];
