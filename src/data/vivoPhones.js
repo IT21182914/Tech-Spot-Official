@@ -1,8 +1,8 @@
 export const vivoPhones = [
   {
-    name: "Redmi Note 13",
+    name: "Vivo V27 5G",
     specs: "8GB RAM | 128GB ROM",
-    image: "/images/Redmi/Redmi Note 13 8GB 256GB.jpg",
+    image: "/images/Redmi/image here",
     price: "Rs. 70,900",
   },
 ];
