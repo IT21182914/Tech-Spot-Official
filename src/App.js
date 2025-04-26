@@ -15,6 +15,8 @@ import RepairServices from "./components/RepairServices";
 import ContactPage from "./components/ContactPage";
 import AboutUs from "./components/AboutUs";
 import FAQ from "./components/FAQ";
+import CheckoutPage from "./pages/CheckoutPage";
+import TermsPage from "./components/TermsPage";
 
 import BlogList from "./pages/BlogList";
 import BlogPost from "./pages/BlogPost";
@@ -37,6 +39,9 @@ const App = () => {
             <Route path="/blog" element={<BlogList />} />
             <Route path="/blog/:slug" element={<BlogPost />} />
             <Route path="/repair" element={<RepairServices />} />
+            <Route path="/checkout" element={<CheckoutPage />} />
+            <Route path="/terms" element={<TermsPage />} />
+
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/testimonials" element={<Testimonials />} />
             <Route path="/about" element={<AboutUs />} />
