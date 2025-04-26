@@ -1,4 +1,4 @@
-export const applestockList = [
+export const appleStockList = [
   "iPhone 13 128GB Midnight – Rs. 163,000",
   "iPhone 13 128GB Blue – Rs. 164,000",
   "iPhone 13 128GB Starlight – Rs. 164,000",

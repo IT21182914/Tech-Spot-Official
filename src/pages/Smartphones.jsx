@@ -4,7 +4,17 @@ import { MdPhoneIphone } from "react-icons/md";
 import { AiOutlineInfoCircle } from "react-icons/ai";
 import { FaWhatsapp } from "react-icons/fa";
 import { allPhones } from "../data";
-import { applestockList } from "../data/appleStockList";
+import { appleStockList } from "../data/appleStockList";
+import { samsungStockList } from "../data/samsungStockList";
+import { xiaomiStockList } from "../data/xiaomiStockList";
+import { vivoStockList } from "../data/vivoStockList";
+import { realmeStockList } from "../data/realmeStockList";
+import { infinixStockList } from "../data/infinixStockList";
+import { oppoStockList } from "../data/oppoStockList";
+import { huaweiStockList } from "../data/huaweiStockList";
+import { pixelStockList } from "../data/pixelStockList";
+import { honorStockList } from "../data/honorStockList";
+import { samsungTabletsStockList } from "../data/samsungTabletsStockList";
 
 const WHATSAPP_NUMBER = "94726048468";
 const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}`;
@@ -55,9 +65,27 @@ const Smartphones = () => {
     }, 60000);
   };
 
-  const phones = allPhones[activeCategory].filter((p) =>
-    p.name.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  const stockLists = {
+    Apple: appleStockList,
+    Samsung: samsungStockList,
+    Xiaomi: xiaomiStockList,
+    Vivo: vivoStockList,
+    Realme: realmeStockList,
+    Infinix: infinixStockList,
+    "Samsung Tablets": samsungTabletsStockList,
+    Oppo: oppoStockList,
+    Huawei: huaweiStockList,
+    "Google Pixel": pixelStockList,
+    Honor: honorStockList,
+  };
+
+  const phones = allPhones[activeCategory]
+    ? allPhones[activeCategory].filter((p) =>
+        p.name.toLowerCase().includes(searchTerm.toLowerCase())
+      )
+    : [];
+
+  const availableModels = stockLists[activeCategory] || [];
 
   const whatsappLink = (phone) =>
     waLink(`Hi Tech Spot! I'm interested in buying the ${phone.name}.`);
@@ -90,6 +118,7 @@ const Smartphones = () => {
 
   return (
     <div className="bg-black text-white min-h-screen py-12 px-6">
+      {/* Heading */}
       <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-between sm:items-center mb-10">
         <ReviewButton text="What customers say about us" />
         <h1 className="text-3xl sm:text-4xl font-bold text-center">
@@ -98,6 +127,7 @@ const Smartphones = () => {
         <ReviewButton text="පාරිභෝගිකයන් අපි ගැන කියන දේ" />
       </div>
 
+      {/* Search */}
       <div className="max-w-md mx-auto mb-6">
         <input
           type="text"
@@ -108,6 +138,7 @@ const Smartphones = () => {
         />
       </div>
 
+      {/* Categories */}
       <div className="flex flex-wrap justify-center gap-3 sm:gap-4 mb-10">
         {Object.keys(allPhones).map((cat) => (
           <button
@@ -127,6 +158,7 @@ const Smartphones = () => {
         ))}
       </div>
 
+      {/* Phones Cards */}
       <motion.div
         className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"
         initial={{ opacity: 0, y: 30 }}
@@ -189,38 +221,42 @@ const Smartphones = () => {
           className="h-64 overflow-y-auto scroll-smooth pr-2"
         >
           <ul className="space-y-2 text-sm md:text-base">
-            {applestockList.map((item, idx) => {
-              const [modelName] = item.split("–");
-              return (
-                <li
-                  key={idx}
-                  className="bg-gray-100 px-3 py-2 rounded text-gray-800 shadow-sm flex justify-between items-center gap-3"
-                >
-                  <span
-                    className="flex-1 break-words cursor-pointer"
-                    onClick={() => {
-                      navigator.clipboard.writeText(modelName.trim());
-                      setCopiedText(`Copied: ${modelName.trim()}`);
-                      setTimeout(() => setCopiedText(""), 2500);
-                    }}
+            {availableModels.length > 0 ? (
+              availableModels.map((item, idx) => {
+                const [modelName] = item.split("–");
+                return (
+                  <li
+                    key={idx}
+                    className="bg-gray-100 px-3 py-2 rounded text-gray-800 shadow-sm flex justify-between items-center gap-3"
                   >
-                    {item}
-                  </span>
+                    <span
+                      className="flex-1 break-words cursor-pointer"
+                      onClick={() => {
+                        navigator.clipboard.writeText(modelName.trim());
+                        setCopiedText(`Copied: ${modelName.trim()}`);
+                        setTimeout(() => setCopiedText(""), 2500);
+                      }}
+                    >
+                      {item}
+                    </span>
 
-                  <a
-                    href={waLink(
-                      `Hi Tech Spot! I'm interested in buying the ${modelName.trim()}.`
-                    )}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center justify-center bg-green-500 hover:bg-green-600 text-white rounded-full w-8 h-8 min-w-[2rem] transition duration-300"
-                    aria-label="Order via WhatsApp"
-                  >
-                    <FaWhatsapp className="text-base" />
-                  </a>
-                </li>
-              );
-            })}
+                    <a
+                      href={waLink(
+                        `Hi Tech Spot! I'm interested in buying the ${modelName.trim()}.`
+                      )}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center justify-center bg-green-500 hover:bg-green-600 text-white rounded-full w-8 h-8 min-w-[2rem] transition duration-300"
+                      aria-label="Order via WhatsApp"
+                    >
+                      <FaWhatsapp className="text-base" />
+                    </a>
+                  </li>
+                );
+              })
+            ) : (
+              <p className="text-center text-gray-500">No stock list found.</p>
+            )}
           </ul>
         </div>
 
@@ -254,7 +290,7 @@ const Smartphones = () => {
         </div>
       </div>
 
-      {/* 🆕 Perfect Terms and Conditions Button at the very bottom */}
+      {/* Terms Button */}
       <div className="flex justify-center mt-16 mb-10">
         <TermsButton text="Terms & Conditions" />
       </div>
