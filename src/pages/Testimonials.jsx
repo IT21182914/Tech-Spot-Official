@@ -10,6 +10,7 @@ const videoProofs = [
     title: "Kawya – iPhone 11",
     meta: {
       name: "Kawya",
+      proffession: "IT professional",
       location: "Gampaha",
       product: "iPhone 11",
       delivery: "Delivered within 2 days",
@@ -17,8 +18,19 @@ const videoProofs = [
       stars: 5,
     },
   },
-  { src: "/videos/customer1.mp4", title: "Customer 1", meta: {} },
-  { src: "/videos/customer2.mp4", title: "Customer 2", meta: {} },
+  {
+    src: "/videos/Sayuri iPhone 13.mp4",
+    title: "Sayuri – iPhone 13",
+    meta: {
+      name: "Sayuri",
+      proffession: "Officer at Cinnamon Grand",
+      location: "Colombo",
+      product: "iPhone 13",
+      delivery: "Delivered within 1 day",
+      note: "'Sayuri highly recommended Tech Spot'",
+      stars: 5,
+    },
+  },
 ];
 
 const happyCustomers = [
@@ -120,6 +132,15 @@ const Testimonials = () => (
                       <span className="text-white">{meta.name}</span>
                     </p>
                   )}
+                  {meta.proffession && (
+                    <p>
+                      <span className="font-semibold text-yellow-400">
+                        Profession:
+                      </span>{" "}
+                      <span className="text-white">{meta.proffession}</span>
+                    </p>
+                  )}
+
                   {meta.location && (
                     <p>
                       <span className="font-semibold text-yellow-400">
