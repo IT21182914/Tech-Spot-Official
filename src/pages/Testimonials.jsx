@@ -31,6 +31,19 @@ const videoProofs = [
       stars: 5,
     },
   },
+  {
+    src: "/videos/Hashini iPhone 14 Pro Max.mp4",
+    title: "Hashini – iPhone 14 Pro Max",
+    meta: {
+      name: "Hashini",
+      proffession: "Full-time homemaker and mother",
+      location: "Kandy",
+      product: "iPhone 14 Pro Max",
+      delivery: "Delivered within 1 day",
+      note: "'Hashini highly recommended Tech Spot'",
+      stars: 5,
+    },
+  },
 ];
 
 const happyCustomers = [
