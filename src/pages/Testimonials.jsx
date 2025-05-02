@@ -23,7 +23,7 @@ const videoProofs = [
     title: "Sayuri – iPhone 13",
     meta: {
       name: "Sayuri",
-      proffession: "Officer at Cinnamon Grand",
+      proffession: "Officer at Shrangi-La",
       location: "Colombo",
       product: "iPhone 13",
       delivery: "Delivered within 1 day",
