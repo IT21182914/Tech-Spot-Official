@@ -44,6 +44,19 @@ const videoProofs = [
       stars: 5,
     },
   },
+  {
+    src: "/videos/Asanka iPhone 13.mp4",
+    title: "Asanka – iPhone 13",
+    meta: {
+      name: "Asanka",
+      proffession: "Software Engineer",
+      location: "Matara",
+      product: "iPhone 13",
+      delivery: "Delivered within 1 day",
+      note: "'Asanka highly recommended Tech Spot'",
+      stars: 5,
+    },
+  },
 ];
 
 const happyCustomers = [
