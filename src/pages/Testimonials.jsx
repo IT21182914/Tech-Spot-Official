@@ -57,6 +57,19 @@ const videoProofs = [
       stars: 5,
     },
   },
+  {
+    src: "/videos/Naveen iphone 13",
+    title: "Naveen – iPhone 13",
+    meta: {
+      name: "Naveen",
+      proffession: "Software Engineer at GTN Technologies",
+      location: "Hanwella",
+      product: "iPhone 13",
+      delivery: "Delivered within 1 day",
+      note: "'Naveen highly recommended Tech Spot'",
+      stars: 5,
+    },
+  },
 ];
 
 const happyCustomers = [
