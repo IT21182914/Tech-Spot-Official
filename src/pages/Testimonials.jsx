@@ -58,7 +58,7 @@ const videoProofs = [
     },
   },
   {
-    src: "/videos/Naveen iphone 13",
+    src: "/videos/Naveen iPhone 13.mp4",
     title: "Naveen – iPhone 13",
     meta: {
       name: "Naveen",
