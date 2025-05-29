@@ -1,6 +1,0 @@
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Robots-Tag = "all"
-    Access-Control-Allow-Origin = "*"
-    User-Agent = "*"
