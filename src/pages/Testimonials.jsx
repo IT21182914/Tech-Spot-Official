@@ -101,41 +101,49 @@ const happyCustomers = [
     src: "/images/HappyCustomers/Happy Customer Redmi 13 Pro Plus 8GB 256GB.jpg",
     name: "Happy Customer",
     phone: "Redmi 13 Pro Plus 8/256",
+    note: "Performance + Style ✅",
   },
   {
     src: "/images/HappyCustomers/Happy Customer Redmi 14C 8GB 256GB.jpg",
     name: "Happy Customer",
     phone: "Redmi 14C 8/256",
+    note: "Big storage, smooth experience 😍",
   },
   {
     src: "/images/HappyCustomers/Happy Customer Redmi A3 3GB 64GB.jpg",
     name: "Happy Customer",
     phone: "Redmi A3 3/64",
+    note: "Perfect for everyday use 👌",
   },
   {
     src: "/images/HappyCustomers/Happy Customer Samsung Galaxy A06 4GB 64GB.jpg",
     name: "Happy Customer",
     phone: "Galaxy A06 4/64",
+    note: "Simple and smart choice 😊",
   },
   {
     src: "/images/HappyCustomers/Happy Customer Samsung Galaxy A15 5G 8GB 256GB.jpg",
     name: "Happy Customer",
     phone: "Galaxy A15 5G 8/256",
+    note: "Fast 5G. Big Storage 💯",
   },
   {
     src: "/images/HappyCustomers/Happy Customer Samsung Galaxy A35 5G 8GB 256GB.jpg",
     name: "Happy Customer",
     phone: "Galaxy A35 5G 8/256",
+    note: "Stylish 5G Beast 📱⚡",
   },
   {
     src: "/images/HappyCustomers/Happy Customer3 Redmi A3 4GB 128GB.jpg",
     name: "Happy Customer",
     phone: "Redmi A3 4/128",
+    note: "More space, better performance 📦📱",
   },
   {
     src: "/images/HappyCustomers/Happy Customer4 Redmi 14C 8GB 256GB.jpg",
     name: "Happy Customer",
     phone: "Redmi 14C 8/256",
+    note: "Best value for money! 💰🔥",
   },
 ];
 
