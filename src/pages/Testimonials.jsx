@@ -132,6 +132,11 @@ const happyCustomers = [
     name: "Happy Customer",
     phone: "Redmi A3 4/128",
   },
+  {
+    src: "/images/HappyCustomers/Happy Customer4 Redmi 14C 8GB 256GB.jpg",
+    name: "Happy Customer",
+    phone: "Redmi 14C 8/256",
+  },
 ];
 
 const Testimonials = () => (
