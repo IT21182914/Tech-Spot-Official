@@ -1,16 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import { TypeAnimation } from "react-type-animation";
 import { motion } from "framer-motion";
-import { LazyLoadImage } from "react-lazy-load-image-component";
-import "react-lazy-load-image-component/src/effects/blur.css";
 
 const AboutUs = () => {
+  const [imageLoaded, setImageLoaded] = useState(false);
+
   const features = [
     "🔧 Repair Services",
     "📱 Mobile Accessories",
     "📍 Trusted Location",
     "⭐ Customer Satisfaction",
   ];
+
+  // Preload the image
+  React.useEffect(() => {
+    const img = new Image();
+    img.onload = () => setImageLoaded(true);
+    img.src = "/images/TechSpot.jpg";
+  }, []);
 
   return (
     <section className="bg-gradient-to-b from-black to-gray-900 text-white min-h-screen py-16 px-6">
@@ -42,16 +49,30 @@ const AboutUs = () => {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 1 }}
-          className="rounded-lg overflow-hidden shadow-lg"
+          className="rounded-lg overflow-hidden shadow-lg relative bg-gray-800"
         >
-          <LazyLoadImage
+          {/* Loading placeholder */}
+          {!imageLoaded && (
+            <div className="w-full h-64 md:h-96 bg-gray-700 animate-pulse flex items-center justify-center">
+              <div className="text-gray-400">Loading...</div>
+            </div>
+          )}
+
+          {/* Optimized image */}
+          <img
             src="/images/TechSpot.jpg"
             alt="Tech Spot"
-            className="w-full h-auto object-cover"
-            effect="blur"
-            placeholderSrc="/images/TechSpot-placeholder.jpg"
+            className={`w-full h-auto object-cover transition-opacity duration-500 ${
+              imageLoaded ? "opacity-100" : "opacity-0 absolute inset-0"
+            }`}
+            loading="eager"
+            decoding="async"
+            fetchpriority="high"
+            onLoad={() => setImageLoaded(true)}
+            onError={() => setImageLoaded(true)} // Show content even if image fails
           />
         </motion.div>
+
         <motion.div
           initial={{ opacity: 0, x: 100 }}
           whileInView={{ opacity: 1, x: 0 }}
@@ -128,7 +149,7 @@ const AboutUs = () => {
             <h3 className="text-2xl font-bold text-white mb-4">Our Mission</h3>
             <p className="text-gray-400 leading-relaxed">
               To deliver exceptional customer service, high-quality products,
-              and reliable repair solutions that enhance our customers’ digital
+              and reliable repair solutions that enhance our customers' digital
               lives.
             </p>
           </motion.div>
