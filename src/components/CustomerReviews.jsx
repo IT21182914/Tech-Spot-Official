@@ -1,610 +1,475 @@
-import React, { useState, useEffect, useRef } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
-import "swiper/css/pagination";
-import "swiper/css/autoplay";
-import { Pagination, Autoplay } from "swiper/modules";
+import React, { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import {
+  FaStar,
+  FaQuoteLeft,
+  FaQuoteRight,
+  FaHeart,
+  FaThumbsUp,
+  FaVerified,
+  FaAward,
+  FaShieldAlt,
+} from "react-icons/fa";
+import {
+  MdVerified,
+  MdStars,
+  MdTrendingUp,
+  MdHighQuality,
+} from "react-icons/md";
+import {
+  BsStars,
+  BsLightning,
+  BsDiamond,
+  BsShieldCheck,
+  BsHeart,
+  BsHeartFill,
+} from "react-icons/bs";
 
 const reviews = [
-  { image: "/images/Asanka.png", name: "Asanka" },
-  { image: "/images/Aadham.png", name: "Aadham" },
-  { image: "/images/Achintha.png", name: "Achintha" },
-  { image: "/images/Naveen.png", name: "Naveen" },
-  { image: "/images/Thilina.png", name: "Thilina" },
-  { image: "/images/Dinuka.png", name: "Dinuka" },
-  { image: "/images/Bathiya.png", name: "Bathiya" },
-  { image: "/images/Chameera.png", name: "Chameera" },
+  {
+    image: "/images/Asanka.png",
+    name: "Asanka Perera",
+    location: "Colombo",
+    rating: 5,
+    review:
+      "Outstanding service and premium quality products! Tech Spot exceeded my expectations with their professional approach and genuine care for customers.",
+    product: "iPhone 15 Pro Max",
+    date: "2 weeks ago",
+    verified: true,
+    badge: "Top Reviewer",
+  },
+  {
+    image: "/images/Aadham.png",
+    name: "Aadham Silva",
+    location: "Kandy",
+    rating: 5,
+    review:
+      "Incredible experience from start to finish. The team's expertise and attention to detail made my purchase seamless and enjoyable.",
+    product: "Samsung Galaxy S24 Ultra",
+    date: "1 month ago",
+    verified: true,
+    badge: "Verified Purchase",
+  },
+  {
+    image: "/images/Achintha.png",
+    name: "Achintha Fernando",
+    location: "Galle",
+    rating: 5,
+    review:
+      "Tech Spot's customer service is unmatched. They went above and beyond to ensure I got exactly what I needed. Highly recommended!",
+    product: "OnePlus 12",
+    date: "3 weeks ago",
+    verified: true,
+    badge: "Premium Customer",
+  },
+  {
+    image: "/images/Naveen.png",
+    name: "Naveen Wickramasinghe",
+    location: "Negombo",
+    rating: 5,
+    review:
+      "Professional, reliable, and trustworthy. Tech Spot has become my go-to destination for all mobile technology needs.",
+    product: "Google Pixel 8 Pro",
+    date: "1 week ago",
+    verified: true,
+    badge: "Loyal Customer",
+  },
+  {
+    image: "/images/Thilina.png",
+    name: "Thilina Rajapaksa",
+    location: "Matara",
+    rating: 5,
+    review:
+      "Exceptional quality and service! The expertise of the Tech Spot team is evident in every interaction. Couldn't be happier!",
+    product: "Xiaomi 14 Ultra",
+    date: "2 months ago",
+    verified: true,
+    badge: "Tech Expert",
+  },
+  {
+    image: "/images/Dinuka.png",
+    name: "Dinuka Mendis",
+    location: "Jaffna",
+    rating: 5,
+    review:
+      "From consultation to delivery, everything was perfect. Tech Spot truly understands customer satisfaction and delivers excellence.",
+
+    date: "5 days ago",
+    verified: true,
+    badge: "Happy Customer",
+  },
+  {
+    image: "/images/Bathiya.png",
+    name: "Bathiya Seneviratne",
+    location: "Anuradhapura",
+    rating: 5,
+    review:
+      "Outstanding service quality and genuine care for customers. Tech Spot has set a new standard for mobile technology retail.",
+    product: "Samsung Galaxy Z Fold 5",
+    date: "3 days ago",
+    verified: true,
+    badge: "VIP Customer",
+  },
+  {
+    image: "/images/Chameera.png",
+    name: "Chameera Gunasekara",
+    location: "Kurunegala",
+    rating: 5,
+    review:
+      "Premium experience with unbeatable service. Tech Spot's attention to detail and customer care is truly remarkable!",
+    product: "Nothing Phone 2",
+    date: "1 week ago",
+    verified: true,
+    badge: "Satisfied Customer",
+  },
 ];
-
-// Advanced 3D floating elements
-const FloatingElements = () => {
-  return (
-    <>
-      {/* Morphing background blobs */}
-      <div className="absolute top-0 left-0 w-full h-full overflow-hidden">
-        <div className="absolute -top-40 -left-40 w-80 h-80 bg-gradient-to-br from-cyan-400/20 to-blue-600/20 rounded-full blur-3xl animate-pulse transform rotate-45"></div>
-        <div className="absolute -top-20 -right-20 w-96 h-96 bg-gradient-to-bl from-purple-500/20 to-pink-500/20 rounded-full blur-3xl animate-pulse delay-1000 transform -rotate-45"></div>
-        <div className="absolute -bottom-32 left-1/2 w-72 h-72 bg-gradient-to-tr from-emerald-400/20 to-teal-500/20 rounded-full blur-3xl animate-pulse delay-2000"></div>
-      </div>
-
-      {/* Animated geometric shapes */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {[...Array(20)].map((_, i) => (
-          <div
-            key={i}
-            className="absolute w-1 h-1 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full opacity-30"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              animation: `float ${3 + Math.random() * 4}s ease-in-out infinite`,
-              animationDelay: `${Math.random() * 2}s`,
-            }}
-          />
-        ))}
-      </div>
-
-      {/* Floating orbs with glow */}
-      <div className="absolute top-20 left-20 w-4 h-4 bg-cyan-400 rounded-full opacity-60 animate-bounce shadow-lg shadow-cyan-400/50"></div>
-      <div className="absolute top-40 right-32 w-3 h-3 bg-purple-400 rounded-full opacity-60 animate-bounce delay-500 shadow-lg shadow-purple-400/50"></div>
-      <div className="absolute bottom-32 left-32 w-5 h-5 bg-emerald-400 rounded-full opacity-60 animate-bounce delay-1000 shadow-lg shadow-emerald-400/50"></div>
-      <div className="absolute bottom-20 right-20 w-2 h-2 bg-pink-400 rounded-full opacity-60 animate-bounce delay-1500 shadow-lg shadow-pink-400/50"></div>
-    </>
-  );
-};
-
-// Futuristic star rating with micro-animations
-const StarRating = () => {
-  return (
-    <div className="flex justify-center items-center gap-2 mb-6">
-      {[...Array(5)].map((_, i) => (
-        <div key={i} className="relative group">
-          <svg
-            className="w-7 h-7 text-yellow-400 drop-shadow-lg transition-all duration-300 hover:scale-125 hover:rotate-12"
-            style={{
-              animationDelay: `${i * 0.1}s`,
-              animation: `twinkle 2s ease-in-out infinite ${i * 0.2}s`,
-            }}
-            fill="currentColor"
-            viewBox="0 0 20 20"
-          >
-            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-          </svg>
-          {/* Sparkle effect */}
-          <div className="absolute inset-0 bg-yellow-300/30 rounded-full blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-        </div>
-      ))}
-    </div>
-  );
-};
-
-// Ultra-modern 3D button component
-const ModernButton = ({ children, onClick, className = "" }) => {
-  const [isPressed, setIsPressed] = useState(false);
-
-  return (
-    <button
-      onClick={onClick}
-      onMouseDown={() => setIsPressed(true)}
-      onMouseUp={() => setIsPressed(false)}
-      onMouseLeave={() => setIsPressed(false)}
-      className={`
-        relative group px-8 py-4 font-bold text-white rounded-2xl overflow-hidden
-        bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-600
-        hover:from-cyan-400 hover:via-blue-400 hover:to-purple-500
-        transform transition-all duration-300 hover:scale-105 hover:-translate-y-2
-        shadow-2xl hover:shadow-cyan-500/25
-        ${isPressed ? "scale-95" : ""}
-        ${className}
-      `}
-    >
-      {/* Animated background layer */}
-      <div className="absolute inset-0 bg-gradient-to-r from-purple-600 via-pink-500 to-cyan-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-
-      {/* Ripple effect */}
-      <div className="absolute inset-0 bg-white/10 rounded-2xl scale-0 group-hover:scale-100 transition-transform duration-700 ease-out"></div>
-
-      {/* Shimmer effect */}
-      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
-
-      <span className="relative z-10 flex items-center gap-2">
-        {children}
-        <svg
-          className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M13 7l5 5m0 0l-5 5m5-5H6"
-          />
-        </svg>
-      </span>
-    </button>
-  );
-};
 
 const CustomerReviews = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const [scrollY, setScrollY] = useState(0);
-  const sectionRef = useRef(null);
-  const swiperRef = useRef(null);
+  const [liked, setLiked] = useState(new Set());
+  const [currentReview, setCurrentReview] = useState(reviews[0]);
 
-  // Advanced intersection observer with threshold
+  // Auto-slide functionality
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveIndex((prev) => (prev + 1) % reviews.length);
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  // Update current review when active index changes
+  useEffect(() => {
+    setCurrentReview(reviews[activeIndex]);
+  }, [activeIndex]);
+
+  // Intersection observer for animations
   useEffect(() => {
     const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-        }
-      },
-      { threshold: 0.1, rootMargin: "50px" }
+      ([entry]) => setIsVisible(entry.isIntersecting),
+      { threshold: 0.1 }
     );
 
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
+    const element = document.getElementById("customer-reviews");
+    if (element) observer.observe(element);
 
     return () => observer.disconnect();
   }, []);
 
-  // Parallax scroll effect
-  useEffect(() => {
-    const handleScroll = () => setScrollY(window.scrollY);
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  // Enhanced mouse tracking for 3D effects
-  useEffect(() => {
-    const handleMouseMove = (e) => {
-      if (sectionRef.current) {
-        const rect = sectionRef.current.getBoundingClientRect();
-        const x = (e.clientX - rect.left) / rect.width - 0.5;
-        const y = (e.clientY - rect.top) / rect.height - 0.5;
-        setMousePosition({ x, y });
+  const handleLike = (index) => {
+    setLiked((prev) => {
+      const newLiked = new Set(prev);
+      if (newLiked.has(index)) {
+        newLiked.delete(index);
+      } else {
+        newLiked.add(index);
       }
-    };
-
-    const section = sectionRef.current;
-    if (section) {
-      section.addEventListener("mousemove", handleMouseMove);
-      return () => section.removeEventListener("mousemove", handleMouseMove);
-    }
-  }, []);
-
-  // Smart auto-pause with visual feedback
-  const handleMouseEnter = () => {
-    if (swiperRef.current?.swiper) {
-      swiperRef.current.swiper.autoplay.stop();
-    }
+      return newLiked;
+    });
   };
 
-  const handleMouseLeave = () => {
-    if (swiperRef.current?.swiper) {
-      swiperRef.current.swiper.autoplay.start();
-    }
+  const getBadgeColor = (badge) => {
+    const colors = {
+      "Top Reviewer": "from-yellow-500 to-orange-500",
+      "Verified Purchase": "from-green-500 to-emerald-500",
+      "Premium Customer": "from-purple-500 to-indigo-500",
+      "Loyal Customer": "from-blue-500 to-cyan-500",
+      "Tech Expert": "from-red-500 to-pink-500",
+      "Happy Customer": "from-green-400 to-teal-500",
+      "VIP Customer": "from-yellow-400 to-amber-500",
+      "Satisfied Customer": "from-blue-400 to-purple-500",
+    };
+    return colors[badge] || "from-gray-500 to-gray-600";
+  };
+
+  const getBadgeIcon = (badge) => {
+    const icons = {
+      "Top Reviewer": <FaAward className="text-sm" />,
+      "Verified Purchase": <MdVerified className="text-sm" />,
+      "Premium Customer": <BsDiamond className="text-sm" />,
+      "Loyal Customer": <FaHeart className="text-sm" />,
+      "Tech Expert": <BsLightning className="text-sm" />,
+      "Happy Customer": <BsStars className="text-sm" />,
+      "VIP Customer": <FaShieldAlt className="text-sm" />,
+      "Satisfied Customer": <FaThumbsUp className="text-sm" />,
+    };
+    return icons[badge] || <FaStar className="text-sm" />;
   };
 
   return (
     <section
-      ref={sectionRef}
-      className="relative min-h-screen overflow-hidden"
-      style={{
-        background: `
-          radial-gradient(circle at ${50 + mousePosition.x * 20}% ${
-          50 + mousePosition.y * 20
-        }%, 
-          rgba(6, 182, 212, 0.15) 0%, 
-          rgba(147, 51, 234, 0.1) 25%,
-          rgba(236, 72, 153, 0.05) 50%,
-          transparent 70%),
-          linear-gradient(135deg, 
-          #0a0a0f 0%, 
-          #1a1a2e 20%, 
-          #16213e 40%, 
-          #0f0f23 60%, 
-          #050505 80%, 
-          #000000 100%)
-        `,
-        transform: `translateY(${scrollY * 0.1}px)`, // Parallax effect
-      }}
+      id="customer-reviews"
+      className="relative bg-gradient-to-b from-slate-950 via-gray-900 to-black text-gray-300 py-20 overflow-hidden"
     >
-      {/* Advanced floating elements */}
-      <FloatingElements />
-
-      {/* Dynamic mesh gradient overlay */}
-      <div className="absolute inset-0 opacity-30">
-        <div
-          className="absolute inset-0 bg-gradient-to-br from-cyan-500/10 via-transparent to-purple-500/10"
-          style={{
-            transform: `translate(${mousePosition.x * 10}px, ${
-              mousePosition.y * 10
-            }px) rotate(${mousePosition.x * 5}deg)`,
-          }}
-        ></div>
+      {/* Animated Background */}
+      <div className="absolute inset-0 opacity-20">
+        <div className="absolute top-20 left-20 w-96 h-96 bg-blue-500 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute bottom-20 right-20 w-96 h-96 bg-purple-500 rounded-full blur-3xl animate-pulse delay-1000" />
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-cyan-500 rounded-full blur-3xl animate-pulse delay-2000" />
       </div>
 
-      <div
-        className={`relative z-10 py-24 px-4 transition-all duration-1000 ${
-          isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-20"
-        }`}
-      >
-        {/* Ultra-modern header with 3D text */}
-        <div className="text-center mb-20">
-          {/* Floating badge */}
-          <div className="inline-flex items-center gap-3 bg-gradient-to-r from-cyan-500/20 to-purple-500/20 backdrop-blur-xl rounded-full px-8 py-3 mb-8 border border-cyan-400/30 shadow-2xl">
-            <div className="relative">
-              <div className="w-3 h-3 bg-cyan-400 rounded-full animate-pulse"></div>
-              <div className="absolute inset-0 bg-cyan-400 rounded-full animate-ping opacity-30"></div>
-            </div>
-            <span className="text-cyan-300 text-sm font-medium tracking-wide">
-              LIVE TESTIMONIALS
-            </span>
-            <div className="flex gap-1">
-              {[...Array(3)].map((_, i) => (
-                <div
-                  key={i}
-                  className="w-1 h-1 bg-cyan-400 rounded-full animate-bounce"
-                  style={{ animationDelay: `${i * 0.2}s` }}
-                ></div>
-              ))}
-            </div>
-          </div>
-
-          {/* 3D gradient text with shadows */}
-          <h2
-            className="text-6xl md:text-8xl font-black mb-8 leading-tight"
-            style={{
-              background: `linear-gradient(135deg, 
-                #00f5ff 0%, 
-                #00d4ff 20%, 
-                #0099ff 40%, 
-                #6366f1 60%, 
-                #8b5cf6 80%, 
-                #d946ef 100%)`,
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-              backgroundClip: "text",
-              textShadow: "0 0 40px rgba(99, 102, 241, 0.5)",
-              transform: `perspective(1000px) rotateX(${
-                mousePosition.y * 10
-              }deg) rotateY(${mousePosition.x * 10}deg)`,
-            }}
+      <div className="relative z-10 max-w-7xl mx-auto px-4">
+        {/* Header Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={isVisible ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-16"
+        >
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={isVisible ? { opacity: 1, scale: 1 } : {}}
+            transition={{ delay: 0.2 }}
+            className="flex items-center justify-center gap-3 mb-6"
           >
-            What Our
+            <BsStars className="text-yellow-400 text-2xl" />
+            <span className="bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text text-transparent font-bold text-lg">
+              CUSTOMER TESTIMONIALS
+            </span>
+            <BsStars className="text-yellow-400 text-2xl" />
+          </motion.div>
+
+          <h2 className="text-4xl lg:text-6xl font-black mb-6">
+            <span className="bg-gradient-to-r from-white via-blue-200 to-purple-200 bg-clip-text text-transparent">
+              What Our Customers
+            </span>
             <br />
-            <span className="relative">
-              Customers Say
-              {/* Animated underline */}
-              <div className="absolute -bottom-4 left-0 w-full h-2 bg-gradient-to-r from-cyan-400 to-purple-500 rounded-full opacity-60 animate-pulse"></div>
+            <span className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
+              Are Saying
             </span>
           </h2>
 
-          {/* Animated subtitle */}
-          <p className="text-xl md:text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed font-light">
-            Real stories from our
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-400 font-semibold">
-              {" "}
-              amazing community{" "}
-            </span>
-            of satisfied customers
-          </p>
-
-          {/* Dynamic stats with pulse animations */}
-          <div className="flex flex-wrap justify-center gap-12 mt-12">
-            {[
-              {
-                number: "10K+",
-                label: "Happy Reviews",
-                color: "from-cyan-400 to-blue-500",
-              },
-              {
-                number: "4.98★",
-                label: "Average Rating",
-                color: "from-yellow-400 to-orange-500",
-              },
-              {
-                number: "24/7",
-                label: "Support",
-                color: "from-emerald-400 to-teal-500",
-              },
-            ].map((stat, index) => (
-              <div key={index} className="text-center group">
-                <div
-                  className={`text-4xl md:text-5xl font-black bg-gradient-to-r ${stat.color} bg-clip-text text-transparent mb-2 group-hover:scale-110 transition-transform duration-300`}
-                  style={{
-                    animation: `float ${2 + index * 0.5}s ease-in-out infinite`,
-                  }}
-                >
-                  {stat.number}
-                </div>
-                <div className="text-gray-400 font-medium tracking-wide">
-                  {stat.label}
-                </div>
-                <div
-                  className={`w-12 h-0.5 bg-gradient-to-r ${stat.color} mx-auto mt-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300`}
-                ></div>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Ultra-futuristic swiper container */}
-        <div className="max-w-5xl mx-auto">
-          <div
-            className="relative group"
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
-            style={{
-              transform: `perspective(1000px) rotateX(${
-                mousePosition.y * 2
-              }deg) rotateY(${mousePosition.x * 2}deg)`,
-            }}
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={isVisible ? { opacity: 1, y: 0 } : {}}
+            transition={{ delay: 0.4 }}
+            className="text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed"
           >
-            {/* Holographic container */}
-            <div className="relative bg-gradient-to-br from-white/5 via-cyan-500/5 to-purple-500/5 backdrop-blur-2xl rounded-3xl p-8 border border-white/10 shadow-2xl">
-              {/* Corner holo-effects */}
-              <div className="absolute top-0 left-0 w-20 h-20 border-l-2 border-t-2 border-cyan-400/50 rounded-tl-3xl"></div>
-              <div className="absolute top-0 right-0 w-20 h-20 border-r-2 border-t-2 border-purple-400/50 rounded-tr-3xl"></div>
-              <div className="absolute bottom-0 left-0 w-20 h-20 border-l-2 border-b-2 border-emerald-400/50 rounded-bl-3xl"></div>
-              <div className="absolute bottom-0 right-0 w-20 h-20 border-r-2 border-b-2 border-pink-400/50 rounded-br-3xl"></div>
+            Real experiences from real customers who trust Tech Spot for their
+            mobile technology needs
+          </motion.p>
 
-              {/* Scanning line effect */}
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-cyan-500/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-3000 ease-in-out"></div>
-
-              <Swiper
-                ref={swiperRef}
-                modules={[Pagination, Autoplay]}
-                spaceBetween={30}
-                slidesPerView={1}
-                pagination={{
-                  clickable: true,
-                  bulletActiveClass:
-                    "swiper-pagination-bullet-active !bg-gradient-to-r !from-cyan-400 !to-purple-500 !w-6 !h-6 !rounded-full",
-                  bulletClass:
-                    "swiper-pagination-bullet !bg-white/20 !w-4 !h-4 !mx-3 !rounded-full !transition-all !duration-300 hover:!bg-cyan-400/50",
-                }}
-                autoplay={{
-                  delay: 4500,
-                  disableOnInteraction: false,
-                  pauseOnMouseEnter: true,
-                }}
-                onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
-                className="!pb-20 rounded-3xl overflow-hidden"
-              >
-                {reviews.map((review, index) => (
-                  <SwiperSlide key={index}>
-                    <div className="flex flex-col items-center">
-                      {/* Enhanced star rating */}
-                      <StarRating />
-
-                      {/* Ultra-modern image container */}
-                      <div className="relative group/image mb-10">
-                        {/* Multi-layer glow effect */}
-                        <div className="absolute -inset-4 bg-gradient-to-r from-cyan-500 via-purple-500 to-pink-500 rounded-2xl blur-xl opacity-20 group-hover/image:opacity-40 transition-all duration-700 animate-pulse"></div>
-                        <div className="absolute -inset-2 bg-gradient-to-r from-blue-400 to-purple-600 rounded-xl blur-lg opacity-30 group-hover/image:opacity-60 transition-all duration-500"></div>
-
-                        {/* Holographic frame */}
-                        <div className="relative bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm rounded-xl p-1 border border-white/20">
-                          <img
-                            src={review.image}
-                            alt={review.name}
-                            className="w-full max-w-[500px] max-h-[300px] object-contain rounded-lg shadow-2xl transition-all duration-700 group-hover/image:scale-105"
-                            loading="lazy"
-                          />
-
-                          {/* Holographic overlay */}
-                          <div className="absolute inset-1 bg-gradient-to-t from-cyan-500/10 via-transparent to-purple-500/10 rounded-lg opacity-0 group-hover/image:opacity-100 transition-opacity duration-500"></div>
-
-                          {/* Scanning effect */}
-                          <div
-                            className="absolute inset-1 bg-gradient-to-b from-transparent via-white/20 to-transparent opacity-0 group-hover/image:opacity-100 transition-opacity duration-300 rounded-lg"
-                            style={{
-                              animation: "scan 2s ease-in-out infinite",
-                            }}
-                          ></div>
-                        </div>
-
-                        {/* Floating verification badge with pulse */}
-                        <div className="absolute -top-3 -right-3 group/badge">
-                          <div className="relative">
-                            <div className="absolute inset-0 bg-emerald-400 rounded-full blur-md opacity-60 animate-pulse"></div>
-                            <div className="relative bg-gradient-to-r from-emerald-400 to-teal-500 text-white rounded-full p-3 shadow-xl group-hover/badge:scale-110 transition-transform duration-300">
-                              <svg
-                                className="w-5 h-5"
-                                fill="currentColor"
-                                viewBox="0 0 20 20"
-                              >
-                                <path
-                                  fillRule="evenodd"
-                                  d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                                  clipRule="evenodd"
-                                />
-                              </svg>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-
-                      {/* Enhanced testimonial */}
-                      <div className="text-center max-w-2xl">
-                        <blockquote className="text-gray-200 text-xl md:text-2xl italic mb-6 leading-relaxed font-light">
-                          "Tech Spot delivered
-                          <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-400 font-semibold">
-                            {" "}
-                            exceptional service{" "}
-                          </span>
-                          beyond my expectations! Absolutely recommend to
-                          everyone."
-                        </blockquote>
-
-                        <div className="flex items-center justify-center gap-3 text-cyan-300">
-                          <div className="w-8 h-8 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full flex items-center justify-center">
-                            <svg
-                              className="w-5 h-5"
-                              fill="currentColor"
-                              viewBox="0 0 20 20"
-                            >
-                              <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                            </svg>
-                          </div>
-                          <span className="text-lg font-semibold tracking-wide">
-                            Verified Customer
-                          </span>
-                          <div className="flex gap-1">
-                            {[...Array(3)].map((_, i) => (
-                              <div
-                                key={i}
-                                className="w-1 h-1 bg-cyan-400 rounded-full animate-pulse"
-                                style={{ animationDelay: `${i * 0.3}s` }}
-                              ></div>
-                            ))}
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </SwiperSlide>
+          {/* Stats */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={isVisible ? { opacity: 1, y: 0 } : {}}
+            transition={{ delay: 0.6 }}
+            className="flex items-center justify-center gap-8 mt-8"
+          >
+            <div className="flex items-center gap-2">
+              <div className="flex text-yellow-400">
+                {[...Array(5)].map((_, i) => (
+                  <FaStar key={i} className="text-lg" />
                 ))}
-              </Swiper>
-            </div>
-          </div>
-        </div>
-
-        {/* Futuristic thank you section */}
-        <div
-          className={`text-center mt-20 transition-all duration-1000 delay-500 ${
-            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
-          }`}
-        >
-          <div className="relative max-w-3xl mx-auto">
-            {/* Holographic card */}
-            <div className="relative bg-gradient-to-br from-cyan-500/10 via-purple-500/5 to-pink-500/10 backdrop-blur-2xl rounded-3xl p-12 border border-white/20">
-              {/* Animated background pattern */}
-              <div className="absolute inset-0 opacity-20">
-                <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/20 via-transparent to-purple-500/20 rounded-3xl animate-pulse"></div>
               </div>
+              <span className="text-white font-bold text-lg">4.9/5</span>
+            </div>
+            <div className="w-px h-6 bg-gray-600" />
+            <div className="text-gray-400">
+              <span className="text-white font-bold">15,000+</span> Happy
+              Customers
+            </div>
+            <div className="w-px h-6 bg-gray-600" />
+            <div className="flex items-center gap-2">
+              <MdVerified className="text-green-400" />
+              <span className="text-gray-400">Verified Reviews</span>
+            </div>
+          </motion.div>
+        </motion.div>
 
-              <div className="relative z-10">
-                <p className="text-4xl md:text-5xl font-black mb-6">
-                  Thank you,{" "}
-                  <span
-                    className="relative inline-block"
-                    style={{
-                      background: `linear-gradient(135deg, #00f5ff, #0099ff, #6366f1, #8b5cf6, #d946ef)`,
-                      WebkitBackgroundClip: "text",
-                      WebkitTextFillColor: "transparent",
-                      backgroundClip: "text",
-                      animation: "gradient-shift 3s ease-in-out infinite",
-                    }}
+        {/* Main Review Display */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          {/* Review Image */}
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            animate={isVisible ? { opacity: 1, x: 0 } : {}}
+            transition={{ delay: 0.8 }}
+            className="relative"
+          >
+            <div className="relative max-w-lg mx-auto">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={activeIndex}
+                  initial={{ opacity: 0, scale: 0.8, rotateY: 90 }}
+                  animate={{ opacity: 1, scale: 1, rotateY: 0 }}
+                  exit={{ opacity: 0, scale: 0.8, rotateY: -90 }}
+                  transition={{ duration: 0.5 }}
+                  className="relative"
+                >
+                  <img
+                    src={currentReview.image}
+                    alt={currentReview.name}
+                    className="w-full h-auto max-h-[400px] object-contain rounded-3xl shadow-2xl"
+                  />
+
+                  {/* Image overlay with gradient border */}
+                  <div className="absolute -inset-2 bg-gradient-to-r from-blue-500 via-purple-500 to-cyan-500 rounded-3xl opacity-30 blur-lg" />
+
+                  {/* Floating like button */}
+                  <motion.button
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.9 }}
+                    onClick={() => handleLike(activeIndex)}
+                    className="absolute top-4 right-4 w-12 h-12 bg-black/50 backdrop-blur-xl rounded-full flex items-center justify-center transition-all duration-300"
                   >
-                    {reviews[activeIndex]?.name}
-                    {/* Animated exclamation with glow */}
-                    <span className="text-cyan-400 animate-bounce inline-block ml-2">
-                      !
+                    {liked.has(activeIndex) ? (
+                      <BsHeartFill className="text-red-400 text-xl" />
+                    ) : (
+                      <BsHeart className="text-white text-xl" />
+                    )}
+                  </motion.button>
+                </motion.div>
+              </AnimatePresence>
+            </div>
+          </motion.div>
+
+          {/* Review Content */}
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            animate={isVisible ? { opacity: 1, x: 0 } : {}}
+            transition={{ delay: 1.0 }}
+            className="space-y-6"
+          >
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={activeIndex}
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -30 }}
+                transition={{ duration: 0.4 }}
+                className="space-y-6"
+              >
+                {/* Customer Info */}
+                <div className="flex items-center gap-4">
+                  <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-500 rounded-2xl flex items-center justify-center">
+                    <span className="text-white font-bold text-xl">
+                      {currentReview.name.charAt(0)}
                     </span>
-                  </span>
-                </p>
-
-                <p className="text-gray-300 text-xl mb-8 leading-relaxed">
-                  Your trust and feedback inspire us to reach
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-400 font-semibold">
-                    {" "}
-                    new heights{" "}
-                  </span>
-                  every single day
-                </p>
-
-                {/* Floating hearts animation */}
-                <div className="flex justify-center gap-3 mb-8">
-                  {[...Array(5)].map((_, i) => (
-                    <svg
-                      key={i}
-                      className="w-8 h-8 text-red-400 hover:text-red-300 transition-colors duration-300"
-                      style={{
-                        animation: `heartbeat 2s ease-in-out infinite ${
-                          i * 0.2
-                        }s`,
-                        filter:
-                          "drop-shadow(0 0 10px rgba(248, 113, 113, 0.5))",
-                      }}
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"
-                        clipRule="evenodd"
-                      />
-                    </svg>
-                  ))}
+                  </div>
+                  <div>
+                    <h3 className="text-2xl font-bold text-white">
+                      {currentReview.name}
+                    </h3>
+                    <div className="flex items-center gap-2">
+                      <span className="text-gray-400">
+                        {currentReview.location}
+                      </span>
+                      <div className="w-1 h-1 bg-gray-500 rounded-full" />
+                      <span className="text-gray-400">
+                        {currentReview.date}
+                      </span>
+                    </div>
+                  </div>
                 </div>
 
-                {/* Ultra-modern CTA button */}
-                <ModernButton>Share Your Story</ModernButton>
-              </div>
-            </div>
-          </div>
+                {/* Rating */}
+                <div className="flex items-center gap-3">
+                  <div className="flex text-yellow-400">
+                    {[...Array(currentReview.rating)].map((_, i) => (
+                      <motion.div
+                        key={i}
+                        initial={{ opacity: 0, scale: 0 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ delay: i * 0.1 }}
+                      >
+                        <FaStar className="text-lg" />
+                      </motion.div>
+                    ))}
+                  </div>
+                  <span className="text-white font-semibold">
+                    {currentReview.rating}.0
+                  </span>
+                </div>
+
+                {/* Review Text */}
+                <div className="relative">
+                  <FaQuoteLeft className="absolute -top-2 -left-2 text-blue-400 text-2xl opacity-30" />
+                  <p className="text-lg text-gray-300 leading-relaxed px-6 italic">
+                    {currentReview.review}
+                  </p>
+                  <FaQuoteRight className="absolute -bottom-2 -right-2 text-purple-400 text-2xl opacity-30" />
+                </div>
+
+                {/* Product & Badges */}
+                <div className="flex flex-wrap items-center gap-3">
+                  {/* <div className="bg-gradient-to-r from-gray-800 to-gray-700 px-4 py-2 rounded-full border border-gray-600">
+                    <span className="text-gray-300 text-sm">
+                      📱 {currentReview.product}
+                    </span>
+                  </div> */}
+
+                  {currentReview.verified && (
+                    <div className="flex items-center gap-2 bg-gradient-to-r from-green-500/20 to-emerald-500/20 px-3 py-2 rounded-full border border-green-500/30">
+                      <MdVerified className="text-green-400 text-sm" />
+                      <span className="text-green-400 text-sm font-medium">
+                        Verified
+                      </span>
+                    </div>
+                  )}
+
+                  <div
+                    className={`flex items-center gap-2 bg-gradient-to-r ${getBadgeColor(
+                      currentReview.badge
+                    )}/20 px-3 py-2 rounded-full border border-white/20`}
+                  >
+                    {getBadgeIcon(currentReview.badge)}
+                    <span className="text-white text-sm font-medium">
+                      {currentReview.badge}
+                    </span>
+                  </div>
+                </div>
+              </motion.div>
+            </AnimatePresence>
+          </motion.div>
         </div>
+
+        {/* Navigation Dots */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={isVisible ? { opacity: 1, y: 0 } : {}}
+          transition={{ delay: 1.2 }}
+          className="flex justify-center mt-12 gap-3"
+        >
+          {reviews.map((_, index) => (
+            <motion.button
+              key={index}
+              whileHover={{ scale: 1.2 }}
+              whileTap={{ scale: 0.9 }}
+              onClick={() => setActiveIndex(index)}
+              className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                index === activeIndex
+                  ? "bg-gradient-to-r from-blue-500 to-purple-500 w-8"
+                  : "bg-gray-600 hover:bg-gray-500"
+              }`}
+            />
+          ))}
+        </motion.div>
+
+        {/* Thank You Message */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={isVisible ? { opacity: 1, y: 0 } : {}}
+          transition={{ delay: 1.4 }}
+          className="text-center mt-16"
+        >
+          <AnimatePresence mode="wait">
+            <motion.p
+              key={activeIndex}
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.8 }}
+              className="text-3xl lg:text-4xl font-bold"
+            >
+              Thank you,{" "}
+              <span className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
+                {currentReview.name.split(" ")[0]}
+              </span>
+              ! 🙏
+            </motion.p>
+          </AnimatePresence>
+        </motion.div>
       </div>
-
-      {/* Custom CSS animations */}
-      <style jsx>{`
-        @keyframes float {
-          0%,
-          100% {
-            transform: translateY(0px);
-          }
-          50% {
-            transform: translateY(-10px);
-          }
-        }
-
-        @keyframes twinkle {
-          0%,
-          100% {
-            opacity: 1;
-            transform: scale(1);
-          }
-          50% {
-            opacity: 0.7;
-            transform: scale(1.1);
-          }
-        }
-
-        @keyframes scan {
-          0% {
-            transform: translateY(-100%);
-          }
-          100% {
-            transform: translateY(100%);
-          }
-        }
-
-        @keyframes gradient-shift {
-          0%,
-          100% {
-            background-position: 0% 50%;
-          }
-          50% {
-            background-position: 100% 50%;
-          }
-        }
-
-        @keyframes heartbeat {
-          0%,
-          100% {
-            transform: scale(1);
-          }
-          50% {
-            transform: scale(1.2);
-          }
-        }
-      `}</style>
     </section>
   );
 };
