@@ -695,22 +695,6 @@ const Smartphones = () => {
         >
           <TermsButton text="Terms & Conditions" />
         </motion.div>
-
-        {/* Floating WhatsApp Button */}
-        <motion.a
-          href={WHATSAPP_URL}
-          target="_blank"
-          rel="noopener noreferrer"
-          initial={{ scale: 0, rotate: -180 }}
-          animate={{ scale: 1, rotate: 0 }}
-          transition={{ delay: 1.5, type: "spring", bounce: 0.6 }}
-          whileHover={{ scale: 1.1, y: -5 }}
-          whileTap={{ scale: 0.9 }}
-          className="fixed bottom-8 right-8 w-16 h-16 bg-gradient-to-br from-green-500 to-emerald-600 rounded-full flex items-center justify-center shadow-2xl z-50 text-white hover:shadow-green-500/25 transition-all duration-300"
-        >
-          <FaWhatsapp className="text-2xl" />
-          <div className="absolute inset-0 rounded-full bg-green-400 animate-ping opacity-20"></div>
-        </motion.a>
       </div>
     </div>
   );
