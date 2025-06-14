@@ -319,9 +319,9 @@ const Footer = () => {
                   initial={{ opacity: 0, x: -30 }}
                   animate={isVisible ? { opacity: 1, x: 0 } : {}}
                   transition={{ delay: 0.3 }}
-                  className="lg:col-span-2 space-y-6"
+                  className="lg:col-span-2 space-y-6 text-center lg:text-left"
                 >
-                  <div className="flex items-center gap-3">
+                  <div className="flex items-center gap-3 justify-center lg:justify-start">
                     <div className="relative">
                       <img
                         src="/images/Logo.png"
@@ -334,7 +334,7 @@ const Footer = () => {
                       <h1 className="text-3xl font-black bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
                         Tech Spot
                       </h1>
-                      <div className="flex items-center gap-2 mt-1">
+                      <div className="flex items-center gap-2 mt-1 justify-center lg:justify-start">
                         <MdVerified className="text-blue-400 text-sm" />
                         <span className="text-blue-400 text-sm font-medium">
                           Verified Store
@@ -351,7 +351,7 @@ const Footer = () => {
 
                   {/* Contact Info */}
                   <div className="space-y-3">
-                    <div className="flex items-center gap-3">
+                    <div className="flex items-center gap-3 justify-center lg:justify-start">
                       <div className="w-10 h-10 bg-gradient-to-br from-green-500 to-emerald-500 rounded-xl flex items-center justify-center">
                         <HiPhone className="text-white text-lg" />
                       </div>
@@ -365,7 +365,7 @@ const Footer = () => {
                       </div>
                     </div>
 
-                    <div className="flex items-center gap-3">
+                    <div className="flex items-center gap-3 justify-center lg:justify-start">
                       <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-xl flex items-center justify-center">
                         <HiLocationMarker className="text-white text-lg" />
                       </div>
@@ -381,7 +381,7 @@ const Footer = () => {
                   </div>
 
                   {/* Trust Badges */}
-                  <div className="flex flex-wrap gap-3">
+                  <div className="flex flex-wrap gap-3 justify-center lg:justify-start">
                     {trustBadges.map((badge, index) => (
                       <motion.div
                         key={badge.text}
@@ -400,34 +400,36 @@ const Footer = () => {
                 </motion.div>
 
                 {/* Navigation Sections */}
-                {navigationSections.map((section, sectionIndex) => (
-                  <motion.div
-                    key={section.title}
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={isVisible ? { opacity: 1, y: 0 } : {}}
-                    transition={{ delay: 0.4 + sectionIndex * 0.1 }}
-                    className="space-y-4"
-                  >
-                    <h3 className="text-lg font-bold text-white mb-4 flex items-center gap-2">
-                      <BsStars className="text-blue-400" />
-                      {section.title}
-                    </h3>
-                    <ul className="space-y-3">
-                      {section.links.map((link, linkIndex) => (
-                        <li key={link.label}>
-                          <motion.a
-                            href={link.href}
-                            whileHover={{ x: 5 }}
-                            className="text-gray-400 hover:text-white transition-all duration-300 flex items-center gap-2 group"
-                          >
-                            <div className="w-1 h-1 bg-blue-400 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                            {link.label}
-                          </motion.a>
-                        </li>
-                      ))}
-                    </ul>
-                  </motion.div>
-                ))}
+                <div className="lg:col-span-4 grid grid-cols-2 md:grid-cols-4 gap-8 text-center lg:text-left">
+                  {navigationSections.map((section, sectionIndex) => (
+                    <motion.div
+                      key={section.title}
+                      initial={{ opacity: 0, y: 30 }}
+                      animate={isVisible ? { opacity: 1, y: 0 } : {}}
+                      transition={{ delay: 0.4 + sectionIndex * 0.1 }}
+                      className="space-y-4"
+                    >
+                      <h3 className="text-lg font-bold text-white mb-4 flex items-center gap-2 justify-center lg:justify-start">
+                        <BsStars className="text-blue-400" />
+                        {section.title}
+                      </h3>
+                      <ul className="space-y-3">
+                        {section.links.map((link, linkIndex) => (
+                          <li key={link.label}>
+                            <motion.a
+                              href={link.href}
+                              whileHover={{ x: 5 }}
+                              className="text-gray-400 hover:text-white transition-all duration-300 flex items-center gap-2 group justify-center lg:justify-start"
+                            >
+                              <div className="w-1 h-1 bg-blue-400 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                              {link.label}
+                            </motion.a>
+                          </li>
+                        ))}
+                      </ul>
+                    </motion.div>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
@@ -512,7 +514,7 @@ const Footer = () => {
           >
             <div className="max-w-7xl mx-auto px-4">
               <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-                <div className="flex items-center gap-4 text-sm text-gray-500">
+                <div className="flex items-center gap-4 text-sm text-gray-500 text-center md:text-left">
                   <span>
                     &copy; {currentYear} Tech Spot. All rights reserved.
                   </span>
