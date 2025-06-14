@@ -215,6 +215,7 @@ const HeroSection = () => {
         "https://cdn.pixabay.com/photo/2020/11/18/13/51/iphone-12-5755365_640.jpg",
       gradient: "from-blue-600 via-purple-600 to-cyan-500",
       action: "Shop Now",
+      link: "/smartphones",
     },
     {
       title: "Expert Repair Services",
@@ -225,6 +226,7 @@ const HeroSection = () => {
         "https://cdn.pixabay.com/photo/2023/10/09/14/11/work-8304180_1280.jpg",
       gradient: "from-green-600 via-emerald-600 to-teal-500",
       action: "Book Service",
+      link: "/repair",
     },
     {
       title: "Exclusive Deals",
@@ -235,6 +237,7 @@ const HeroSection = () => {
         "https://cdn.pixabay.com/photo/2021/06/26/10/44/airpods-6365870_640.jpg",
       gradient: "from-red-600 via-pink-600 to-rose-500",
       action: "View Deals",
+      link: "/shop",
     },
   ];
 
@@ -298,7 +301,7 @@ const HeroSection = () => {
 
                   <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
                     <motion.a
-                      href="/smartphones"
+                      href={heroSlides[currentSlide].link}
                       whileHover={{ scale: 1.05, y: -2 }}
                       whileTap={{ scale: 0.95 }}
                       className={`px-8 py-4 bg-gradient-to-r ${heroSlides[currentSlide].gradient} text-white font-bold rounded-2xl shadow-2xl flex items-center gap-3 justify-center transition-all duration-300 no-underline`}
