@@ -222,7 +222,7 @@ const HeroSection = () => {
       description:
         "Trust our certified technicians for all your device repair and maintenance needs.",
       image:
-        "https://cdn.pixabay.com/photo/2017/03/05/14/19/headphone-2118725_640.jpg",
+        "https://cdn.pixabay.com/photo/2023/10/09/14/11/work-8304180_1280.jpg",
       gradient: "from-green-600 via-emerald-600 to-teal-500",
       action: "Book Service",
     },
