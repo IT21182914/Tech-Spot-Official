@@ -539,7 +539,7 @@ const RepairServices = () => {
                     <div className="grid grid-cols-1 md:grid-cols-3 items-center gap-4 sm:gap-8">
                       {/* Before */}
                       <motion.div
-                        className="flex flex-col items-center"
+                        className="flex flex-col items-center order-1"
                         initial={{ opacity: 0, x: -50 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: 0.5 }}
@@ -567,7 +567,7 @@ const RepairServices = () => {
 
                       {/* Transformation Icon */}
                       <motion.div
-                        className="flex flex-col items-center justify-center order-3 md:order-2"
+                        className="flex flex-col items-center justify-center order-2"
                         initial={{ scale: 0, rotate: -180 }}
                         animate={{ scale: 1, rotate: 0 }}
                         transition={{ delay: 1, duration: 1, type: "spring" }}
@@ -587,7 +587,7 @@ const RepairServices = () => {
 
                       {/* After */}
                       <motion.div
-                        className="flex flex-col items-center order-2 md:order-3"
+                        className="flex flex-col items-center order-3"
                         initial={{ opacity: 0, x: 50 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: 1.5 }}
