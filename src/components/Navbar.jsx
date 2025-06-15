@@ -37,6 +37,20 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Prevent body scroll when mobile menu is open
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+
+    // Cleanup on unmount
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [isMenuOpen]);
+
   const isActive = (path) => currentPath === path;
 
   // Enhanced navigation items with icons and descriptions
@@ -109,11 +123,11 @@ const Navbar = () => {
     },
   ];
 
-  // Mobile menu variants
+  // Mobile menu variants - updated for better performance
   const mobileMenuVariants = {
     closed: {
       opacity: 0,
-      height: 0,
+      y: -20,
       transition: {
         duration: 0.3,
         ease: "easeInOut",
@@ -121,11 +135,11 @@ const Navbar = () => {
     },
     open: {
       opacity: 1,
-      height: "auto",
+      y: 0,
       transition: {
         duration: 0.3,
         ease: "easeInOut",
-        staggerChildren: 0.1,
+        staggerChildren: 0.05,
         delayChildren: 0.1,
       },
     },
@@ -156,11 +170,9 @@ const Navbar = () => {
               className="flex items-center gap-3 cursor-pointer"
             >
               <div className="relative">
-                <img
-                  src="/images/Logo.png"
-                  alt="Tech Spot Logo"
-                  className="h-10 w-10 lg:h-12 lg:w-12 rounded-2xl shadow-xl"
-                />
+                <div className="h-10 w-10 lg:h-12 lg:w-12 rounded-2xl shadow-xl bg-gradient-to-r from-blue-500 to-purple-500 flex items-center justify-center">
+                  <span className="text-white font-bold text-xl">T</span>
+                </div>
                 <div className="absolute -inset-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded-2xl opacity-30 blur animate-pulse"></div>
               </div>
               <div>
@@ -275,18 +287,32 @@ const Navbar = () => {
             </div>
           </div>
         </div>
+      </motion.nav>
 
-        {/* Mobile Menu */}
-        <AnimatePresence>
-          {isMenuOpen && (
+      {/* Mobile Menu Overlay - Fixed positioning for full screen */}
+      <AnimatePresence>
+        {isMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-40 xl:hidden"
+          >
+            {/* Background overlay */}
+            <div
+              className="absolute inset-0 bg-black/60 backdrop-blur-sm"
+              onClick={() => setIsMenuOpen(false)}
+            />
+
+            {/* Menu content */}
             <motion.div
               variants={mobileMenuVariants}
               initial="closed"
               animate="open"
               exit="closed"
-              className="xl:hidden bg-black/95 backdrop-blur-xl border-t border-white/10"
+              className="absolute top-16 left-0 right-0 bottom-0 bg-black/95 backdrop-blur-xl border-t border-white/10 overflow-y-auto"
             >
-              <div className="max-w-md mx-auto px-4 py-6">
+              <div className="px-4 py-6 min-h-full">
                 {/* Mobile Search */}
                 <motion.div variants={mobileItemVariants} className="mb-6">
                   <div className="relative">
@@ -300,45 +326,43 @@ const Navbar = () => {
                 </motion.div>
 
                 {/* Navigation Items */}
-                <div className="space-y-3">
+                <div className="space-y-2 mb-8">
                   {navigationItems.map((item, index) => (
                     <motion.div key={item.path} variants={mobileItemVariants}>
                       <a
                         href={item.path}
-                        className={`relative flex items-center gap-4 p-4 rounded-2xl transition-all duration-300 ${
+                        className={`relative flex items-center gap-4 p-3 rounded-xl transition-all duration-300 ${
                           isActive(item.path)
                             ? `bg-gradient-to-r ${item.gradient} text-white shadow-xl`
-                            : "text-gray-300 hover:bg-white/10 hover:text-white"
+                            : "text-gray-300 hover:bg-white/10 hover:text-white active:bg-white/20"
                         }`}
                         onClick={() => setIsMenuOpen(false)}
                       >
                         <div
-                          className={`w-12 h-12 rounded-xl flex items-center justify-center ${
+                          className={`w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0 ${
                             isActive(item.path) ? "bg-white/20" : "bg-white/10"
                           }`}
                         >
                           {item.icon}
                         </div>
 
-                        <div className="flex-1">
-                          <div className="font-semibold text-lg">
-                            {item.label}
-                          </div>
-                          <div className="text-sm opacity-70">
+                        <div className="flex-1 min-w-0">
+                          <div className="font-semibold">{item.label}</div>
+                          <div className="text-sm opacity-70 truncate">
                             {item.description}
                           </div>
                         </div>
 
                         {/* Badge */}
                         {item.badge && (
-                          <span className="bg-red-500 text-white text-xs px-2 py-1 rounded-full font-bold">
+                          <span className="bg-red-500 text-white text-xs px-2 py-1 rounded-full font-bold flex-shrink-0">
                             {item.badge}
                           </span>
                         )}
 
                         {/* Arrow indicator */}
                         <svg
-                          className="w-5 h-5 opacity-50"
+                          className="w-4 h-4 opacity-50 flex-shrink-0"
                           fill="none"
                           stroke="currentColor"
                           viewBox="0 0 24 24"
@@ -355,10 +379,30 @@ const Navbar = () => {
                   ))}
                 </div>
 
+                {/* Quick Actions */}
+                <motion.div variants={mobileItemVariants} className="mb-6">
+                  <div className="grid grid-cols-2 gap-3">
+                    <a
+                      href="tel:+94726048468"
+                      className="flex items-center justify-center gap-2 p-3 bg-green-600 hover:bg-green-700 rounded-xl text-white font-semibold transition-colors"
+                    >
+                      <FaPhone className="text-sm" />
+                      <span className="text-sm">Call Now</span>
+                    </a>
+                    <a
+                      href="https://wa.me/94726048468"
+                      className="flex items-center justify-center gap-2 p-3 bg-green-500 hover:bg-green-600 rounded-xl text-white font-semibold transition-colors"
+                    >
+                      <FaWhatsapp className="text-sm" />
+                      <span className="text-sm">WhatsApp</span>
+                    </a>
+                  </div>
+                </motion.div>
+
                 {/* Contact Info */}
                 <motion.div
                   variants={mobileItemVariants}
-                  className="mt-6 pt-6 border-t border-white/10 text-center"
+                  className="pt-6 border-t border-white/10 text-center pb-8"
                 >
                   <div className="flex items-center justify-center gap-2 text-gray-400 text-sm mb-2">
                     <BsShieldCheck className="text-green-400" />
@@ -370,11 +414,11 @@ const Navbar = () => {
                 </motion.div>
               </div>
             </motion.div>
-          )}
-        </AnimatePresence>
-      </motion.nav>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
-      {/* Spacer to prevent content overlap */}
+      {/* Dynamic spacer that accounts for navbar height */}
       <div className="h-16 lg:h-20"></div>
     </>
   );
