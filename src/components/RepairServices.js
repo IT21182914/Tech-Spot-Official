@@ -486,8 +486,6 @@ const RepairServices = () => {
             ))}
           </motion.div>
         </motion.div>
-
-        {/* Before/After Showcase */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={isVisible ? { opacity: 1, y: 0 } : {}}
@@ -507,24 +505,36 @@ const RepairServices = () => {
 
           <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl rounded-2xl sm:rounded-3xl border border-white/20 overflow-hidden shadow-2xl">
             <Swiper
-              modules={[Pagination, Autoplay, EffectCoverflow, Navigation]}
-              effect="coverflow"
+              modules={[Pagination, Autoplay, Navigation]}
               grabCursor={true}
               centeredSlides={true}
-              slidesPerView="auto"
-              coverflowEffect={{
-                rotate: 30,
-                stretch: 0,
-                depth: 100,
-                modifier: 1,
-                slideShadows: true,
+              slidesPerView={1}
+              spaceBetween={0}
+              loop={true}
+              autoplay={{
+                delay: 6000,
+                disableOnInteraction: false,
+                pauseOnMouseEnter: true,
               }}
-              autoplay={{ delay: 6000, disableOnInteraction: false }}
-              pagination={{ clickable: true, dynamicBullets: true }}
+              pagination={{
+                clickable: true,
+                dynamicBullets: true,
+              }}
+              breakpoints={{
+                640: {
+                  slidesPerView: 1,
+                },
+                768: {
+                  slidesPerView: 1,
+                },
+                1024: {
+                  slidesPerView: 1,
+                },
+              }}
               className="py-6 sm:py-12"
             >
               {beforeAfterImages.map((imageSet, index) => (
-                <SwiperSlide key={index} className="max-w-4xl">
+                <SwiperSlide key={index}>
                   <div className="p-4 sm:p-8">
                     <div className="grid grid-cols-1 md:grid-cols-3 items-center gap-4 sm:gap-8">
                       {/* Before */}
@@ -539,6 +549,7 @@ const RepairServices = () => {
                             src={imageSet.before}
                             alt="Before Repair"
                             className="w-full max-w-48 sm:max-w-xs h-auto object-contain rounded-xl sm:rounded-2xl shadow-xl"
+                            loading="lazy" // ADDED: Lazy loading
                           />
                           <div className="absolute -top-2 -left-2 sm:-top-3 sm:-left-3 bg-red-500 text-white px-2 py-1 sm:px-3 sm:py-1 rounded-full text-xs font-bold">
                             BEFORE
@@ -586,6 +597,7 @@ const RepairServices = () => {
                             src={imageSet.after}
                             alt="After Repair"
                             className="w-full max-w-48 sm:max-w-xs h-auto object-contain rounded-xl sm:rounded-2xl shadow-xl"
+                            loading="lazy" // ADDED: Lazy loading
                           />
                           <div className="absolute -top-2 -right-2 sm:-top-3 sm:-right-3 bg-green-500 text-white px-2 py-1 sm:px-3 sm:py-1 rounded-full text-xs font-bold">
                             AFTER
@@ -616,7 +628,6 @@ const RepairServices = () => {
             </Swiper>
           </div>
         </motion.div>
-
         {/* Services Grid */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
@@ -642,7 +653,6 @@ const RepairServices = () => {
             ))}
           </div>
         </motion.div>
-
         {/* Quality Features */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
@@ -684,7 +694,6 @@ const RepairServices = () => {
             ))}
           </div>
         </motion.div>
-
         {/* Call to Action */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
