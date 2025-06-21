@@ -107,7 +107,7 @@ const HAPPY_CUSTOMERS = [
   {
     src: "/images/HappyCustomers/Happy Customer iPhone 15.jpg",
     name: "Happy Customer",
-    phone: "iPhone 11",
+    phone: "iPhone 15",
     note: "Upgraded from Android",
     satisfaction: "100%",
   },
