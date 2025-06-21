@@ -65,35 +65,59 @@ const PhoneCard = ({
           .border-animation-2 {
             animation: border-spin-reverse 6s linear infinite;
           }
+          
+          /* Mobile optimizations */
+          @media (max-width: 768px) {
+            .border-animation-1 {
+              animation: border-spin 6s linear infinite;
+            }
+            
+            .border-animation-2 {
+              animation: border-spin-reverse 4s linear infinite;
+            }
+          }
         `,
         }}
       />
 
       {/* Animated Border Container */}
       <div className="relative bg-gradient-to-br from-slate-900/95 to-gray-900/95 backdrop-blur-2xl rounded-2xl overflow-hidden shadow-2xl transition-all duration-500">
-        {/* Primary Running Border */}
-        <div className="absolute inset-0 rounded-2xl overflow-hidden opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+        {/* Primary Running Border - Enhanced for Mobile */}
+        <div className="absolute inset-0 rounded-2xl overflow-hidden opacity-0 group-hover:opacity-100 md:group-hover:opacity-100 group-active:opacity-100 transition-opacity duration-500">
           <div
             className="absolute inset-0 rounded-2xl border-animation-1"
             style={{
               background: `conic-gradient(from 0deg, transparent 0deg, #3b82f6 60deg, #8b5cf6 120deg, #06b6d4 180deg, #3b82f6 240deg, transparent 300deg, transparent 360deg)`,
-              padding: "2px",
+              padding: "3px",
             }}
           >
             <div className="bg-slate-900 rounded-2xl h-full w-full"></div>
           </div>
         </div>
 
-        {/* Secondary Running Border */}
-        <div className="absolute inset-0 rounded-2xl overflow-hidden opacity-0 group-hover:opacity-100 transition-opacity duration-700">
+        {/* Secondary Running Border - Enhanced for Mobile */}
+        <div className="absolute inset-0 rounded-2xl overflow-hidden opacity-0 group-hover:opacity-100 md:group-hover:opacity-100 group-active:opacity-100 transition-opacity duration-700">
           <div
             className="absolute inset-0 rounded-2xl border-animation-2"
             style={{
               background: `conic-gradient(from 180deg, transparent 0deg, #f59e0b 80deg, #ef4444 160deg, #8b5cf6 240deg, #06b6d4 320deg, transparent 360deg)`,
-              padding: "1px",
+              padding: "2px",
             }}
           >
             <div className="bg-transparent rounded-2xl h-full w-full"></div>
+          </div>
+        </div>
+
+        {/* Mobile Touch Animation Trigger */}
+        <div className="absolute inset-0 rounded-2xl overflow-hidden opacity-0 active:opacity-100 md:hidden transition-opacity duration-300">
+          <div
+            className="absolute inset-0 rounded-2xl border-animation-1"
+            style={{
+              background: `conic-gradient(from 0deg, transparent 0deg, #3b82f6 80deg, #8b5cf6 160deg, #06b6d4 240deg, #3b82f6 320deg, transparent 360deg)`,
+              padding: "4px",
+            }}
+          >
+            <div className="bg-slate-900 rounded-2xl h-full w-full"></div>
           </div>
         </div>
 
