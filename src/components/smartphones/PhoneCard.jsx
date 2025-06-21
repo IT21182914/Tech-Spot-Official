@@ -42,7 +42,9 @@ const PhoneCard = ({
       onHoverStart={() => setHoveredCard(index)}
       onHoverEnd={() => setHoveredCard(null)}
       onTapStart={() => setHoveredCard(index)}
-      className="group relative flex flex-col cursor-pointer h-full"
+      onTap={() => setHoveredCard(index)}
+      onTouchStart={() => setHoveredCard(index)}
+      className="group relative flex flex-col cursor-pointer h-full touch-manipulation"
     >
       {/* Modern Ecommerce Card Container */}
       <div className="relative bg-white rounded-3xl overflow-hidden shadow-lg transition-all duration-500 h-full flex flex-col border border-gray-100">
@@ -244,14 +246,22 @@ const PhoneCard = ({
                 scale: hoveredCard === index ? 1.15 : 1.05,
                 y: hoveredCard === index ? -8 : -2,
               }}
-              whileTap={{ scale: 0.95 }}
+              whileTap={{
+                scale: 0.95,
+                y: hoveredCard === index ? -4 : 0,
+              }}
+              onTouchStart={() => setHoveredCard(index)}
+              onTouchEnd={() => {
+                // Keep effect for a moment on mobile after touch
+                setTimeout(() => setHoveredCard(null), 2000);
+              }}
               transition={{
                 type: "spring",
                 stiffness: 300,
                 damping: 20,
                 duration: 0.4,
               }}
-              className={`w-full bg-gradient-to-r transition-all duration-500 text-white font-black rounded-2xl flex items-center justify-center gap-3 shadow-lg group/btn relative overflow-hidden ${
+              className={`w-full bg-gradient-to-r transition-all duration-500 text-white font-black rounded-2xl flex items-center justify-center gap-3 shadow-lg group/btn relative overflow-hidden touch-manipulation ${
                 hoveredCard === index
                   ? "from-green-400 via-green-500 to-emerald-500 py-6 px-8 shadow-2xl shadow-green-500/40 border-2 border-green-300"
                   : "from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 py-4 px-6 hover:shadow-xl"
