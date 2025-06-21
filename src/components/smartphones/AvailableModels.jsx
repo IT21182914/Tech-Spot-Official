@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { MdPhoneIphone } from "react-icons/md";
 import { AiOutlineInfoCircle } from "react-icons/ai";
 import { FaWhatsapp } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const AvailableModels = ({
   availableModels,
@@ -25,33 +26,44 @@ const AvailableModels = ({
       initial={{ opacity: 0, y: 40 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.8 }}
-      className="max-w-3xl mx-auto mt-16 bg-white text-gray-800 rounded-xl p-6 shadow-lg border border-gray-200 relative"
+      className="max-w-4xl mx-auto mt-20 bg-gradient-to-br from-white to-gray-50 text-gray-800 rounded-2xl p-8 shadow-2xl border border-gray-100 relative backdrop-blur-sm"
     >
-      <div className="flex items-center justify-center gap-2 mb-4">
-        <MdPhoneIphone className="text-xl text-blue-600" />
-        <h2 className="text-2xl font-bold text-center">Available Models</h2>
+      <div className="flex items-center justify-center gap-3 mb-6">
+        <div className="bg-gradient-to-r from-blue-600 to-indigo-600 p-3 rounded-xl shadow-lg">
+          <MdPhoneIphone className="text-2xl text-white" />
+        </div>
+        <h2 className="text-3xl font-bold text-center bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent">
+          Available Models
+        </h2>
       </div>
 
-      <p className="text-center text-xs sm:text-sm mb-4 text-blue-500">
-        👉 Tap model to copy | Quick order on WhatsApp
-      </p>
+      <div className="text-center mb-6 bg-blue-50 border border-blue-200 rounded-xl p-4">
+        <p className="text-sm font-medium text-blue-700 flex items-center justify-center gap-2">
+          <span className="bg-blue-100 px-2 py-1 rounded-full text-xs">💡</span>
+          Tap any model to copy • Quick order via WhatsApp
+        </p>
+      </div>
 
       <div
         ref={scrollRef}
         onScroll={pauseAutoScroll}
-        className="h-64 overflow-y-auto scroll-smooth pr-2"
+        className="h-72 overflow-y-auto scroll-smooth pr-2 custom-scrollbar"
+        style={{
+          scrollbarWidth: "thin",
+          scrollbarColor: "#cbd5e1 #f1f5f9",
+        }}
       >
-        <ul className="space-y-2 text-sm md:text-base">
+        <ul className="space-y-3">
           {availableModels.length > 0 ? (
             availableModels.map((item, idx) => {
               const [modelName] = item.split("–");
               return (
                 <li
                   key={idx}
-                  className="bg-gray-100 px-3 py-2 rounded text-gray-800 shadow-sm flex justify-between items-center gap-3"
+                  className="group bg-white hover:bg-gradient-to-r hover:from-blue-50 hover:to-indigo-50 border border-gray-200 hover:border-blue-300 px-4 py-4 rounded-xl text-gray-800 shadow-sm hover:shadow-md transition-all duration-300 flex justify-between items-center gap-4"
                 >
                   <span
-                    className="flex-1 break-words cursor-pointer"
+                    className="flex-1 break-words cursor-pointer font-medium text-sm md:text-base group-hover:text-blue-700 transition-colors duration-200"
                     onClick={() => handleCopyModel(modelName)}
                   >
                     {item}
@@ -63,46 +75,81 @@ const AvailableModels = ({
                     )}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center justify-center bg-green-500 hover:bg-green-600 text-white rounded-full w-8 h-8 min-w-[2rem] transition duration-300"
+                    className="flex items-center justify-center bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 text-white rounded-xl w-10 h-10 min-w-[2.5rem] transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
                     aria-label="Order via WhatsApp"
                   >
-                    <FaWhatsapp className="text-base" />
+                    <FaWhatsapp className="text-lg" />
                   </a>
                 </li>
               );
             })
           ) : (
-            <p className="text-center text-gray-500">No stock list found.</p>
+            <div className="text-center py-12">
+              <div className="bg-gray-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                <MdPhoneIphone className="text-2xl text-gray-400" />
+              </div>
+              <p className="text-gray-500 font-medium">No stock list found</p>
+              <p className="text-gray-400 text-sm mt-1">
+                Please check back later
+              </p>
+            </div>
           )}
         </ul>
       </div>
 
       {copiedText && (
         <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0 }}
-          className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-blue-100 text-blue-800 px-5 py-3 rounded-lg shadow-lg z-50 text-center"
+          initial={{ opacity: 0, scale: 0.9, y: -10 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          exit={{ opacity: 0, scale: 0.9, y: -10 }}
+          className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-6 py-4 rounded-2xl shadow-2xl z-50 text-center font-medium border border-blue-500"
         >
-          {copiedText}
+          <div className="flex items-center gap-2">
+            <span className="text-lg">✓</span>
+            {copiedText}
+          </div>
         </motion.div>
       )}
 
-      <div className="mt-6 flex flex-col items-center text-yellow-600 text-xs sm:text-sm font-medium space-y-2">
-        <div className="flex items-start w-full max-w-md">
-          <AiOutlineInfoCircle className="flex-shrink-0 mt-1 text-lg" />
-          <p className="ml-2 leading-relaxed">
-            Prices may change. Contact us on WhatsApp for the latest price and
-            delivery details.
-          </p>
-        </div>
+      <div className="mt-8 bg-gradient-to-r from-amber-50 to-orange-50 border border-amber-200 rounded-2xl p-6">
+        <div className="flex flex-col space-y-4">
+          <div className="flex items-start gap-3">
+            <div className="bg-amber-100 p-2 rounded-xl flex-shrink-0">
+              <AiOutlineInfoCircle className="text-amber-600 text-lg" />
+            </div>
+            <div className="flex-1">
+              <p className="text-amber-800 font-medium text-sm leading-relaxed">
+                Prices may change. Contact us on WhatsApp for the latest price
+                and delivery details. For terms and conditions{" "}
+                <Link
+                  to="/terms"
+                  className="text-blue-600 hover:text-blue-800 underline decoration-2 underline-offset-2 font-semibold transition-all duration-200 hover:decoration-blue-800"
+                >
+                  click here
+                </Link>
+                .
+              </p>
+            </div>
+          </div>
 
-        <div className="flex items-start w-full max-w-md">
-          <AiOutlineInfoCircle className="flex-shrink-0 mt-1 text-lg" />
-          <p className="ml-2 leading-relaxed">
-            මිල ගණන් වෙනස් විය හැකි බැවින් නවතම මිල විමසීමට WhatsApp හරහා අප වෙත
-            සම්බන්ධ වන්න.
-          </p>
+          <div className="flex items-start gap-3">
+            <div className="bg-amber-100 p-2 rounded-xl flex-shrink-0">
+              <AiOutlineInfoCircle className="text-amber-600 text-lg" />
+            </div>
+            <div className="flex-1">
+              <p className="text-amber-800 font-medium text-sm leading-relaxed">
+                මිල ගණන් වෙනස් විය හැකි බැවින් නවතම මිල විමසීමට WhatsApp හරහා අප
+                වෙත සම්බන්ධ වන්න. කොන්දේසි පිළිබඳ දැනගැනීම සඳහා{" "}
+                <Link
+                  to="/terms"
+                  className="text-blue-600 hover:text-blue-800 underline decoration-2 underline-offset-2 font-semibold transition-all duration-200 hover:decoration-blue-800"
+                >
+                  මෙතන Click කරන්න
+                </Link>
+                .
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </motion.div>
