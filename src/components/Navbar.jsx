@@ -170,8 +170,19 @@ const Navbar = () => {
               className="flex items-center gap-3 cursor-pointer"
             >
               <div className="relative">
-                <div className="h-10 w-10 lg:h-12 lg:w-12 rounded-2xl shadow-xl bg-gradient-to-r from-blue-500 to-purple-500 flex items-center justify-center">
-                  <span className="text-white font-bold text-xl">T</span>
+                {/* Custom Logo Image */}
+                <div className="h-10 w-10 lg:h-12 lg:w-12 rounded-2xl shadow-xl overflow-hidden bg-white/10 backdrop-blur-sm border border-white/20">
+                  <img
+                    src="/images/Logo.png"
+                    alt="Tech Spot Logo"
+                    className="w-full h-full object-contain p-1"
+                    onError={(e) => {
+                      // Fallback to gradient background with "T" if logo fails to load
+                      e.target.style.display = "none";
+                      e.target.parentElement.innerHTML =
+                        '<div class="w-full h-full bg-gradient-to-r from-blue-500 to-purple-500 rounded-2xl flex items-center justify-center"><span class="text-white font-bold text-xl">T</span></div>';
+                    }}
+                  />
                 </div>
                 <div className="absolute -inset-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded-2xl opacity-30 blur animate-pulse"></div>
               </div>
