@@ -134,28 +134,6 @@ const PhoneCard = ({
             alt={phone.name}
             className="w-full h-64 object-contain transition-all duration-500"
           />
-
-          {/* Quick View Overlay */}
-          <AnimatePresence>
-            {hoveredCard === index && (
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                className="absolute inset-0 bg-black/20 backdrop-blur-sm rounded-t-3xl flex items-center justify-center"
-              >
-                <motion.button
-                  initial={{ scale: 0.5, opacity: 0 }}
-                  animate={{ scale: 1, opacity: 1 }}
-                  exit={{ scale: 0.5, opacity: 0 }}
-                  className="bg-white text-gray-800 px-6 py-3 rounded-full font-semibold flex items-center gap-2 shadow-xl hover:bg-gray-50 transition-colors"
-                >
-                  <AiOutlineEye className="text-lg" />
-                  Quick View
-                </motion.button>
-              </motion.div>
-            )}
-          </AnimatePresence>
         </div>
 
         {/* Product Information */}
