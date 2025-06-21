@@ -24,15 +24,15 @@ import { HiSparkles } from "react-icons/hi";
 // Move data outside component to prevent recreation on every render
 const VIDEO_PROOFS = [
   {
-    src: "/videos/Kawya iPhone 11.mp4",
-    title: "Kawya – iPhone 11",
+    src: "/videos/Hashini iPhone 14 Pro Max.mp4",
+    title: "Hashini – iPhone 14 Pro Max",
     meta: {
-      name: "Kawya",
-      profession: "IT Professional",
-      location: "Gampaha",
-      product: "iPhone 11",
-      delivery: "Delivered within 2 days",
-      note: "Kawya highly recommended Tech Spot",
+      name: "Hashini",
+      profession: "Full-time homemaker and mother",
+      location: "Kandy",
+      product: "iPhone 14 Pro Max",
+      delivery: "Delivered within 1 day",
+      note: "Hashini highly recommended Tech Spot",
       stars: 5,
       verified: true,
     },
@@ -52,19 +52,20 @@ const VIDEO_PROOFS = [
     },
   },
   {
-    src: "/videos/Hashini iPhone 14 Pro Max.mp4",
-    title: "Hashini – iPhone 14 Pro Max",
+    src: "/videos/Kawya iPhone 11.mp4",
+    title: "Kawya – iPhone 11",
     meta: {
-      name: "Hashini",
-      profession: "Full-time homemaker and mother",
-      location: "Kandy",
-      product: "iPhone 14 Pro Max",
-      delivery: "Delivered within 1 day",
-      note: "Hashini highly recommended Tech Spot",
+      name: "Kawya",
+      profession: "IT Professional",
+      location: "Gampaha",
+      product: "iPhone 11",
+      delivery: "Delivered within 2 days",
+      note: "Kawya highly recommended Tech Spot",
       stars: 5,
       verified: true,
     },
   },
+
   {
     src: "/videos/Asanka iPhone 13.mp4",
     title: "Asanka – iPhone 13",
@@ -101,6 +102,13 @@ const HAPPY_CUSTOMERS = [
     name: "Happy Customer",
     phone: "iPhone 11",
     note: "🎉 First iPhone purchase!",
+    satisfaction: "100%",
+  },
+  {
+    src: "/images/HappyCustomers/Happy Customer iPhone 15.jpg",
+    name: "Happy Customer",
+    phone: "iPhone 11",
+    note: "Upgraded from Android",
     satisfaction: "100%",
   },
   {
