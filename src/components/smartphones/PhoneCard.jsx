@@ -6,10 +6,14 @@ import {
   MdFavoriteBorder,
   MdShoppingCart,
   MdStar,
+  MdLocalShipping,
+  MdSecurity,
+  MdFlashOn,
 } from "react-icons/md";
-import { AiOutlineEye } from "react-icons/ai";
-import { FaWhatsapp, FaFire, FaTrophy } from "react-icons/fa";
-import { BsLightning, BsStars } from "react-icons/bs";
+import { AiOutlineEye, AiOutlineHeart } from "react-icons/ai";
+import { FaWhatsapp, FaFire, FaTrophy, FaShieldAlt } from "react-icons/fa";
+import { BsLightning, BsStars, BsCart3 } from "react-icons/bs";
+import { HiOutlineSparkles } from "react-icons/hi";
 import { enhancePhoneData } from "../../utils/phoneUtils";
 
 const PhoneCard = ({
@@ -27,292 +31,337 @@ const PhoneCard = ({
   return (
     <motion.div
       layout
-      initial={{ opacity: 0, scale: 0.8, rotateY: -15 }}
-      animate={{ opacity: 1, scale: 1, rotateY: 0 }}
+      initial={{ opacity: 0, scale: 0.9, y: 20 }}
+      animate={{ opacity: 1, scale: 1, y: 0 }}
       transition={{
-        duration: 0.6,
+        duration: 0.5,
         delay: index * 0.1,
         type: "spring",
-        bounce: 0.3,
-      }}
-      whileHover={{
-        scale: 1.02,
-        y: -8,
-        transition: { duration: 0.4, ease: "easeOut" },
+        stiffness: 100,
       }}
       onHoverStart={() => setHoveredCard(index)}
       onHoverEnd={() => setHoveredCard(null)}
-      className="group relative flex flex-col"
+      onTapStart={() => setHoveredCard(index)}
+      className="group relative flex flex-col cursor-pointer h-full"
     >
-      {/* Custom CSS for animations */}
-      <style
-        dangerouslySetInnerHTML={{
-          __html: `
-          @keyframes border-spin {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-          }
-          
-          @keyframes border-spin-reverse {
-            from { transform: rotate(360deg); }
-            to { transform: rotate(0deg); }
-          }
-          
-          .border-animation-1 {
-            animation: border-spin 8s linear infinite;
-          }
-          
-          .border-animation-2 {
-            animation: border-spin-reverse 6s linear infinite;
-          }
-          
-          /* Mobile optimizations */
-          @media (max-width: 768px) {
-            .border-animation-1 {
-              animation: border-spin 6s linear infinite;
-            }
-            
-            .border-animation-2 {
-              animation: border-spin-reverse 4s linear infinite;
-            }
-          }
-        `,
-        }}
-      />
-
-      {/* Animated Border Container */}
-      <div className="relative bg-gradient-to-br from-slate-900/95 to-gray-900/95 backdrop-blur-2xl rounded-2xl overflow-hidden shadow-2xl transition-all duration-500">
-        {/* Primary Running Border - Enhanced for Mobile */}
-        <div className="absolute inset-0 rounded-2xl overflow-hidden opacity-0 group-hover:opacity-100 md:group-hover:opacity-100 group-active:opacity-100 transition-opacity duration-500">
-          <div
-            className="absolute inset-0 rounded-2xl border-animation-1"
-            style={{
-              background: `conic-gradient(from 0deg, transparent 0deg, #3b82f6 60deg, #8b5cf6 120deg, #06b6d4 180deg, #3b82f6 240deg, transparent 300deg, transparent 360deg)`,
-              padding: "3px",
-            }}
-          >
-            <div className="bg-slate-900 rounded-2xl h-full w-full"></div>
+      {/* Modern Ecommerce Card Container */}
+      <div className="relative bg-white rounded-3xl overflow-hidden shadow-lg transition-all duration-500 h-full flex flex-col border border-gray-100">
+        {/* Sale Badge */}
+        {enhancedPhone.discount && (
+          <div className="absolute top-4 left-4 z-20">
+            <motion.div
+              initial={{ scale: 0, rotate: -45 }}
+              animate={{ scale: 1, rotate: 0 }}
+              className="bg-gradient-to-r from-red-500 to-pink-500 text-white px-4 py-2 rounded-full text-xs font-bold flex items-center gap-1 shadow-lg"
+            >
+              <MdFlashOn className="text-sm" />
+              {enhancedPhone.discount}
+            </motion.div>
           </div>
+        )}
+
+        {/* Status Badges */}
+        <div className="absolute top-4 right-4 z-20 flex flex-col gap-2">
+          {enhancedPhone.isNew && (
+            <motion.div
+              initial={{ scale: 0 }}
+              animate={{ scale: 1 }}
+              className="bg-gradient-to-r from-emerald-400 to-green-500 text-white px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1 shadow-md"
+            >
+              <HiOutlineSparkles className="text-xs" />
+              NEW
+            </motion.div>
+          )}
+          {enhancedPhone.isBestseller && (
+            <motion.div
+              initial={{ scale: 0 }}
+              animate={{ scale: 1 }}
+              className="bg-gradient-to-r from-amber-400 to-yellow-500 text-white px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1 shadow-md"
+            >
+              <FaTrophy className="text-xs" />
+              BESTSELLER
+            </motion.div>
+          )}
+          {enhancedPhone.isHot && (
+            <motion.div
+              initial={{ scale: 0 }}
+              animate={{ scale: 1 }}
+              className="bg-gradient-to-r from-orange-400 to-red-500 text-white px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1 shadow-md"
+            >
+              <FaFire className="text-xs animate-pulse" />
+              TRENDING
+            </motion.div>
+          )}
         </div>
 
-        {/* Secondary Running Border - Enhanced for Mobile */}
-        <div className="absolute inset-0 rounded-2xl overflow-hidden opacity-0 group-hover:opacity-100 md:group-hover:opacity-100 group-active:opacity-100 transition-opacity duration-700">
-          <div
-            className="absolute inset-0 rounded-2xl border-animation-2"
-            style={{
-              background: `conic-gradient(from 180deg, transparent 0deg, #f59e0b 80deg, #ef4444 160deg, #8b5cf6 240deg, #06b6d4 320deg, transparent 360deg)`,
-              padding: "2px",
-            }}
-          >
-            <div className="bg-transparent rounded-2xl h-full w-full"></div>
-          </div>
-        </div>
-
-        {/* Mobile Touch Animation Trigger */}
-        <div className="absolute inset-0 rounded-2xl overflow-hidden opacity-0 active:opacity-100 md:hidden transition-opacity duration-300">
-          <div
-            className="absolute inset-0 rounded-2xl border-animation-1"
-            style={{
-              background: `conic-gradient(from 0deg, transparent 0deg, #3b82f6 80deg, #8b5cf6 160deg, #06b6d4 240deg, #3b82f6 320deg, transparent 360deg)`,
-              padding: "4px",
-            }}
-          >
-            <div className="bg-slate-900 rounded-2xl h-full w-full"></div>
-          </div>
-        </div>
-
-        {/* Card Content Container */}
-        <div className="relative bg-gradient-to-br from-slate-900/98 to-gray-900/98 rounded-2xl backdrop-blur-xl border border-gray-700/50 group-hover:border-transparent transition-all duration-500 overflow-hidden">
-          {/* Premium Glass Effect */}
-          <div className="absolute inset-0 bg-gradient-to-br from-white/[0.02] via-transparent to-black/[0.02] pointer-events-none"></div>
-
-          {/* Shimmer Effect */}
-          <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700">
-            <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-transparent via-white/[0.03] to-transparent transform -skew-x-12 translate-x-[-100%] group-hover:translate-x-[200%] transition-transform duration-1000 ease-out"></div>
-          </div>
-
-          {/* Badge Container - Enhanced */}
-          <div className="absolute top-4 left-4 z-30 flex flex-col gap-2">
-            {enhancedPhone.isNew && (
+        {/* Heart/Favorite Button */}
+        <motion.button
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+          onClick={() => toggleFavorite(index)}
+          className="absolute top-4 right-4 z-30 w-10 h-10 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center shadow-lg border border-gray-200 transition-all duration-300 group/heart"
+        >
+          <AnimatePresence mode="wait">
+            {favorites.has(index) ? (
               <motion.div
-                initial={{ scale: 0, rotate: -180 }}
-                animate={{ scale: 1, rotate: 0 }}
-                transition={{ delay: 0.3 }}
-                className="bg-gradient-to-r from-emerald-400 via-green-500 to-emerald-600 text-white px-3 py-1.5 rounded-full text-xs font-black flex items-center gap-1 shadow-xl backdrop-blur-sm border border-emerald-300/30"
-              >
-                <BsStars className="text-xs animate-pulse" />
-                NEW
-              </motion.div>
-            )}
-            {enhancedPhone.isBestseller && (
-              <motion.div
-                initial={{ scale: 0, rotate: 180 }}
-                animate={{ scale: 1, rotate: 0 }}
-                transition={{ delay: 0.4 }}
-                className="bg-gradient-to-r from-amber-400 via-yellow-500 to-orange-500 text-white px-3 py-1.5 rounded-full text-xs font-black flex items-center gap-1 shadow-xl backdrop-blur-sm border border-yellow-300/30"
-              >
-                <FaTrophy className="text-xs animate-bounce" />
-                BESTSELLER
-              </motion.div>
-            )}
-            {enhancedPhone.isHot && (
-              <motion.div
-                initial={{ scale: 0, rotate: -90 }}
-                animate={{ scale: 1, rotate: 0 }}
-                transition={{ delay: 0.5 }}
-                className="bg-gradient-to-r from-red-500 via-pink-500 to-red-600 text-white px-3 py-1.5 rounded-full text-xs font-black flex items-center gap-1 shadow-xl backdrop-blur-sm border border-red-300/30"
-              >
-                <FaFire className="text-xs animate-pulse" />
-                HOT
-              </motion.div>
-            )}
-            {enhancedPhone.discount && (
-              <motion.div
+                key="filled"
                 initial={{ scale: 0 }}
                 animate={{ scale: 1 }}
-                transition={{ delay: 0.6 }}
-                className="bg-gradient-to-r from-violet-500 via-purple-600 to-indigo-600 text-white px-3 py-1.5 rounded-full text-xs font-black flex items-center gap-1 shadow-xl backdrop-blur-sm border border-purple-300/30 animate-pulse"
+                exit={{ scale: 0 }}
               >
-                <BsLightning className="text-xs" />
-                {enhancedPhone.discount}
+                <MdFavorite className="text-red-500 text-lg" />
+              </motion.div>
+            ) : (
+              <motion.div
+                key="outline"
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+                exit={{ scale: 0 }}
+              >
+                <AiOutlineHeart className="text-gray-600 text-lg group-hover/heart:text-red-500 transition-colors" />
               </motion.div>
             )}
-          </div>
+          </AnimatePresence>
+        </motion.button>
 
-          {/* Favorite Button - Enhanced */}
-          <motion.button
-            whileHover={{ scale: 1.1, rotate: 5 }}
-            whileTap={{ scale: 0.9 }}
-            onClick={() => toggleFavorite(index)}
-            className="absolute top-4 right-4 z-30 w-11 h-11 rounded-full bg-black/30 backdrop-blur-xl flex items-center justify-center border border-gray-600/50 hover:border-red-400/70 transition-all duration-300 shadow-lg group/fav"
-          >
-            <div className="absolute inset-0 rounded-full bg-gradient-to-r from-red-500/10 to-pink-500/10 opacity-0 group-hover/fav:opacity-100 transition-opacity duration-300"></div>
-            {favorites.has(index) ? (
-              <MdFavorite className="text-red-500 text-xl relative z-10 drop-shadow-lg" />
-            ) : (
-              <MdFavoriteBorder className="text-gray-300 text-xl relative z-10 group-hover/fav:text-red-400 transition-colors duration-300" />
-            )}
-          </motion.button>
+        {/* Product Image Section */}
+        <div className="relative bg-gradient-to-br from-gray-50 to-gray-100 p-8 rounded-t-3xl transition-all duration-500">
+          {/* Image */}
+          <motion.img
+            src={phone.image}
+            alt={phone.name}
+            className="w-full h-64 object-contain transition-all duration-500"
+          />
 
-          {/* Image Container - Enhanced */}
-          <div className="relative overflow-hidden bg-gradient-to-br from-gray-800/20 to-gray-900/40 rounded-t-2xl">
-            {/* Image Background Glow */}
-            <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 via-purple-500/5 to-cyan-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
-
-            <motion.img
-              src={phone.image}
-              alt={phone.name}
-              className="w-full h-72 object-contain p-6 transition-all duration-500 group-hover:scale-105 relative z-10"
-              whileHover={{
-                scale: 1.08,
-                rotate: [0, 1, -1, 0],
-                transition: { duration: 0.6, ease: "easeInOut" },
-              }}
-            />
-
-            {/* Premium Hover Overlay */}
-            <AnimatePresence>
-              {hoveredCard === index && (
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.3 }}
-                  className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent backdrop-blur-[1px] flex items-center justify-center"
+          {/* Quick View Overlay */}
+          <AnimatePresence>
+            {hoveredCard === index && (
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                className="absolute inset-0 bg-black/20 backdrop-blur-sm rounded-t-3xl flex items-center justify-center"
+              >
+                <motion.button
+                  initial={{ scale: 0.5, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  exit={{ scale: 0.5, opacity: 0 }}
+                  className="bg-white text-gray-800 px-6 py-3 rounded-full font-semibold flex items-center gap-2 shadow-xl hover:bg-gray-50 transition-colors"
                 >
-                  <motion.div
-                    initial={{ scale: 0.5, opacity: 0, y: 20 }}
-                    animate={{ scale: 1, opacity: 1, y: 0 }}
-                    exit={{ scale: 0.5, opacity: 0, y: 20 }}
-                    transition={{ duration: 0.4, ease: "easeOut" }}
-                    className="bg-white/95 backdrop-blur-xl rounded-2xl px-6 py-3 flex items-center gap-3 shadow-2xl border border-gray-200/50"
-                  >
-                    <AiOutlineEye className="text-gray-800 text-xl" />
-                    <span className="text-gray-800 font-semibold text-sm">
-                      Quick View
-                    </span>
-                  </motion.div>
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </div>
+                  <AiOutlineEye className="text-lg" />
+                  Quick View
+                </motion.button>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
 
-          {/* Content - Enhanced */}
-          <div className="p-6 flex-1 flex flex-col space-y-4 relative z-10">
-            {/* Rating Section - Enhanced */}
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-2">
-                <div className="flex items-center gap-1">
-                  {[...Array(5)].map((_, i) => (
-                    <motion.div
-                      key={i}
-                      initial={{ scale: 0, rotate: -180 }}
-                      animate={{ scale: 1, rotate: 0 }}
-                      transition={{ delay: 0.1 * i, duration: 0.3 }}
-                    >
-                      <MdStar
-                        className={`text-sm ${
-                          i < Math.floor(enhancedPhone.rating)
-                            ? "text-yellow-400 drop-shadow-sm"
-                            : "text-gray-600"
-                        }`}
-                      />
-                    </motion.div>
-                  ))}
-                </div>
-                <span className="text-yellow-400 font-semibold text-sm bg-yellow-400/10 px-2 py-1 rounded-full">
-                  {enhancedPhone.rating}
-                </span>
+        {/* Product Information */}
+        <div className="p-6 flex-1 flex flex-col bg-white">
+          {/* Brand & Rating */}
+          <div className="flex items-center justify-between mb-3">
+            <span className="text-sm font-medium text-blue-600 bg-blue-50 px-3 py-1 rounded-full">
+              {activeCategory}
+            </span>
+            <div className="flex items-center gap-1">
+              <div className="flex items-center">
+                {[...Array(5)].map((_, i) => (
+                  <MdStar
+                    key={i}
+                    className={`text-sm ${
+                      i < Math.floor(enhancedPhone.rating)
+                        ? "text-yellow-400"
+                        : "text-gray-300"
+                    }`}
+                  />
+                ))}
               </div>
-              <span className="text-gray-500 text-xs bg-gray-800/50 px-2 py-1 rounded-full">
-                ({Math.floor(Math.random() * 200) + 50} reviews)
+              <span className="text-sm text-gray-600 ml-1">
+                ({enhancedPhone.rating})
               </span>
             </div>
+          </div>
 
-            {/* Product Name - Enhanced */}
-            <h3 className="text-xl font-bold text-white group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-blue-400 group-hover:to-purple-400 group-hover:bg-clip-text transition-all duration-300 leading-tight">
-              {phone.name}
-            </h3>
+          {/* Product Name */}
+          <h3 className="text-lg font-bold text-gray-900 mb-2 line-clamp-2 transition-colors">
+            {phone.name}
+          </h3>
 
-            {/* Specs - Enhanced */}
-            <p className="text-gray-400 text-sm leading-relaxed bg-gray-800/30 p-3 rounded-xl border border-gray-700/50">
-              {phone.specs}
-            </p>
+          {/* Product Features */}
+          <p className="text-sm text-gray-600 mb-4 line-clamp-2 leading-relaxed">
+            {phone.specs}
+          </p>
 
-            {/* Price Section - Enhanced */}
-            <div className="space-y-2 py-2">
-              {phone.originalPrice && (
-                <p className="text-gray-500 text-sm line-through bg-gray-800/30 px-2 py-1 rounded-lg inline-block">
-                  {phone.originalPrice}
-                </p>
-              )}
-              {phone.price && (
-                <p className="text-2xl font-bold bg-gradient-to-r from-blue-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent drop-shadow-sm">
-                  {phone.price}
-                </p>
-              )}
+          {/* Trust Indicators */}
+          <div className="flex items-center gap-4 mb-4 text-xs text-gray-500">
+            <div className="flex items-center gap-1">
+              <MdSecurity className="text-green-500" />
+              <span>Warranty</span>
             </div>
+            <div className="flex items-center gap-1">
+              <MdLocalShipping className="text-blue-500" />
+              <span>Free Delivery</span>
+            </div>
+            <div className="flex items-center gap-1">
+              <FaShieldAlt className="text-purple-500" />
+              <span>Authentic</span>
+            </div>
+          </div>
 
-            {/* Action Buttons - Enhanced */}
-            <div className="flex gap-3 pt-4 mt-auto">
-              <motion.a
-                href={whatsappLink(phone)}
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ scale: 1.02, y: -1 }}
-                whileTap={{ scale: 0.98 }}
-                className="flex-1 bg-gradient-to-r from-green-500 via-emerald-500 to-green-600 hover:from-green-600 hover:via-emerald-600 hover:to-green-700 text-white font-bold py-3.5 px-4 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 shadow-lg hover:shadow-xl relative overflow-hidden group/btn"
+          {/* Price Section */}
+          <div className="mb-6">
+            {phone.originalPrice && (
+              <p className="text-sm text-gray-500 line-through mb-1">
+                {phone.originalPrice}
+              </p>
+            )}
+            {phone.price && (
+              <div className="flex items-baseline gap-2">
+                <span className="text-2xl font-bold text-gray-900">
+                  {phone.price}
+                </span>
+                {enhancedPhone.discount && (
+                  <span className="text-sm font-medium text-green-600 bg-green-50 px-2 py-1 rounded">
+                    Save {enhancedPhone.discount}
+                  </span>
+                )}
+              </div>
+            )}
+          </div>
+
+          {/* Action Buttons */}
+          <div className="mt-auto space-y-3">
+            {/* Primary CTA Button with Psychological Buy Effect */}
+            <motion.a
+              href={whatsappLink(phone)}
+              target="_blank"
+              rel="noopener noreferrer"
+              animate={{
+                scale: hoveredCard === index ? 1.1 : 1,
+                y: hoveredCard === index ? -6 : 0,
+              }}
+              whileHover={{
+                scale: hoveredCard === index ? 1.15 : 1.05,
+                y: hoveredCard === index ? -8 : -2,
+              }}
+              whileTap={{ scale: 0.95 }}
+              transition={{
+                type: "spring",
+                stiffness: 300,
+                damping: 20,
+                duration: 0.4,
+              }}
+              className={`w-full bg-gradient-to-r transition-all duration-500 text-white font-black rounded-2xl flex items-center justify-center gap-3 shadow-lg group/btn relative overflow-hidden ${
+                hoveredCard === index
+                  ? "from-green-400 via-green-500 to-emerald-500 py-6 px-8 shadow-2xl shadow-green-500/40 border-2 border-green-300"
+                  : "from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 py-4 px-6 hover:shadow-xl"
+              }`}
+            >
+              {/* Pulsing Background Effect */}
+              {hoveredCard === index && (
+                <motion.div
+                  className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent"
+                  animate={{
+                    x: ["-100%", "100%"],
+                  }}
+                  transition={{
+                    duration: 1.5,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  }}
+                />
+              )}
+
+              <motion.div
+                animate={{
+                  scale: hoveredCard === index ? 1.3 : 1,
+                  rotate: hoveredCard === index ? [0, 5, -5, 0] : 0,
+                }}
+                transition={{
+                  duration: hoveredCard === index ? 0.5 : 0.3,
+                  repeat: hoveredCard === index ? Infinity : 0,
+                  repeatDelay: 2,
+                }}
               >
-                {/* Button Shimmer Effect */}
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent transform -skew-x-12 translate-x-[-100%] group-hover/btn:translate-x-[200%] transition-transform duration-700"></div>
-                <FaWhatsapp className="text-lg relative z-10" />
-                <span className="relative z-10">Order Now</span>
-              </motion.a>
+                <FaWhatsapp className="text-xl relative z-10" />
+              </motion.div>
+
+              <motion.span
+                className="relative z-10"
+                animate={{
+                  scale: hoveredCard === index ? 1.15 : 1,
+                  fontWeight: hoveredCard === index ? 900 : 700,
+                }}
+                transition={{ duration: 0.3 }}
+                style={{
+                  fontSize: hoveredCard === index ? "1.5rem" : "1.25rem",
+                  textShadow:
+                    hoveredCard === index
+                      ? "0 2px 8px rgba(0,0,0,0.3)"
+                      : "none",
+                }}
+              >
+                {hoveredCard === index ? "🔥 BUY NOW!" : "Order Now"}
+              </motion.span>
+
+              {/* Urgency Indicator */}
+              <AnimatePresence>
+                {hoveredCard === index && (
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0 }}
+                    className="flex items-center gap-1 relative z-10"
+                  >
+                    <motion.span
+                      className="text-xs bg-red-500 text-white px-2 py-1 rounded-full font-bold"
+                      animate={{
+                        scale: [1, 1.1, 1],
+                        boxShadow: [
+                          "0 0 0 0 rgba(239, 68, 68, 0.7)",
+                          "0 0 0 6px rgba(239, 68, 68, 0)",
+                          "0 0 0 0 rgba(239, 68, 68, 0)",
+                        ],
+                      }}
+                      transition={{ duration: 1, repeat: Infinity }}
+                    >
+                      LIMITED
+                    </motion.span>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+
+              {/* Shine Effect */}
+              {hoveredCard === index && (
+                <motion.div
+                  className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent"
+                  animate={{
+                    x: ["-100%", "100%"],
+                  }}
+                  transition={{
+                    duration: 2,
+                    repeat: Infinity,
+                    ease: "linear",
+                  }}
+                />
+              )}
+            </motion.a>
+
+            {/* Secondary Actions */}
+            <div className="flex gap-3">
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="flex-1 bg-gray-100 hover:bg-gray-200 text-gray-700 font-semibold py-3 px-4 rounded-xl transition-all duration-300 flex items-center justify-center gap-2"
+              >
+                <BsCart3 className="text-lg" />
+                Add to Cart
+              </motion.button>
 
               <motion.button
-                whileHover={{ scale: 1.1, rotate: 5 }}
-                whileTap={{ scale: 0.9 }}
-                className="w-12 h-12 bg-gradient-to-r from-gray-700 to-gray-800 hover:from-blue-600 hover:to-purple-600 text-white rounded-xl transition-all duration-300 flex items-center justify-center shadow-lg hover:shadow-xl border border-gray-600/50 hover:border-transparent"
+                whileHover={{ scale: 1.05, rotate: 5 }}
+                whileTap={{ scale: 0.95 }}
+                className="w-12 h-12 bg-blue-50 hover:bg-blue-100 text-blue-600 rounded-xl transition-all duration-300 flex items-center justify-center"
               >
                 <MdShoppingCart className="text-lg" />
               </motion.button>
