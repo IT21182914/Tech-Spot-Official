@@ -136,7 +136,7 @@ const HAPPY_CUSTOMERS = [
     src: "/images/HappyCustomers/Happy Customer Pixel 7 Pro 128GB.jpg",
     name: "Happy Customer",
     phone: "Pixel 7 Pro 128GB",
-    note: "The smartest Android I've ever used 🤖📱",
+    note: "The smartest Android I've ever used 📱",
     satisfaction: "Superb",
   },
 
