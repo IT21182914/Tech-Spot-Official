@@ -133,6 +133,14 @@ const HAPPY_CUSTOMERS = [
     satisfaction: "Amazing",
   },
   {
+    src: "/images/HappyCustomers/Happy Customer Pixel 7 Pro 128GB.jpg",
+    name: "Happy Customer",
+    phone: "Pixel 7 Pro 128GB",
+    note: "The smartest Android I've ever used 🤖📱",
+    satisfaction: "Superb",
+  },
+
+  {
     src: "/images/HappyCustomers/Happy Customer Redmi 13 Pro Plus 8GB 256GB.jpg",
     name: "Happy Customer",
     phone: "Redmi 13 Pro Plus 8/256",
