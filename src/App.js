@@ -1,5 +1,10 @@
 import React, { useEffect } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useLocation,
+} from "react-router-dom";
 import ReactGA from "react-ga4";
 import { HelmetProvider } from "react-helmet-async";
 import Navbar from "./components/Navbar";
@@ -17,9 +22,33 @@ import AboutUs from "./components/AboutUs";
 import FAQ from "./components/FAQ";
 import CheckoutPage from "./pages/CheckoutPage";
 import TermsPage from "./components/TermsPage";
-
+import Registration from "./pages/Auth/Registration";
+import Login from "./pages/Auth/Login";
 import BlogList from "./pages/BlogList";
 import BlogPost from "./pages/BlogPost";
+
+const Layout = ({ children }) => {
+  const location = useLocation();
+
+  const authRoutes = ["/login", "/register"];
+  const isAuthPage = authRoutes.includes(location.pathname);
+
+  return (
+    <div className="bg-black text-white min-h-screen">
+      {!isAuthPage && <Navbar />}
+
+      <main className={isAuthPage ? "" : "pt-0"}>{children}</main>
+
+      {!isAuthPage && (
+        <>
+          <FloatingContactButtons />
+          <Footer />
+        </>
+      )}
+    </div>
+  );
+};
+
 const App = () => {
   useEffect(() => {
     ReactGA.initialize("G-ZW20PMEHYY");
@@ -29,9 +58,11 @@ const App = () => {
   return (
     <HelmetProvider>
       <Router>
-        <div className="bg-black text-white min-h-screen">
-          <Navbar />
+        <Layout>
           <Routes>
+            <Route path="/register" element={<Registration />} />
+            <Route path="/login" element={<Login />} />
+
             <Route path="/" element={<Home />} />
             <Route path="/shop" element={<Shop />} />
             <Route path="/location" element={<Location />} />
@@ -41,16 +72,13 @@ const App = () => {
             <Route path="/repair" element={<RepairServices />} />
             <Route path="/checkout" element={<CheckoutPage />} />
             <Route path="/terms" element={<TermsPage />} />
-
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/testimonials" element={<Testimonials />} />
             <Route path="/about" element={<AboutUs />} />
             <Route path="/faq" element={<FAQ />} />
             <Route path="/smartphones" element={<Smartphones />} />
           </Routes>
-          <FloatingContactButtons />
-          <Footer />
-        </div>
+        </Layout>
       </Router>
     </HelmetProvider>
   );
