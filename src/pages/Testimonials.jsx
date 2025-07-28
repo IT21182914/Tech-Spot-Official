@@ -203,6 +203,13 @@ const HAPPY_CUSTOMERS = [
     note: "Best value for money! 💰🔥",
     satisfaction: "Outstanding",
   },
+  {
+    src: "/images/HappyCustomers/Happy Customer5 Redmi 14C 8GB 256GB.jpg",
+    name: "Happy Customer",
+    phone: "Redmi 14C 8/256",
+    note: "Best value for money! 💰🔥",
+    satisfaction: "Outstanding",
+  },
 ];
 
 // Separate component for customer counter to prevent re-renders
