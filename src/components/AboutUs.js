@@ -167,7 +167,7 @@ const AboutUs = () => {
   const achievements = [
     {
       icon: <BsTrophy className="text-2xl" />,
-      title: "Best Mobile Shop 2023",
+      title: "Best Mobile Shop 2024",
       subtitle: "Tissamaharama Business Awards",
     },
     {
@@ -229,6 +229,13 @@ const AboutUs = () => {
       description:
         "Reached milestone of serving over 15,000 satisfied customers.",
       icon: <FaHeart className="text-xl" />,
+    },
+    {
+      year: "2025",
+      title: "Tech Spot 2.0 Launch",
+      description:
+        "Launched our revolutionary Tech Spot 2.0 branch with enhanced facilities and premium services.",
+      icon: <FaStore className="text-xl" />,
     },
   ];
 
@@ -816,6 +823,176 @@ const AboutUs = () => {
                 </motion.div>
               ))}
             </div>
+          </div>
+        </section>
+
+        {/* Tech Spot 2.0 Branch Section */}
+        <section className="py-20 px-6">
+          <div className="max-w-7xl mx-auto">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-center mb-16"
+            >
+              <div className="inline-flex items-center gap-3 bg-gradient-to-r from-purple-600/20 to-blue-600/20 backdrop-blur-xl rounded-full px-6 py-3 border border-white/20 mb-6">
+                <FaStore className="text-purple-400" />
+                <span className="text-purple-300 font-semibold">
+                  New Branch
+                </span>
+              </div>
+              <h2 className="text-4xl lg:text-5xl font-black mb-6">
+                <span className="bg-gradient-to-r from-white via-purple-200 to-blue-200 bg-clip-text text-transparent">
+                  Tech Spot 2.0
+                </span>
+              </h2>
+              <p className="text-xl text-gray-400 max-w-3xl mx-auto">
+                Experience our revolutionary new branch with enhanced
+                facilities, premium services, and cutting-edge technology
+                solutions
+              </p>
+            </motion.div>
+
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+              {/* TechSpotBoard.jpg */}
+              <motion.div
+                initial={{ opacity: 0, x: -30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8 }}
+                className="relative group"
+              >
+                <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-purple-500/20 to-blue-500/20 backdrop-blur-xl border border-white/20 p-2 hover:border-white/40 transition-all duration-500">
+                  <div className="relative overflow-hidden rounded-2xl">
+                    <img
+                      src="/images/TechSpotBoard.jpg"
+                      alt="Tech Spot 2.0 Board"
+                      className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105"
+                      loading="lazy"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  </div>
+
+                  {/* Badge */}
+                  <div className="absolute top-6 left-6">
+                    <div className="bg-gradient-to-r from-purple-600 to-blue-600 text-white px-4 py-2 rounded-full text-sm font-bold flex items-center gap-2">
+                      <FaFire />
+                      New Branch
+                    </div>
+                  </div>
+                </div>
+
+                <div className="mt-6 text-center">
+                  <h3 className="text-2xl font-bold text-white mb-2">
+                    Modern Facilities
+                  </h3>
+                  <p className="text-gray-400">
+                    State-of-the-art infrastructure and premium customer
+                    experience
+                  </p>
+                </div>
+              </motion.div>
+
+              {/* TechSpot2.jpg */}
+              <motion.div
+                initial={{ opacity: 0, x: 30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8 }}
+                className="relative group"
+              >
+                <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-blue-500/20 to-cyan-500/20 backdrop-blur-xl border border-white/20 p-2 hover:border-white/40 transition-all duration-500">
+                  <div className="relative overflow-hidden rounded-2xl">
+                    <img
+                      src="/images/TechSpot2.jpg"
+                      alt="Tech Spot 2.0 Interior"
+                      className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105"
+                      loading="lazy"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  </div>
+
+                  {/* Badge */}
+                  <div className="absolute top-6 left-6">
+                    <div className="bg-gradient-to-r from-blue-600 to-cyan-600 text-white px-4 py-2 rounded-full text-sm font-bold flex items-center gap-2">
+                      <BsStars />
+                      Premium
+                    </div>
+                  </div>
+                </div>
+
+                <div className="mt-6 text-center">
+                  <h3 className="text-2xl font-bold text-white mb-2">
+                    Enhanced Experience
+                  </h3>
+                  <p className="text-gray-400">
+                    Premium interiors and advanced service capabilities
+                  </p>
+                </div>
+              </motion.div>
+            </div>
+
+            {/* Key Features */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="mt-16"
+            >
+              <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl rounded-3xl border border-white/20 p-8 lg:p-12">
+                <div className="text-center mb-10">
+                  <h3 className="text-3xl font-bold text-white mb-4">
+                    What Makes Tech Spot 2.0 Special
+                  </h3>
+                  <p className="text-gray-400 max-w-2xl mx-auto">
+                    Our new branch represents the future of mobile technology
+                    retail and service
+                  </p>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                  <div className="text-center">
+                    <div className="w-16 h-16 bg-gradient-to-r from-purple-600 to-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                      <MdWorkspacePremium className="text-white text-2xl" />
+                    </div>
+                    <h4 className="text-xl font-bold text-white mb-2">
+                      Premium Setup
+                    </h4>
+                    <p className="text-gray-400 text-sm">
+                      Modern interiors with premium finishes and comfortable
+                      customer areas
+                    </p>
+                  </div>
+
+                  <div className="text-center">
+                    <div className="w-16 h-16 bg-gradient-to-r from-blue-600 to-cyan-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                      <BsGear className="text-white text-2xl" />
+                    </div>
+                    <h4 className="text-xl font-bold text-white mb-2">
+                      Advanced Tech
+                    </h4>
+                    <p className="text-gray-400 text-sm">
+                      Latest diagnostic equipment and repair tools for superior
+                      service quality
+                    </p>
+                  </div>
+
+                  <div className="text-center">
+                    <div className="w-16 h-16 bg-gradient-to-r from-cyan-600 to-teal-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                      <BsHeadset className="text-white text-2xl" />
+                    </div>
+                    <h4 className="text-xl font-bold text-white mb-2">
+                      Expert Support
+                    </h4>
+                    <p className="text-gray-400 text-sm">
+                      Dedicated customer service team with specialized technical
+                      expertise
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
           </div>
         </section>
 
