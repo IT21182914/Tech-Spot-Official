@@ -1,6 +1,7 @@
 // src/components/headphones/HeroSection.jsx
 import React from "react";
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 import {
   FaHeadphones,
   FaCheckCircle,
@@ -12,21 +13,29 @@ import { BsStars } from "react-icons/bs";
 import { HiOutlineSparkles } from "react-icons/hi";
 import { MdVerified, MdTrendingUp } from "react-icons/md";
 
-const PremiumButton = ({ text, href, type = "default" }) => (
-  <motion.a
-    href={href}
-    whileHover={{ scale: 1.02, y: -2 }}
-    whileTap={{ scale: 0.98 }}
-    className={`inline-flex items-center gap-2 px-6 py-3 rounded-xl text-sm font-semibold transition-all duration-300 ${
-      type === "review"
-        ? "bg-gradient-to-r from-emerald-500 to-green-500 hover:from-emerald-600 hover:to-green-600 text-white shadow-lg hover:shadow-emerald-500/25"
-        : "bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white shadow-lg hover:shadow-purple-500/25"
-    }`}
-  >
-    <BsStars className="text-sm" />
-    {text}
-  </motion.a>
-);
+const PremiumButton = ({ text, href, type = "default" }) => {
+  const navigate = useNavigate();
+
+  const handleClick = (e) => {
+    e.preventDefault();
+    console.log("Button clicked, navigating to:", href);
+    navigate(href);
+  };
+
+  return (
+    <button
+      onClick={handleClick}
+      className={`relative z-10 inline-flex items-center gap-2 px-6 py-3 rounded-xl text-sm font-semibold transition-all duration-300 cursor-pointer hover:scale-[1.02] hover:-translate-y-0.5 active:scale-[0.98] ${
+        type === "review"
+          ? "bg-gradient-to-r from-emerald-500 to-green-500 hover:from-emerald-600 hover:to-green-600 text-white shadow-lg hover:shadow-emerald-500/25"
+          : "bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white shadow-lg hover:shadow-purple-500/25"
+      }`}
+    >
+      <BsStars className="text-sm" />
+      {text}
+    </button>
+  );
+};
 
 const HeroSection = ({
   activeCategory,
@@ -137,7 +146,7 @@ const HeroSection = ({
       </motion.div>
 
       {/* Heading with Review Buttons */}
-      <div className="mb-8 sm:mb-16">
+      <div className="relative z-20 mb-8 sm:mb-16">
         {/* Mobile Layout */}
         <div className="flex flex-col items-center gap-3 sm:hidden">
           <h1 className="text-2xl font-bold text-center text-white order-first">
