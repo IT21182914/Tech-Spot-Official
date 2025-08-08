@@ -1,0 +1,17 @@
+export const headphonesStockList = [
+  "Baseus Wireless Earbuds - Rs. 12,500",
+  "Baseus Premium Headphones - Rs. 18,900",
+  "Sony WH-CH720N Wireless Headphones - Rs. 25,500",
+  "JBL Tune 750BTNC Wireless Headphones - Rs. 19,900",
+  "Anker Soundcore Life Q30 - Rs. 16,500",
+  "Baseus Encok W04 TWS Earbuds - Rs. 8,900",
+  "Audio-Technica ATH-M40x - Rs. 32,500",
+  "Marshall Major IV Wireless - Rs. 28,900",
+  "Skullcandy Crusher Wireless - Rs. 21,900",
+  "Sennheiser HD 450BT - Rs. 24,500",
+  "Beats Studio3 Wireless - Rs. 45,900",
+  "AirPods Pro 2nd Gen - Rs. 62,500",
+  "Samsung Galaxy Buds2 Pro - Rs. 38,500",
+  "OnePlus Buds Pro - Rs. 22,900",
+  "Xiaomi Redmi Buds 3 Pro - Rs. 12,900",
+];

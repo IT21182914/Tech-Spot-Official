@@ -218,6 +218,17 @@ const HeroSection = () => {
       link: "/smartphones",
     },
     {
+      title: "Premium Audio Experience",
+      subtitle: "Crystal Clear Sound",
+      description:
+        "Immerse yourself in superior audio quality with our exclusive collection of headphones and earbuds.",
+      image:
+        "https://cdn.pixabay.com/photo/2021/06/26/10/44/airpods-6365870_640.jpg",
+      gradient: "from-purple-600 via-pink-600 to-indigo-500",
+      action: "Explore Audio",
+      link: "/headphones",
+    },
+    {
       title: "Expert Repair Services",
       subtitle: "Professional Care",
       description:

@@ -9,13 +9,10 @@ import {
   FaPhone,
   FaInfoCircle,
   FaWhatsapp,
-  FaShieldAlt,
-  FaCrown,
-  FaBolt,
+  FaHeadphones,
 } from "react-icons/fa";
-import { MdSmartphone, MdVerified, MdSecurity } from "react-icons/md";
-import { BsStars, BsLightning, BsDiamond, BsShieldCheck } from "react-icons/bs";
-import { HiSparkles } from "react-icons/hi";
+import { MdSmartphone, MdVerified } from "react-icons/md";
+import { BsLightning, BsShieldCheck } from "react-icons/bs";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -71,6 +68,15 @@ const Navbar = () => {
       gradient: "from-yellow-500 to-orange-500",
       specialColor: "text-yellow-400",
       badge: "HOT",
+    },
+    {
+      path: "/headphones",
+      label: "Audio",
+      icon: <FaHeadphones className="text-lg" />,
+      description: "Headphones & earbuds",
+      gradient: "from-purple-500 to-pink-500",
+      specialColor: "text-purple-400",
+      badge: "NEW",
     },
     {
       path: "/shop",

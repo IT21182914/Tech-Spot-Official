@@ -6,6 +6,7 @@ import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import Shop from "./pages/Shop";
 import Smartphones from "./pages/Smartphones";
+import Headphones from "./pages/Headphones";
 import Testimonials from "./pages/Testimonials";
 import Location from "./components/Location";
 import Footer from "./components/Footer";
@@ -47,6 +48,7 @@ const App = () => {
             <Route path="/about" element={<AboutUs />} />
             <Route path="/faq" element={<FAQ />} />
             <Route path="/smartphones" element={<Smartphones />} />
+            <Route path="/headphones" element={<Headphones />} />
           </Routes>
           <FloatingContactButtons />
           <Footer />

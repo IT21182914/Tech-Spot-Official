@@ -1,0 +1,28 @@
+export const headphones = [
+  {
+    name: "Baseus Wireless Earbuds",
+    specs: "Bluetooth 5.0 | 24H Battery | IPX4",
+    image: "/images/Headphones/Baseus Earpods.png",
+    price: "Rs. 12,500",
+    originalPrice: "Rs. 15,000",
+    category: "Earbuds",
+    rating: 4.6,
+    reviews: 128,
+    features: ["Active Noise Cancellation", "Touch Controls", "Fast Charging"],
+    inStock: true,
+    trending: true,
+  },
+  {
+    name: "Baseus Premium Headphones",
+    specs: "Over-Ear | Hi-Res Audio | 30H Battery",
+    image: "/images/Headphones/Baseus Headphones.png",
+    price: "Rs. 23,900",
+    originalPrice: "Rs. 22,500",
+    category: "Over-Ear",
+    rating: 4.8,
+    reviews: 85,
+    features: ["Premium Sound Quality", "Comfortable Design", "Foldable"],
+    inStock: true,
+    trending: false,
+  },
+];
