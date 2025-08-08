@@ -269,7 +269,7 @@ const HeroSection = () => {
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-cyan-500/30 rounded-full blur-3xl animate-pulse delay-2000" />
       </div>
 
-      <div className="relative z-10 h-full flex items-center">
+      <div className="relative z-10 h-full flex items-center pt-20 sm:pt-24">
         <div className="max-w-7xl mx-auto px-4 w-full">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             {/* Content */}
