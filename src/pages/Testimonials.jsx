@@ -139,7 +139,13 @@ const HAPPY_CUSTOMERS = [
     note: "The smartest Android I've ever used 📱",
     satisfaction: "Superb",
   },
-
+  {
+    src: "/images/HappyCustomers/Happy Customer1 Techno Camon 14 Pro 8GB 256GB.jpg",
+    name: "Happy Customer",
+    phone: "Techno Camon 14 Pro 8/256",
+    note: "Great performance & value 💯",
+    satisfaction: "Excellent",
+  },
   {
     src: "/images/HappyCustomers/Happy Customer Redmi 13 Pro Plus 8GB 256GB.jpg",
     name: "Happy Customer",
