@@ -12,6 +12,7 @@ import { huaweiStockList } from "../data/huaweiStockList";
 import { pixelStockList } from "../data/pixelStockList";
 import { honorStockList } from "../data/honorStockList";
 import { samsungTabletsStockList } from "../data/samsungTabletsStockList";
+import { technoStockList } from "../data/technoStockList";
 
 const WHATSAPP_NUMBER = "94726048468";
 const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}`;
@@ -83,6 +84,7 @@ const useSmartphones = () => {
     Huawei: huaweiStockList,
     "Google Pixel": pixelStockList,
     Honor: honorStockList,
+    Techno: technoStockList,
   };
 
   const phones = allPhones[activeCategory]

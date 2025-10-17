@@ -9,6 +9,7 @@ import { oppoPhones } from "./oppoPhones";
 import { realmePhones } from "./realmePhones";
 import { pixelPhones } from "./pixelPhones";
 import { samsungTablets } from "./samsungTablets";
+import { technoPhones } from "./technoPhones";
 
 export const allPhones = {
   Apple: applePhones,
@@ -22,4 +23,5 @@ export const allPhones = {
   Oppo: oppoPhones,
   Realme: realmePhones,
   Infinix: infinixPhones,
+  Techno: technoPhones,
 };
