@@ -3,6 +3,7 @@ export const xiaomiStockList = [
   "Redmi A3 4/128 – Rs. 38,990",
   "Redmi 14C 4/128 – Rs. 44,900",
   "Redmi 14C 6/128 – Rs. 47,500",
+  "Redmi 15C 8/256 – Rs. 48,000",
   "Redmi 14C 8/256 – Rs. 48,990",
   "Redmi 13 6/128 – Rs. 55,900",
   "Redmi Note 13 8/256 – Rs. 57,900",

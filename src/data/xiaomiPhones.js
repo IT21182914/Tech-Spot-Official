@@ -6,6 +6,12 @@ export const xiaomiPhones = [
     price: "Rs. 70,900",
   },
   {
+    name: "Redmi 15C",
+    specs: "8GB RAM | 256GB ROM",
+    image: "/images/Redmi/Redmi 15C 8GB 256GB.jpg",
+    price: "Rs. 48,000",
+  },
+  {
     name: "Redmi A3",
     specs: "3GB RAM | 64GB ROM",
     image: "/images/Redmi/Redmi A3 3GB 64GB.jpg",
