@@ -12,6 +12,12 @@ export const samsungPhones = [
     price: "Rs. 287,500",
   },
   {
+    name: "Samsung Galaxy A56 5G",
+    specs: "12GB RAM | 256GB ROM",
+    image: "/images/Samsung/Samsung A56 5G 12GB 256GB.jpg",
+    price: "Rs. 113,500",
+  },
+  {
     name: "Samsung Galaxy A15 5G",
     specs: "8GB RAM | 256GB ROM",
     image: "/images/Samsung/Samsung Galaxy A15 5G 8GB 256GB.jpg",
@@ -22,5 +28,11 @@ export const samsungPhones = [
     specs: "8GB RAM | 256GB ROM",
     image: "/images/Samsung/Galaxy A16 5G 8256 57300.jpg",
     price: "Rs. 67,000",
+  },
+  {
+    name: "Samsung Galaxy A07",
+    specs: "4GB RAM | 64GB ROM",
+    image: "/images/Samsung/Samsung A07 4GB 64GB.jpg",
+    price: "Rs. 35,000",
   },
 ];

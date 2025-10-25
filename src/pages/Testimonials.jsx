@@ -182,6 +182,13 @@ const HAPPY_CUSTOMERS = [
     satisfaction: "Happy",
   },
   {
+    src: "/images/HappyCustomers/Happy Customer1 Samsung A07 4GB 64GB.png",
+    name: "Happy Customer",
+    phone: "Galaxy A07 4/64",
+    note: "Great budget phone! 📱✨",
+    satisfaction: "Happy",
+  },
+  {
     src: "/images/HappyCustomers/Happy Customer Samsung Galaxy A15 5G 8GB 256GB.jpg",
     name: "Happy Customer",
     phone: "Galaxy A15 5G 8/256",
@@ -194,6 +201,13 @@ const HAPPY_CUSTOMERS = [
     phone: "Galaxy A35 5G 8/256",
     note: "Stylish 5G Beast 📱⚡",
     satisfaction: "Impressed",
+  },
+  {
+    src: "/images/HappyCustomers/Happy Customer1 Samsung A56 12GB 256GB.png",
+    name: "Happy Customer",
+    phone: "Galaxy A56 12/256",
+    note: "Powerful performance! 🚀💪",
+    satisfaction: "Excellent",
   },
   {
     src: "/images/HappyCustomers/Happy Customer3 Redmi A3 4GB 128GB.jpg",

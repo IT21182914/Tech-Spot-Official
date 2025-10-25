@@ -1,5 +1,6 @@
 export const samsungStockList = [
   "Samsung Galaxy A06 4/64 – Rs. 34,800",
+  "Samsung Galaxy A07 4/64 – Rs. 35,000",
   "Samsung Galaxy M05 4/64 – Rs. 35,900",
   "Samsung Galaxy F05 4/64 – Rs. 36,990",
   "Samsung Galaxy A06 4/128 – Rs. 38,500",
@@ -31,6 +32,7 @@ export const samsungStockList = [
   "Samsung Galaxy A56 8/128 – Rs. 113,900",
   "Samsung Galaxy A55 5G 12/256 – Rs. 121,990",
   "Samsung Galaxy A56 5G 8/256 – Rs. 120,000",
+  "Samsung Galaxy A56 5G 12/256 – Rs. 113,500",
   "Samsung Galaxy A56 8/256 – Rs. 124,900",
   "Samsung Galaxy A56 5G 12/256 – Rs. 129,000",
   "Samsung Galaxy A56 12/256 – Rs. 133,900",
