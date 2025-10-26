@@ -30,6 +30,12 @@ export const samsungPhones = [
     price: "Rs. 67,000",
   },
   {
+    name: "Samsung Galaxy A17 5G",
+    specs: "8GB RAM | 128GB ROM",
+    image: "/images/Samsung/Samsung A17 5G 8GB 128GB.jpg",
+    price: "Rs. 72,000",
+  },
+  {
     name: "Samsung Galaxy A07",
     specs: "4GB RAM | 64GB ROM",
     image: "/images/Samsung/Samsung A07 4GB 64GB.jpg",

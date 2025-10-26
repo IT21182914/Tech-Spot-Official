@@ -189,6 +189,13 @@ const HAPPY_CUSTOMERS = [
     satisfaction: "Happy",
   },
   {
+    src: "/images/HappyCustomers/Happy Customer2 Samsung A07 4GB 64GB.png",
+    name: "Happy Customer",
+    phone: "Galaxy A07 4/64",
+    note: "Perfect for daily use! 😊👍",
+    satisfaction: "Happy",
+  },
+  {
     src: "/images/HappyCustomers/Happy Customer Samsung Galaxy A15 5G 8GB 256GB.jpg",
     name: "Happy Customer",
     phone: "Galaxy A15 5G 8/256",

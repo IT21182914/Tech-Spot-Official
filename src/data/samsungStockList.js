@@ -14,6 +14,7 @@ export const samsungStockList = [
   "Samsung Galaxy A16 6/128 – Rs. 56,900",
   "Samsung Galaxy A16 5G 6/128 – Rs. 58,900",
   "Samsung Galaxy A15 8/256 – Rs. 61,990",
+  "Samsung Galaxy A17 5G 8/128 – Rs. 72,000",
   "Samsung Galaxy A25 5G 6/128 – Rs. 64,900",
   "Samsung Galaxy A16 8/256 – Rs. 66,900",
   "Samsung Galaxy A16 5G 8/256 – Rs. 68,900",
