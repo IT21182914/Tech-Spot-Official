@@ -14,6 +14,7 @@ export const xiaomiStockList = [
   "Redmi Note 14 5G 6/128 – Rs. 78,990",
   "Redmi Note 14 Pro 4G 8/256 – Rs. 78,500",
   "Redmi Note 14 Pro 8/256 – Rs. 81,900",
+  "Redmi Note 14 Pro 5G 8/256 – Rs. 89,900",
   "Redmi Note 14 5G 8/256 – Rs. 85,900",
   "Redmi Note 14 Pro Plus 8/256 (India) – Rs. 107,500",
   "Redmi Note 14 Pro Plus 8/256 (Global) – Rs. 110,000",

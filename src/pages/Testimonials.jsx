@@ -154,6 +154,13 @@ const HAPPY_CUSTOMERS = [
     satisfaction: "Great",
   },
   {
+    src: "/images/HappyCustomers/Happy Customer Redmi Note 14 Pro 5G 8GB 256GB.jpg",
+    name: "Happy Customer",
+    phone: "Redmi Note 14 Pro 5G 8/256",
+    note: "5G Speed & Power! 🚀📱",
+    satisfaction: "Excellent",
+  },
+  {
     src: "/images/HappyCustomers/Happy Customer Redmi 14C 8GB 256GB.jpg",
     name: "Happy Customer",
     phone: "Redmi 14C 8/256",
